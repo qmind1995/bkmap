@@ -1,0 +1,1113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CMakeRunConfigurationManager" shouldGenerate="true" assignedExecutableTargets="true" buildAllGenerated="true">
+    <generated>
+      <config projectName="BKMAP" targetName="transitive_matcher" />
+      <config projectName="BKMAP" targetName="matches_importer" />
+      <config projectName="BKMAP" targetName="feature_extractor" />
+      <config projectName="BKMAP" targetName="vocab_tree_retriever" />
+      <config projectName="BKMAP" targetName="ui" />
+      <config projectName="BKMAP" targetName="retrieval" />
+      <config projectName="BKMAP" targetName="model_merger" />
+      <config projectName="BKMAP" targetName="model_orientation_aligner" />
+      <config projectName="bkmap" targetName="bkmap" />
+      <config projectName="BKMAP" targetName="sift_gpu" />
+      <config projectName="BKMAP" targetName="image_registrator" />
+      <config projectName="BKMAP" targetName="base" />
+      <config projectName="BKMAP" targetName="optim" />
+      <config projectName="BKMAP" targetName="mvs" />
+      <config projectName="BKMAP" targetName="spatial_matcher" />
+      <config projectName="BKMAP" targetName="util" />
+      <config projectName="BKMAP" targetName="colmap_src" />
+      <config projectName="BKMAP" targetName="controllers" />
+      <config projectName="BKMAP" targetName="dense_fuser" />
+      <config projectName="BKMAP" targetName="vlfeat" />
+      <config projectName="BKMAP" targetName="database_creator" />
+      <config projectName="BKMAP" targetName="model_analyzer" />
+      <config projectName="BKMAP" targetName="model_aligner" />
+      <config projectName="BKMAP" targetName="pba" />
+      <config projectName="BKMAP" targetName="dense_mesher" />
+      <config projectName="BKMAP" targetName="vocab_tree_builder" />
+      <config projectName="BKMAP" targetName="flann" />
+      <config projectName="BKMAP" targetName="estimators" />
+      <config projectName="BKMAP" targetName="sfm" />
+      <config projectName="BKMAP" targetName="color_extractor" />
+      <config projectName="BKMAP" targetName="vocab_tree_matcher" />
+      <config projectName="BKMAP" targetName="sequential_matcher" />
+      <config projectName="BKMAP" targetName="exhaustive_matcher" />
+      <config projectName="BKMAP" targetName="lsd" />
+      <config projectName="BKMAP" targetName="image_undistorter" />
+      <config projectName="BKMAP" targetName="poisson_recon" />
+      <config projectName="BKMAP" targetName="image_rectifier" />
+      <config projectName="BKMAP" targetName="automatic_reconstructor" />
+      <config projectName="BKMAP" targetName="model_converter" />
+      <config projectName="BKMAP" targetName="rig_bundle_adjuster" />
+      <config projectName="BKMAP" targetName="bundle_adjuster" />
+      <config projectName="BKMAP" targetName="bkmap_src" />
+      <config projectName="BKMAP" targetName="sqlite3" />
+      <config projectName="BKMAP" targetName="feature_importer" />
+      <config projectName="BKMAP" targetName="mapper" />
+      <config projectName="BKMAP" targetName="graclus" />
+      <config projectName="BKMAP" targetName="point_triangulator" />
+    </generated>
+  </component>
+  <component name="CMakeSettings" AUTO_RELOAD="false" GENERATION_PASS_SYSTEM_ENVIRONMENT="true">
+    <ADDITIONAL_GENERATION_ENVIRONMENT>
+      <envs />
+    </ADDITIONAL_GENERATION_ENVIRONMENT>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="d4ca20e2-ccc4-4c2b-8626-ee91a1e75213" name="Default" comment="" />
+    <ignored path="bkmap.iws" />
+    <ignored path=".idea/workspace.xml" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
+  <component name="CreatePatchCommitExecutor">
+    <option name="PATCH_PATH" value="" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+  <component name="FavoritesManager">
+    <favorites_list name="bkmap" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/src/ui/qt_utils.cpp" />
+        <option value="$PROJECT_DIR$/src/ui/qt_utils.h" />
+        <option value="$PROJECT_DIR$/src/ui/reconstruction_manager_widget.cpp" />
+        <option value="$PROJECT_DIR$/src/ui/reconstruction_manager_widget.h" />
+        <option value="$PROJECT_DIR$/src/ui/reconstruction_options_widget.cpp" />
+        <option value="$PROJECT_DIR$/src/ui/reconstruction_options_widget.h" />
+        <option value="$PROJECT_DIR$/src/ui/reconstruction_stats_widget.cpp" />
+        <option value="$PROJECT_DIR$/src/ui/reconstruction_stats_widget.h" />
+        <option value="$PROJECT_DIR$/src/ui/render_options.cpp" />
+        <option value="$PROJECT_DIR$/src/ui/render_options.h" />
+        <option value="$PROJECT_DIR$/src/ui/render_options_widget.cpp" />
+        <option value="$PROJECT_DIR$/src/ui/render_options_widget.h" />
+        <option value="$PROJECT_DIR$/src/ui/thread_control_widget.cpp" />
+        <option value="$PROJECT_DIR$/src/ui/thread_control_widget.h" />
+        <option value="$PROJECT_DIR$/src/ui/triangle_painter.cpp" />
+        <option value="$PROJECT_DIR$/src/ui/triangle_painter.h" />
+        <option value="$PROJECT_DIR$/src/ui/undistortion_widget.cpp" />
+        <option value="$PROJECT_DIR$/src/ui/undistortion_widget.h" />
+        <option value="$PROJECT_DIR$/src/base/reconstruction.h" />
+        <option value="$PROJECT_DIR$/src/estimators/coordinate_frame.cpp" />
+        <option value="$PROJECT_DIR$/src/estimators/two_view_geometry.h" />
+        <option value="$PROJECT_DIR$/src/util/option_manager.cpp" />
+        <option value="$PROJECT_DIR$/src/util/option_manager.h" />
+        <option value="$PROJECT_DIR$/src/optim/bundle_adjustment.h" />
+        <option value="$PROJECT_DIR$/src/base/essential_matrix.cpp" />
+        <option value="$PROJECT_DIR$/src/base/database.h" />
+        <option value="$PROJECT_DIR$/src/base/pose.h" />
+        <option value="$PROJECT_DIR$/src/base/feature.cpp" />
+        <option value="$PROJECT_DIR$/src/util/bitmap.cpp" />
+        <option value="$PROJECT_DIR$/src/util/threading.h" />
+        <option value="$PROJECT_DIR$/src/base/undistortion.cpp" />
+        <option value="$PROJECT_DIR$/src/exe/dense_fuser.cpp" />
+        <option value="$PROJECT_DIR$/src/exe/dense_stereo.cc" />
+        <option value="$PROJECT_DIR$/src/mvs/model.cpp" />
+        <option value="$PROJECT_DIR$/src/base/essential_matrix.h" />
+        <option value="$PROJECT_DIR$/src/base/image.h" />
+        <option value="$PROJECT_DIR$/src/base/triangulation.h" />
+        <option value="$PROJECT_DIR$/src/base/similarity_transform.h" />
+        <option value="$PROJECT_DIR$/src/estimators/similarity_transform.h" />
+        <option value="$PROJECT_DIR$/src/base/homography_matrix.h" />
+        <option value="$PROJECT_DIR$/src/base/feature_extraction.h" />
+        <option value="$PROJECT_DIR$/src/base/feature_matching.h" />
+        <option value="$PROJECT_DIR$/src/ui/options_widget.h" />
+        <option value="$PROJECT_DIR$/src/ui/options_widget.cpp" />
+        <option value="$PROJECT_DIR$/src/base/feature_extraction.cpp" />
+        <option value="$PROJECT_DIR$/src/ui/feature_extraction_widget.cpp" />
+        <option value="$PROJECT_DIR$/src/base/database.cpp" />
+        <option value="$PROJECT_DIR$/src/ui/main_window.cpp" />
+        <option value="$PROJECT_DIR$/src/ui/feature_matching_widget.cpp" />
+        <option value="$PROJECT_DIR$/src/base/feature_matching.cpp" />
+        <option value="$PROJECT_DIR$/CMakeLists.txt" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="OCFindUsagesOptions" text="true" ivars="false" properties="true" derivedClasses="false" />
+  <component name="ProjectFrameBounds">
+    <option name="y" value="18" />
+    <option name="width" value="1366" />
+    <option name="height" value="750" />
+  </component>
+  <component name="ProjectInspectionProfilesVisibleTreeState">
+    <entry key="Project Default">
+      <profile-state>
+        <expanded-state>
+          <State>
+            <id />
+          </State>
+          <State>
+            <id>C/C++</id>
+          </State>
+          <State>
+            <id>CSS</id>
+          </State>
+          <State>
+            <id>Code style issuesCSS</id>
+          </State>
+          <State>
+            <id>Control flow issuesJavaScript</id>
+          </State>
+          <State>
+            <id>DOM issuesJavaScript</id>
+          </State>
+          <State>
+            <id>General</id>
+          </State>
+          <State>
+            <id>GeneralC/C++</id>
+          </State>
+          <State>
+            <id>GeneralJavaScript</id>
+          </State>
+          <State>
+            <id>Invalid elementsCSS</id>
+          </State>
+          <State>
+            <id>JavaScript</id>
+          </State>
+          <State>
+            <id>Probable bugsCSS</id>
+          </State>
+          <State>
+            <id>Python</id>
+          </State>
+          <State>
+            <id>Unused codeC/C++</id>
+          </State>
+        </expanded-state>
+        <selected-state>
+          <State>
+            <id>C/C++</id>
+          </State>
+        </selected-state>
+      </profile-state>
+    </entry>
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="false">
+    <OptionsSetting value="true" id="Add" />
+    <OptionsSetting value="true" id="Remove" />
+    <OptionsSetting value="true" id="Checkout" />
+    <OptionsSetting value="true" id="Update" />
+    <OptionsSetting value="true" id="Status" />
+    <OptionsSetting value="true" id="Edit" />
+    <ConfirmationsSetting value="0" id="Add" />
+    <ConfirmationsSetting value="0" id="Remove" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bkmap" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$MyProjectTreeStructure$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bkmap" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$MyProjectTreeStructure$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bkmap" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bkmap" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$MyProjectTreeStructure$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bkmap" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bkmap" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="SearchEverywhereHistoryKey" value="feat&#9;FILE&#9;file:///home/tri/Desktop/bkmap/src/ui/feature_matching_widget.cpp&#10;feature&#9;FILE&#9;file:///home/tri/Desktop/bkmap/src/base/feature_matching.cpp&#10;mainwin&#9;FILE&#9;file:///home/tri/Desktop/bkmap/src/ui/main_window.cpp&#10;camera&#9;FILE&#9;file:///home/tri/Desktop/bkmap/src/base/camera_models.h&#10;max image&#9;null&#9;null&#10;came&#9;FILE&#9;file:///home/tri/Desktop/bkmap/src/base/camera_models.cpp&#10;fea&#9;FILE&#9;file:///home/tri/Desktop/bkmap/src/base/feature_extraction.cpp&#10;database.h&#9;FILE&#9;file:///home/tri/Desktop/bkmap/src/base/database.h&#10;camer&#9;FILE&#9;file:///home/tri/Desktop/bkmap/src/base/camera_models.h&#10;mainw&#9;FILE&#9;file:///home/tri/Desktop/bkmap/src/ui/main_window.cpp&#10;feature_matchingwi&#9;FILE&#9;file:///home/tri/Desktop/bkmap/src/ui/feature_matching_widget.cpp&#10;feature_ma&#9;FILE&#9;file:///home/tri/Desktop/bkmap/src/ui/feature_matching_widget.cpp&#10;main&#9;FILE&#9;file:///home/tri/Desktop/bkmap/src/ui/main_window.cpp&#10;option&#9;FILE&#9;file:///home/tri/Desktop/bkmap/src/ui/options_widget.h&#10;optionwid&#9;FILE&#9;file:///home/tri/Desktop/bkmap/src/ui/options_widget.h&#10;option_wi&#9;FILE&#9;file:///home/tri/Desktop/bkmap/src/ui/options_widget.cpp&#10;pro&#9;FILE&#9;file:///home/tri/Desktop/bkmap/src/ui/project_widget.cpp&#10;da&#9;FILE&#9;file:///home/tri/Desktop/bkmap/src/base/database.cpp&#10;sql&#9;FILE&#9;file:///home/tri/Desktop/bkmap/src/ext/SQLite/sqlite3.c&#10;camera_models.h&#9;FILE&#9;file:///home/tri/Desktop/bkmap/src/base/camera_models.h&#10;projectwi&#9;FILE&#9;file:///home/tri/Desktop/bkmap/src/ui/project_widget.cpp&#10;image.h&#9;FILE&#9;file:///home/tri/Desktop/bkmap/src/base/image.h&#10;optionma&#9;FILE&#9;file:///home/tri/Desktop/bkmap/src/util/option_manager.h&#10;data&#9;FILE&#9;file:///home/tri/Desktop/bkmap/src/base/database.h&#10;threading&#9;FILE&#9;file:///home/tri/Desktop/bkmap/src/util/threading.cpp" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode" />
+    <property name="settings.editor.splitter.proportion" value="0.2" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/util" />
+      <recent name="$PROJECT_DIR$/src/sfm" />
+      <recent name="$PROJECT_DIR$/src/optim" />
+      <recent name="$PROJECT_DIR$/src/exe" />
+      <recent name="$PROJECT_DIR$/src/ui" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.Build All">
+    <configuration default="true" type="CMakeGoogleTestRunConfigurationType" factoryName="Google Test" PASS_PARENT_ENVS_2="true" PROJECT_NAME="bkmap" TARGET_NAME="bkmap" CONFIG_NAME="Debug" TEST_MODE="SUITE_TEST">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="bkmap" TARGET_NAME="bkmap" CONFIG_NAME="Debug">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+      <method />
+    </configuration>
+    <configuration default="true" type="PythonConfigurationType" factoryName="Python">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="bkmap" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="Tox" factoryName="Tox">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="bkmap" />
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <gulpfile />
+      <tasks />
+      <arguments />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.npm" factoryName="npm">
+      <command value="run-script" />
+      <scripts />
+      <node-interpreter value="project" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="Attests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="bkmap" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="Doctests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="bkmap" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="Nosetests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="bkmap" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="PARAMS" value="" />
+      <option name="USE_PARAM" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="Unittests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="bkmap" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="PUREUNITTEST" value="true" />
+      <option name="PARAMS" value="" />
+      <option name="USE_PARAM" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="py.test">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="bkmap" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="testToRun" value="" />
+      <option name="keywords" value="" />
+      <option name="params" value="" />
+      <option name="USE_PARAM" value="false" />
+      <option name="USE_KEYWORD" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="bkmap" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="bkmap" TARGET_NAME="bkmap" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="bkmap" RUN_TARGET_NAME="bkmap">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="colmap_src" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="BKMAP" TARGET_NAME="colmap_src" CONFIG_NAME="Debug">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="bkmap_src" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="BKMAP" TARGET_NAME="bkmap_src" CONFIG_NAME="Debug">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="base" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="BKMAP" TARGET_NAME="base" CONFIG_NAME="Debug">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="util" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="BKMAP" TARGET_NAME="util" CONFIG_NAME="Debug">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="ui" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="BKMAP" TARGET_NAME="ui" CONFIG_NAME="Debug">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="Build All" type="CMakeRunConfiguration" factoryName="Application" WORKING_DIR="" PASS_PARENT_ENVS_2="true" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="BKMAP" RUN_TARGET_NAME="bkmap" EXPLICIT_BUILD_TARGET_NAME="all">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="controllers" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="BKMAP" TARGET_NAME="controllers" CONFIG_NAME="Debug">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="flann" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="BKMAP" TARGET_NAME="flann" CONFIG_NAME="Debug">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="graclus" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="BKMAP" TARGET_NAME="graclus" CONFIG_NAME="Debug">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="lsd" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="BKMAP" TARGET_NAME="lsd" CONFIG_NAME="Debug">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="pba" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="BKMAP" TARGET_NAME="pba" CONFIG_NAME="Debug">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="poisson_recon" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="BKMAP" TARGET_NAME="poisson_recon" CONFIG_NAME="Debug">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="sift_gpu" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="BKMAP" TARGET_NAME="sift_gpu" CONFIG_NAME="Debug">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="sqlite3" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="BKMAP" TARGET_NAME="sqlite3" CONFIG_NAME="Debug">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="vlfeat" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="BKMAP" TARGET_NAME="vlfeat" CONFIG_NAME="Debug">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="estimators" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="BKMAP" TARGET_NAME="estimators" CONFIG_NAME="Debug">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="automatic_reconstructor" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="BKMAP" TARGET_NAME="automatic_reconstructor" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="BKMAP" RUN_TARGET_NAME="automatic_reconstructor">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="bundle_adjuster" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="BKMAP" TARGET_NAME="bundle_adjuster" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="BKMAP" RUN_TARGET_NAME="bundle_adjuster">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="color_extractor" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="BKMAP" TARGET_NAME="color_extractor" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="BKMAP" RUN_TARGET_NAME="color_extractor">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="database_creator" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="BKMAP" TARGET_NAME="database_creator" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="BKMAP" RUN_TARGET_NAME="database_creator">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="dense_fuser" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="BKMAP" TARGET_NAME="dense_fuser" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="BKMAP" RUN_TARGET_NAME="dense_fuser">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="dense_mesher" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="BKMAP" TARGET_NAME="dense_mesher" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="BKMAP" RUN_TARGET_NAME="dense_mesher">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="exhaustive_matcher" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="BKMAP" TARGET_NAME="exhaustive_matcher" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="BKMAP" RUN_TARGET_NAME="exhaustive_matcher">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="feature_extractor" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="BKMAP" TARGET_NAME="feature_extractor" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="BKMAP" RUN_TARGET_NAME="feature_extractor">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="feature_importer" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="BKMAP" TARGET_NAME="feature_importer" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="BKMAP" RUN_TARGET_NAME="feature_importer">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="image_rectifier" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="BKMAP" TARGET_NAME="image_rectifier" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="BKMAP" RUN_TARGET_NAME="image_rectifier">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="image_registrator" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="BKMAP" TARGET_NAME="image_registrator" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="BKMAP" RUN_TARGET_NAME="image_registrator">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="image_undistorter" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="BKMAP" TARGET_NAME="image_undistorter" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="BKMAP" RUN_TARGET_NAME="image_undistorter">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="mapper" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="BKMAP" TARGET_NAME="mapper" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="BKMAP" RUN_TARGET_NAME="mapper">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="matches_importer" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="BKMAP" TARGET_NAME="matches_importer" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="BKMAP" RUN_TARGET_NAME="matches_importer">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="model_aligner" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="BKMAP" TARGET_NAME="model_aligner" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="BKMAP" RUN_TARGET_NAME="model_aligner">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="model_analyzer" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="BKMAP" TARGET_NAME="model_analyzer" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="BKMAP" RUN_TARGET_NAME="model_analyzer">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="model_converter" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="BKMAP" TARGET_NAME="model_converter" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="BKMAP" RUN_TARGET_NAME="model_converter">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="model_merger" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="BKMAP" TARGET_NAME="model_merger" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="BKMAP" RUN_TARGET_NAME="model_merger">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="model_orientation_aligner" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="BKMAP" TARGET_NAME="model_orientation_aligner" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="BKMAP" RUN_TARGET_NAME="model_orientation_aligner">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="point_triangulator" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="BKMAP" TARGET_NAME="point_triangulator" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="BKMAP" RUN_TARGET_NAME="point_triangulator">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="rig_bundle_adjuster" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="BKMAP" TARGET_NAME="rig_bundle_adjuster" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="BKMAP" RUN_TARGET_NAME="rig_bundle_adjuster">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="sequential_matcher" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="BKMAP" TARGET_NAME="sequential_matcher" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="BKMAP" RUN_TARGET_NAME="sequential_matcher">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="spatial_matcher" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="BKMAP" TARGET_NAME="spatial_matcher" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="BKMAP" RUN_TARGET_NAME="spatial_matcher">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="transitive_matcher" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="BKMAP" TARGET_NAME="transitive_matcher" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="BKMAP" RUN_TARGET_NAME="transitive_matcher">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="vocab_tree_builder" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="BKMAP" TARGET_NAME="vocab_tree_builder" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="BKMAP" RUN_TARGET_NAME="vocab_tree_builder">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="vocab_tree_matcher" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="BKMAP" TARGET_NAME="vocab_tree_matcher" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="BKMAP" RUN_TARGET_NAME="vocab_tree_matcher">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="vocab_tree_retriever" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="BKMAP" TARGET_NAME="vocab_tree_retriever" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="BKMAP" RUN_TARGET_NAME="vocab_tree_retriever">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="mvs" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="BKMAP" TARGET_NAME="mvs" CONFIG_NAME="Debug">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="optim" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="BKMAP" TARGET_NAME="optim" CONFIG_NAME="Debug">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="retrieval" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="BKMAP" TARGET_NAME="retrieval" CONFIG_NAME="Debug">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="sfm" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="BKMAP" TARGET_NAME="sfm" CONFIG_NAME="Debug">
+      <envs />
+      <method />
+    </configuration>
+    <list size="48">
+      <item index="0" class="java.lang.String" itemvalue="Application.bkmap" />
+      <item index="1" class="java.lang.String" itemvalue="Application.colmap_src" />
+      <item index="2" class="java.lang.String" itemvalue="Application.bkmap_src" />
+      <item index="3" class="java.lang.String" itemvalue="Application.base" />
+      <item index="4" class="java.lang.String" itemvalue="Application.util" />
+      <item index="5" class="java.lang.String" itemvalue="Application.ui" />
+      <item index="6" class="java.lang.String" itemvalue="Application.Build All" />
+      <item index="7" class="java.lang.String" itemvalue="Application.controllers" />
+      <item index="8" class="java.lang.String" itemvalue="Application.flann" />
+      <item index="9" class="java.lang.String" itemvalue="Application.graclus" />
+      <item index="10" class="java.lang.String" itemvalue="Application.lsd" />
+      <item index="11" class="java.lang.String" itemvalue="Application.pba" />
+      <item index="12" class="java.lang.String" itemvalue="Application.poisson_recon" />
+      <item index="13" class="java.lang.String" itemvalue="Application.sift_gpu" />
+      <item index="14" class="java.lang.String" itemvalue="Application.sqlite3" />
+      <item index="15" class="java.lang.String" itemvalue="Application.vlfeat" />
+      <item index="16" class="java.lang.String" itemvalue="Application.estimators" />
+      <item index="17" class="java.lang.String" itemvalue="Application.automatic_reconstructor" />
+      <item index="18" class="java.lang.String" itemvalue="Application.bundle_adjuster" />
+      <item index="19" class="java.lang.String" itemvalue="Application.color_extractor" />
+      <item index="20" class="java.lang.String" itemvalue="Application.database_creator" />
+      <item index="21" class="java.lang.String" itemvalue="Application.dense_fuser" />
+      <item index="22" class="java.lang.String" itemvalue="Application.dense_mesher" />
+      <item index="23" class="java.lang.String" itemvalue="Application.exhaustive_matcher" />
+      <item index="24" class="java.lang.String" itemvalue="Application.feature_extractor" />
+      <item index="25" class="java.lang.String" itemvalue="Application.feature_importer" />
+      <item index="26" class="java.lang.String" itemvalue="Application.image_rectifier" />
+      <item index="27" class="java.lang.String" itemvalue="Application.image_registrator" />
+      <item index="28" class="java.lang.String" itemvalue="Application.image_undistorter" />
+      <item index="29" class="java.lang.String" itemvalue="Application.mapper" />
+      <item index="30" class="java.lang.String" itemvalue="Application.matches_importer" />
+      <item index="31" class="java.lang.String" itemvalue="Application.model_aligner" />
+      <item index="32" class="java.lang.String" itemvalue="Application.model_analyzer" />
+      <item index="33" class="java.lang.String" itemvalue="Application.model_converter" />
+      <item index="34" class="java.lang.String" itemvalue="Application.model_merger" />
+      <item index="35" class="java.lang.String" itemvalue="Application.model_orientation_aligner" />
+      <item index="36" class="java.lang.String" itemvalue="Application.point_triangulator" />
+      <item index="37" class="java.lang.String" itemvalue="Application.rig_bundle_adjuster" />
+      <item index="38" class="java.lang.String" itemvalue="Application.sequential_matcher" />
+      <item index="39" class="java.lang.String" itemvalue="Application.spatial_matcher" />
+      <item index="40" class="java.lang.String" itemvalue="Application.transitive_matcher" />
+      <item index="41" class="java.lang.String" itemvalue="Application.vocab_tree_builder" />
+      <item index="42" class="java.lang.String" itemvalue="Application.vocab_tree_matcher" />
+      <item index="43" class="java.lang.String" itemvalue="Application.vocab_tree_retriever" />
+      <item index="44" class="java.lang.String" itemvalue="Application.mvs" />
+      <item index="45" class="java.lang.String" itemvalue="Application.optim" />
+      <item index="46" class="java.lang.String" itemvalue="Application.retrieval" />
+      <item index="47" class="java.lang.String" itemvalue="Application.sfm" />
+    </list>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="d4ca20e2-ccc4-4c2b-8626-ee91a1e75213" name="Default" comment="" />
+      <created>1505390861801</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1505390861801</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="0" y="18" width="1366" height="750" extended-state="6" />
+    <editor active="false" />
+    <layout>
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23426062" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="CMake" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2857143" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2533137" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.60235643" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3298969" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.48600882" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+    </layout>
+  </component>
+  <component name="Vcs.Log.UiProperties">
+    <option name="RECENTLY_FILTERED_USER_GROUPS">
+      <collection />
+    </option>
+    <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+      <collection />
+    </option>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints-dialog>
+        <breakpoints-dialog />
+      </breakpoints-dialog>
+      <option name="time" value="29" />
+    </breakpoint-manager>
+    <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$USER_HOME$/.CLion2016.1/system/cmake/generated/bkmap-fecb08fb/fecb08fb/Debug/src/ui/qrc_resources.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="29648">
+          <caret line="1744" column="5" selection-start-line="1744" selection-start-column="5" selection-end-line="1744" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/include/c++/4.8/thread">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="217">
+          <caret line="164" column="4" selection-start-line="164" selection-start-column="4" selection-end-line="164" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ext/SQLite/sqlite3.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-255">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/util/sqlite3_utils.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="15" column="15" selection-start-line="15" selection-start-column="15" selection-end-line="15" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ui/project_widget.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="115">
+          <caret line="85" column="16" selection-start-line="85" selection-start-column="16" selection-end-line="85" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/include/c++/4.8/bits/vector.tcc">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="217">
+          <caret line="91" column="6" selection-start-line="91" selection-start-column="6" selection-end-line="91" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/base/feature.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="319">
+          <caret line="37" column="31" selection-start-line="37" selection-start-column="31" selection-end-line="37" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/include/c++/4.8/bits/stl_queue.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="217">
+          <caret line="216" column="6" selection-start-line="216" selection-start-column="6" selection-end-line="216" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ui/thread_control_widget.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1122">
+          <caret line="66" column="19" selection-start-line="66" selection-start-column="19" selection-end-line="66" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/base/image_reader.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1003">
+          <caret line="59" column="17" selection-start-line="59" selection-start-column="17" selection-end-line="59" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/include/c++/4.8/condition_variable">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="217">
+          <caret line="79" column="4" selection-start-line="79" selection-start-column="4" selection-end-line="79" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/util/bitmap.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="268">
+          <caret line="74" column="13" selection-start-line="74" selection-start-column="13" selection-end-line="74" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/include/qt5/QtWidgets/qwidget.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="217">
+          <caret line="596" column="41" selection-start-line="596" selection-start-column="20" selection-end-line="596" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/include/qt5/QtWidgets/qmainwindow.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="217">
+          <caret line="137" column="9" selection-start-line="137" selection-start-column="9" selection-end-line="137" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/util/option_manager.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="217">
+          <caret line="71" column="32" selection-start-line="71" selection-start-column="32" selection-end-line="71" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ui/options_widget.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="29" column="83" selection-start-line="29" selection-start-column="83" selection-end-line="29" selection-end-column="83" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/util/threading.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="617">
+          <caret line="68" column="0" selection-start-line="68" selection-start-column="0" selection-end-line="68" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/include/glog/logging.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="251">
+          <caret line="562" column="37" selection-start-line="562" selection-start-column="37" selection-end-line="562" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/include/c++/4.8/bits/unique_ptr.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="217">
+          <caret line="232" column="6" selection-start-line="232" selection-start-column="6" selection-end-line="232" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ui/database_management_widget.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6375">
+          <caret line="375" column="19" selection-start-line="375" selection-start-column="19" selection-end-line="375" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/util/threading.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6086">
+          <caret line="358" column="41" selection-start-line="358" selection-start-column="41" selection-end-line="358" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ui/main_window.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1751">
+          <caret line="103" column="16" selection-start-line="103" selection-start-column="13" selection-end-line="103" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/util/camera_specs.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="18" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/base/image.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-4322">
+          <caret line="25" column="10" selection-start-line="25" selection-start-column="10" selection-end-line="25" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/util/bitmap.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="13">
+          <caret line="46" column="10" selection-start-line="46" selection-start-column="10" selection-end-line="46" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/util/types.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="362">
+          <caret line="67" column="57" selection-start-line="67" selection-start-column="43" selection-end-line="67" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ext/SQLite/sqlite3.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="188">
+          <caret line="3836" column="53" selection-start-line="3836" selection-start-column="53" selection-end-line="3836" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/base/database.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="142">
+          <caret line="142" column="17" selection-start-line="142" selection-start-column="17" selection-end-line="142" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/base/camera_models.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3106">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/base/database.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="185">
+          <caret line="488" column="28" selection-start-line="488" selection-start-column="28" selection-end-line="488" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/base/image_reader.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="141">
+          <caret line="139" column="56" selection-start-line="139" selection-start-column="56" selection-end-line="139" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ui/feature_extraction_widget.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="629">
+          <caret line="37" column="22" selection-start-line="37" selection-start-column="22" selection-end-line="37" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ui/feature_extraction_widget.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4080">
+          <caret line="240" column="45" selection-start-line="240" selection-start-column="45" selection-end-line="240" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/estimators/coordinate_frame.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="217">
+          <caret line="15" column="12" selection-start-line="15" selection-start-column="12" selection-end-line="15" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ui/dense_reconstruction_widget.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1020">
+          <caret line="60" column="37" selection-start-line="60" selection-start-column="37" selection-end-line="60" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/base/camera.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="901">
+          <caret line="53" column="24" selection-start-line="53" selection-start-column="24" selection-end-line="53" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/base/camera_database.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="25" column="36" selection-start-line="25" selection-start-column="30" selection-end-line="25" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/base/camera_database.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="41" selection-start-line="10" selection-start-column="41" selection-end-line="10" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/base/feature_extraction.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="29" column="33" selection-start-line="29" selection-start-column="29" selection-end-line="29" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/base/camera_models.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2703">
+          <caret line="159" column="61" selection-start-line="159" selection-start-column="61" selection-end-line="159" selection-end-column="61" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/base/feature_extraction.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="328">
+          <caret line="659" column="50" selection-start-line="659" selection-start-column="50" selection-end-line="659" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ui/main_window.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="339">
+          <caret line="34" column="17" selection-start-line="34" selection-start-column="17" selection-end-line="34" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ui/image_viewer_widget.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6120">
+          <caret line="360" column="11" selection-start-line="360" selection-start-column="8" selection-end-line="360" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/base/feature_matching.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1">
+          <caret line="239" column="0" selection-start-line="239" selection-start-column="0" selection-end-line="239" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/CMakeLists.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/lib/x86_64-linux-gnu/cmake/Qt5Core/Qt5CoreMacros.cmake">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="224" column="0" selection-start-line="224" selection-start-column="0" selection-end-line="224" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/base/feature_matching.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="331">
+          <caret line="971" column="32" selection-start-line="971" selection-start-column="32" selection-end-line="971" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ui/options_widget.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="236">
+          <caret line="130" column="67" selection-start-line="130" selection-start-column="64" selection-end-line="130" selection-end-column="67" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ui/feature_matching_widget.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="236">
+          <caret line="244" column="50" selection-start-line="244" selection-start-column="26" selection-end-line="244" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/base/camera.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="362">
+          <caret line="55" column="17" selection-start-line="55" selection-start-column="14" selection-end-line="55" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>
