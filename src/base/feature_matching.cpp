@@ -690,56 +690,26 @@ namespace bkmap {
         const int num_threads = GetEffectiveNumThreads(options_.num_threads);
         CHECK_GT(num_threads, 0);
 
-        std::vector<int> gpu_indices = CSVToVector<int>(options_.gpu_index);
-        CHECK_GT(gpu_indices.size(), 0);
-
-#ifdef CUDA_ENABLED
-        if (gpu_indices.size() == 1 && gpu_indices[0] == -1) {
-    const int num_cuda_devices = GetNumCudaDevices();
-    CHECK_GT(num_cuda_devices, 0);
-    gpu_indices.resize(num_cuda_devices);
-    std::iota(gpu_indices.begin(), gpu_indices.end(), 0);
-  }
-#endif  // CUDA_ENABLED
-
-        if (options_.use_gpu) {
-            auto gpu_options = options_;
-            matchers_.reserve(gpu_indices.size());
-            for (const auto& gpu_index : gpu_indices) {
-                gpu_options.gpu_index = std::to_string(gpu_index);
-                matchers_.emplace_back(new SiftGPUFeatureMatcher(
-                        gpu_options, cache, &matcher_queue_, &verifier_queue_));
-            }
-        } else {
-            matchers_.reserve(num_threads);
-            for (int i = 0; i < num_threads; ++i) {
-                matchers_.emplace_back(new SiftCPUFeatureMatcher(
-                        options_, cache, &matcher_queue_, &verifier_queue_));
-            }
+        matchers_.reserve((unsigned long) num_threads);
+        for (int i = 0; i < num_threads; ++i) {
+            matchers_.emplace_back(new SiftCPUFeatureMatcher(
+                    options_, cache, &matcher_queue_, &verifier_queue_));
         }
 
-        verifiers_.reserve(num_threads);
+
+        verifiers_.reserve((unsigned long) num_threads);
         if (options_.guided_matching) {
             for (int i = 0; i < num_threads; ++i) {
                 verifiers_.emplace_back(new TwoViewGeometryVerifier(
                         options_, cache, &verifier_queue_, &guided_matcher_queue_));
             }
 
-            if (options_.use_gpu) {
-                auto gpu_options = options_;
-                guided_matchers_.reserve(gpu_indices.size());
-                for (const auto& gpu_index : gpu_indices) {
-                    gpu_options.gpu_index = std::to_string(gpu_index);
-                    guided_matchers_.emplace_back(new GuidedSiftGPUFeatureMatcher(
-                            gpu_options, cache, &guided_matcher_queue_, &output_queue_));
-                }
-            } else {
-                guided_matchers_.reserve(num_threads);
-                for (int i = 0; i < num_threads; ++i) {
-                    guided_matchers_.emplace_back(new GuidedSiftCPUFeatureMatcher(
-                            options_, cache, &guided_matcher_queue_, &output_queue_));
-                }
+            guided_matchers_.reserve((unsigned long) num_threads);
+            for (int i = 0; i < num_threads; ++i) {
+                guided_matchers_.emplace_back(new GuidedSiftCPUFeatureMatcher(
+                        options_, cache, &guided_matcher_queue_, &output_queue_));
             }
+
         } else {
             for (int i = 0; i < num_threads; ++i) {
                 verifiers_.emplace_back(new TwoViewGeometryVerifier(
@@ -978,8 +948,7 @@ namespace bkmap {
                         const size_t block_id1 = idx1 % block_size;
                         const size_t block_id2 = idx2 % block_size;
                         if ((idx1 > idx2 && block_id1 <= block_id2) ||
-                            (idx1 < idx2 &&
-                             block_id1 < block_id2)) {  // Avoid duplicate pairs
+                            (idx1 < idx2 && block_id1 < block_id2)) {  // Avoid duplicate pairs
                             image_pairs.emplace_back(image_ids[idx1], image_ids[idx2]);
                         }
                     }

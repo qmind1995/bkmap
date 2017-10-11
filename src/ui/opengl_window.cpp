@@ -258,15 +258,15 @@ namespace bkmap {
         point_painter_.Render(pmv_matrix, point_size_);
         point_connection_painter_.Render(pmv_matrix, width(), height(), 1);
 
-        // Images
-        image_line_painter_.Render(pmv_matrix, width(), height(), 1);
-        image_triangle_painter_.Render(pmv_matrix);
-        image_connection_painter_.Render(pmv_matrix, width(), height(), 1);
+//        // Images
+//        image_line_painter_.Render(pmv_matrix, width(), height(), 1);
+//        image_triangle_painter_.Render(pmv_matrix);
+//        image_connection_painter_.Render(pmv_matrix, width(), height(), 1);
 
-        // Movie grabber cameras
-        movie_grabber_path_painter_.Render(pmv_matrix, width(), height(), 1.5);
-        movie_grabber_line_painter_.Render(pmv_matrix, width(), height(), 1);
-        movie_grabber_triangle_painter_.Render(pmv_matrix);
+//        // Movie grabber cameras
+//        movie_grabber_path_painter_.Render(pmv_matrix, width(), height(), 1.5);
+//        movie_grabber_line_painter_.Render(pmv_matrix, width(), height(), 1);
+//        movie_grabber_triangle_painter_.Render(pmv_matrix);
 
         context_->swapBuffers(this);
     }

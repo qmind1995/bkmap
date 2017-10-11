@@ -22,7 +22,7 @@ namespace bkmap {
         CreateStatusbar();
         CreateControllers();
 
-        ShowLog();
+//        ShowLog();
 
         options_.AddAllOptions();
     }
@@ -106,9 +106,9 @@ namespace bkmap {
         match_matrix_widget_ = new MatchMatrixWidget(this, &options_);
         license_widget_ = new LicenseWidget(this);
 
-        dock_log_widget_ = new QDockWidget("", this);
-        dock_log_widget_->setWidget(log_widget_);
-        addDockWidget(Qt::RightDockWidgetArea, dock_log_widget_);
+//        dock_log_widget_ = new QDockWidget("", this);
+//        dock_log_widget_->setWidget(log_widget_);
+//        addDockWidget(Qt::RightDockWidgetArea, dock_log_widget_);
     }
 
     void MainWindow::CreateActions() {
@@ -477,15 +477,15 @@ namespace bkmap {
 //        preprocessing_toolbar_->addAction(action_database_management_);
         preprocessing_toolbar_->setIconSize(QSize(16, 16));
 
-//        reconstruction_toolbar_ = addToolBar(tr("Reconstruction"));
+        reconstruction_toolbar_ = addToolBar(tr("Reconstruction"));
 //        reconstruction_toolbar_->addAction(action_automatic_reconstruction_);
-//        reconstruction_toolbar_->addAction(action_reconstruction_start_);
-//        reconstruction_toolbar_->addAction(action_reconstruction_step_);
-//        reconstruction_toolbar_->addAction(action_reconstruction_pause_);
+        reconstruction_toolbar_->addAction(action_reconstruction_start_);
+        reconstruction_toolbar_->addAction(action_reconstruction_step_);
+        reconstruction_toolbar_->addAction(action_reconstruction_pause_);
 //        reconstruction_toolbar_->addAction(action_reconstruction_options_);
 //        reconstruction_toolbar_->addAction(action_bundle_adjustment_);
 //        reconstruction_toolbar_->addAction(action_dense_reconstruction_);
-//        reconstruction_toolbar_->setIconSize(QSize(16, 16));
+        reconstruction_toolbar_->setIconSize(QSize(16, 16));
 //
 //        render_toolbar_ = addToolBar(tr("Render"));
 //        render_toolbar_->addAction(action_render_toggle_);
