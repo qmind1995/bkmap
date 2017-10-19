@@ -11,8 +11,8 @@
 
 namespace bkmap {
 
-// Class that controls the incremental mapping procedure by iteratively
-// initializing reconstructions from the same scene graph.
+    // Class that controls the incremental mapping procedure by iteratively
+    // initializing reconstructions from the same scene graph.
     class IncrementalMapperController : public Thread {
     public:
         struct Options {

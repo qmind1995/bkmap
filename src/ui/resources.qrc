@@ -41,5 +41,6 @@
     <file>media/grab-image.png</file>
     <file>media/grab-movie.png</file>
     <file>media/undistort.png</file>
+    <file>media/vocab_tree-65536.bin</file>
 </qresource>
 </RCC>

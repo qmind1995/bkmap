@@ -281,25 +281,6 @@ namespace bkmap {
         IncrementalMapper::Options init_mapper_options = options_->Mapper();
         Reconstruct(init_mapper_options);
 
-        const size_t kNumInitRelaxations = 2;
-        for (size_t i = 0; i < kNumInitRelaxations; ++i) {
-            if (reconstruction_manager_->Size() > 0 || IsStopped()) {
-                break;
-            }
-
-            std::cout << "  => Relaxing the initialization constraints." << std::endl;
-            init_mapper_options.init_min_num_inliers /= 2;
-            Reconstruct(init_mapper_options);
-
-            if (reconstruction_manager_->Size() > 0 || IsStopped()) {
-                break;
-            }
-
-            std::cout << "  => Relaxing the initialization constraints." << std::endl;
-            init_mapper_options.init_min_tri_angle /= 2;
-            Reconstruct(init_mapper_options);
-        }
-
         std::cout << std::endl;
         GetTimer().PrintMinutes();
     }
@@ -345,8 +326,7 @@ namespace bkmap {
                     "single reconstruction, but "
                     "multiple are given.";
 
-        for (int num_trials = 0; num_trials < options_->init_num_trials;
-             ++num_trials) {
+        for (int num_trials = 0; num_trials < options_->init_num_trials; ++num_trials) {
             BlockIfPaused();
             if (IsStopped()) {
                 break;
@@ -359,8 +339,7 @@ namespace bkmap {
                 reconstruction_idx = 0;
             }
 
-            Reconstruction& reconstruction =
-                    reconstruction_manager_->Get(reconstruction_idx);
+            Reconstruction& reconstruction = reconstruction_manager_->Get(reconstruction_idx);
 
             mapper.BeginReconstruction(&reconstruction);
 
@@ -480,14 +459,10 @@ namespace bkmap {
                         TriangulateImage(*options_, next_image, &mapper);
                         IterativeLocalRefinement(*options_, next_image_id, &mapper);
 
-                        if (reconstruction.NumRegImages() >=
-                            options_->ba_global_images_ratio * ba_prev_num_reg_images ||
-                            reconstruction.NumRegImages() >=
-                            options_->ba_global_images_freq + ba_prev_num_reg_images ||
-                            reconstruction.NumPoints3D() >=
-                            options_->ba_global_points_ratio * ba_prev_num_points ||
-                            reconstruction.NumPoints3D() >=
-                            options_->ba_global_points_freq + ba_prev_num_points) {
+                        if (reconstruction.NumRegImages() >= options_->ba_global_images_ratio * ba_prev_num_reg_images ||
+                            reconstruction.NumRegImages() >= options_->ba_global_images_freq + ba_prev_num_reg_images ||
+                            reconstruction.NumPoints3D() >= options_->ba_global_points_ratio * ba_prev_num_points ||
+                            reconstruction.NumPoints3D() >= options_->ba_global_points_freq + ba_prev_num_points) {
                             IterativeGlobalRefinement(*options_, &mapper);
                             ba_prev_num_points = reconstruction.NumPoints3D();
                             ba_prev_num_reg_images = reconstruction.NumRegImages();

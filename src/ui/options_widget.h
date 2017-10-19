@@ -34,7 +34,7 @@ namespace bkmap {
         QCheckBox* AddOptionBool(bool* option, const std::string& label_text, bool isShow = false);
         QLineEdit* AddOptionText(std::string* option, const std::string& label_text, bool isShow = false);
         QLineEdit* AddOptionFilePath(std::string* option,
-                                     const std::string& label_text);
+                                     const std::string& label_text, bool isShow = false);
         QLineEdit* AddOptionDirPath(std::string* option,
                                     const std::string& label_text);
         void AddSpacer();

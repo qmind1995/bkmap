@@ -116,10 +116,11 @@ namespace bkmap {
     }
 
     QLineEdit* OptionsWidget::AddOptionFilePath(std::string* option,
-                                                const std::string& label_text) {
+                                                const std::string& label_text, bool isShow) {
         QLineEdit* line_edit = new QLineEdit(this);
-
-        AddOptionRow(label_text, line_edit);
+        if(isShow == true){
+            AddOptionRow(label_text, line_edit);
+        }
 
         auto SelectPathFunc = [this, line_edit]() {
             line_edit->setText(QFileDialog::getOpenFileName(this, tr("Select file")));
@@ -131,7 +132,10 @@ namespace bkmap {
         grid_layout_->addWidget(select_button, grid_layout_->rowCount(), 1);
 
         options_path_.emplace_back(line_edit, option);
-
+        if(isShow == false){
+            line_edit->hide();
+            select_button->hide();
+        }
         return line_edit;
     }
 

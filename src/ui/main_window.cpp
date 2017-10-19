@@ -21,9 +21,7 @@ namespace bkmap {
         CreateToolbar();
         CreateStatusbar();
         CreateControllers();
-
 //        ShowLog();
-
         options_.AddAllOptions();
     }
 
@@ -113,71 +111,52 @@ namespace bkmap {
 
     void MainWindow::CreateActions() {
         after_show_event_ = new QAction(tr("After show event"), this);
-        connect(after_show_event_, &QAction::triggered, this,
-                &MainWindow::afterShowEvent, Qt::QueuedConnection);
+        connect(after_show_event_, &QAction::triggered, this, &MainWindow::afterShowEvent, Qt::QueuedConnection);
 
         //////////////////////////////////////////////////////////////////////////////
         // File actions
         //////////////////////////////////////////////////////////////////////////////
 
-        action_project_new_ =
-                new QAction(QIcon(":/media/project-new.png"), tr("New project"), this);
+        action_project_new_ = new QAction(QIcon(":/media/project-new.png"), tr("New project"), this);
         action_project_new_->setShortcuts(QKeySequence::New);
-        connect(action_project_new_, &QAction::triggered, this,
-                &MainWindow::ProjectNew);
+        connect(action_project_new_, &QAction::triggered, this, &MainWindow::ProjectNew);
 
-        action_project_open_ =
-                new QAction(QIcon(":/media/project-open.png"), tr("Open project"), this);
+        action_project_open_ = new QAction(QIcon(":/media/project-open.png"), tr("Open project"), this);
         action_project_open_->setShortcuts(QKeySequence::Open);
-        connect(action_project_open_, &QAction::triggered, this,
-                &MainWindow::ProjectOpen);
+        connect(action_project_open_, &QAction::triggered, this, &MainWindow::ProjectOpen);
 
-        action_project_edit_ =
-                new QAction(QIcon(":/media/project-edit.png"), tr("Edit project"), this);
-        connect(action_project_edit_, &QAction::triggered, this,
-                &MainWindow::ProjectEdit);
+        action_project_edit_ = new QAction(QIcon(":/media/project-edit.png"), tr("Edit project"), this);
+        connect(action_project_edit_, &QAction::triggered, this, &MainWindow::ProjectEdit);
 
-        action_project_save_ =
-                new QAction(QIcon(":/media/project-save.png"), tr("Save project"), this);
+        action_project_save_ = new QAction(QIcon(":/media/project-save.png"), tr("Save project"), this);
         action_project_save_->setShortcuts(QKeySequence::Save);
-        connect(action_project_save_, &QAction::triggered, this,
-                &MainWindow::ProjectSave);
+        connect(action_project_save_, &QAction::triggered, this, &MainWindow::ProjectSave);
 
-        action_project_save_as_ = new QAction(QIcon(":/media/project-save-as.png"),
-                                              tr("Save project as..."), this);
+        action_project_save_as_ = new QAction(QIcon(":/media/project-save-as.png"), tr("Save project as..."), this);
         action_project_save_as_->setShortcuts(QKeySequence::SaveAs);
-        connect(action_project_save_as_, &QAction::triggered, this,
-                &MainWindow::ProjectSaveAs);
+        connect(action_project_save_as_, &QAction::triggered, this, &MainWindow::ProjectSaveAs);
 
-        action_import_ =
-                new QAction(QIcon(":/media/import.png"), tr("Import model"), this);
+        action_import_ = new QAction(QIcon(":/media/import.png"), tr("Import model"), this);
         connect(action_import_, &QAction::triggered, this, &MainWindow::Import);
         blocking_actions_.push_back(action_import_);
 
-        action_import_from_ = new QAction(QIcon(":/media/import-from.png"),
-                                          tr("Import model from..."), this);
-        connect(action_import_from_, &QAction::triggered, this,
-                &MainWindow::ImportFrom);
+        action_import_from_ = new QAction(QIcon(":/media/import-from.png"), tr("Import model from..."), this);
+        connect(action_import_from_, &QAction::triggered, this, &MainWindow::ImportFrom);
         blocking_actions_.push_back(action_import_from_);
 
-        action_export_ =
-                new QAction(QIcon(":/media/export.png"), tr("Export model"), this);
+        action_export_ = new QAction(QIcon(":/media/export.png"), tr("Export model"), this);
         connect(action_export_, &QAction::triggered, this, &MainWindow::Export);
         blocking_actions_.push_back(action_export_);
 
-        action_export_all_ = new QAction(QIcon(":/media/export-all.png"),
-                                         tr("Export all models"), this);
-        connect(action_export_all_, &QAction::triggered, this,
-                &MainWindow::ExportAll);
+        action_export_all_ = new QAction(QIcon(":/media/export-all.png"), tr("Export all models"), this);
+        connect(action_export_all_, &QAction::triggered, this, &MainWindow::ExportAll);
         blocking_actions_.push_back(action_export_all_);
 
-        action_export_as_ = new QAction(QIcon(":/media/export-as.png"),
-                                        tr("Export model as..."), this);
+        action_export_as_ = new QAction(QIcon(":/media/export-as.png"), tr("Export model as..."), this);
         connect(action_export_as_, &QAction::triggered, this, &MainWindow::ExportAs);
         blocking_actions_.push_back(action_export_as_);
 
-        action_export_as_text_ = new QAction(QIcon(":/media/export-as-text.png"),
-                                             tr("Export model as text"), this);
+        action_export_as_text_ = new QAction(QIcon(":/media/export-as-text.png"), tr("Export model as text"), this);
         connect(action_export_as_text_, &QAction::triggered, this,
                 &MainWindow::ExportAsText);
         blocking_actions_.push_back(action_export_as_text_);
@@ -195,15 +174,12 @@ namespace bkmap {
                 &MainWindow::FeatureExtraction);
         blocking_actions_.push_back(action_feature_extraction_);
 
-        action_feature_matching_ = new QAction(QIcon(":/media/feature-matching.png"),
-                                               tr("Feature matching"), this);
+        action_feature_matching_ = new QAction(QIcon(":/media/feature-matching.png"), tr("Feature matching"), this);
         connect(action_feature_matching_, &QAction::triggered, this,
                 &MainWindow::FeatureMatching);
         blocking_actions_.push_back(action_feature_matching_);
 
-        action_database_management_ =
-                new QAction(QIcon(":/media/database-management.png"),
-                            tr("Database management"), this);
+        action_database_management_ = new QAction(QIcon(":/media/database-management.png"), tr("Database management"), this);
         connect(action_database_management_, &QAction::triggered, this,
                 &MainWindow::DatabaseManagement);
         blocking_actions_.push_back(action_database_management_);
@@ -212,66 +188,40 @@ namespace bkmap {
         // Reconstruction actions
         //////////////////////////////////////////////////////////////////////////////
 
-        action_automatic_reconstruction_ =
-                new QAction(QIcon(":/media/automatic-reconstruction.png"),
-                            tr("Automatic reconstruction"), this);
-        connect(action_automatic_reconstruction_, &QAction::triggered, this,
-                &MainWindow::AutomaticReconstruction);
+        action_automatic_reconstruction_ = new QAction(QIcon(":/media/automatic-reconstruction.png"), tr("Automatic reconstruction"), this);
+        connect(action_automatic_reconstruction_, &QAction::triggered, this, &MainWindow::AutomaticReconstruction);
 
-        action_reconstruction_start_ =
-                new QAction(QIcon(":/media/reconstruction-start.png"),
-                            tr("Start reconstruction"), this);
-        connect(action_reconstruction_start_, &QAction::triggered, this,
-                &MainWindow::ReconstructionStart);
+        action_reconstruction_start_ = new QAction(QIcon(":/media/reconstruction-start.png"), tr("Start reconstruction"), this);
+        connect(action_reconstruction_start_, &QAction::triggered, this, &MainWindow::ReconstructionStart);
         blocking_actions_.push_back(action_reconstruction_start_);
 
-        action_reconstruction_step_ =
-                new QAction(QIcon(":/media/reconstruction-step.png"),
-                            tr("Reconstruct next image"), this);
-        connect(action_reconstruction_step_, &QAction::triggered, this,
-                &MainWindow::ReconstructionStep);
+        action_reconstruction_step_ = new QAction(QIcon(":/media/reconstruction-step.png"), tr("Reconstruct next image"), this);
+        connect(action_reconstruction_step_, &QAction::triggered, this, &MainWindow::ReconstructionStep);
         blocking_actions_.push_back(action_reconstruction_step_);
 
-        action_reconstruction_pause_ =
-                new QAction(QIcon(":/media/reconstruction-pause.png"),
-                            tr("Pause reconstruction"), this);
-        connect(action_reconstruction_pause_, &QAction::triggered, this,
-                &MainWindow::ReconstructionPause);
+        action_reconstruction_pause_ = new QAction(QIcon(":/media/reconstruction-pause.png"), tr("Pause reconstruction"), this);
+        connect(action_reconstruction_pause_, &QAction::triggered, this, &MainWindow::ReconstructionPause);
         action_reconstruction_pause_->setEnabled(false);
         blocking_actions_.push_back(action_reconstruction_pause_);
 
-        action_reconstruction_reset_ =
-                new QAction(QIcon(":/media/reconstruction-reset.png"),
-                            tr("Reset reconstruction"), this);
-        connect(action_reconstruction_reset_, &QAction::triggered, this,
-                &MainWindow::ReconstructionOverwrite);
+        action_reconstruction_reset_ = new QAction(QIcon(":/media/reconstruction-reset.png"), tr("Reset reconstruction"), this);
+        connect(action_reconstruction_reset_, &QAction::triggered, this, &MainWindow::ReconstructionOverwrite);
 
-        action_reconstruction_normalize_ =
-                new QAction(QIcon(":/media/reconstruction-normalize.png"),
-                            tr("Normalize reconstruction"), this);
-        connect(action_reconstruction_normalize_, &QAction::triggered, this,
-                &MainWindow::ReconstructionNormalize);
+        action_reconstruction_normalize_ = new QAction(QIcon(":/media/reconstruction-normalize.png"), tr("Normalize reconstruction"), this);
+        connect(action_reconstruction_normalize_, &QAction::triggered, this, &MainWindow::ReconstructionNormalize);
         blocking_actions_.push_back(action_reconstruction_normalize_);
 
-        action_reconstruction_options_ =
-                new QAction(QIcon(":/media/reconstruction-options.png"),
-                            tr("Reconstruction options"), this);
-        connect(action_reconstruction_options_, &QAction::triggered, this,
-                &MainWindow::ReconstructionOptions);
+        action_reconstruction_options_ = new QAction(QIcon(":/media/reconstruction-options.png"), tr("Reconstruction options"), this);
+        connect(action_reconstruction_options_, &QAction::triggered, this, &MainWindow::ReconstructionOptions);
         blocking_actions_.push_back(action_reconstruction_options_);
 
-        action_bundle_adjustment_ = new QAction(
-                QIcon(":/media/bundle-adjustment.png"), tr("Bundle adjustment"), this);
-        connect(action_bundle_adjustment_, &QAction::triggered, this,
-                &MainWindow::BundleAdjustment);
+        action_bundle_adjustment_ = new QAction(QIcon(":/media/bundle-adjustment.png"), tr("Bundle adjustment"), this);
+        connect(action_bundle_adjustment_, &QAction::triggered, this, &MainWindow::BundleAdjustment);
         action_bundle_adjustment_->setEnabled(false);
         blocking_actions_.push_back(action_bundle_adjustment_);
 
-        action_dense_reconstruction_ =
-                new QAction(QIcon(":/media/dense-reconstruction.png"),
-                            tr("Dense reconstruction"), this);
-        connect(action_dense_reconstruction_, &QAction::triggered, this,
-                &MainWindow::DenseReconstruction);
+        action_dense_reconstruction_ = new QAction(QIcon(":/media/dense-reconstruction.png"), tr("Dense reconstruction"), this);
+        connect(action_dense_reconstruction_, &QAction::triggered, this, &MainWindow::DenseReconstruction);
 
         //////////////////////////////////////////////////////////////////////////////
         // Render actions
@@ -1049,8 +999,7 @@ namespace bkmap {
             return;
         }
 
-        const Reconstruction& reconstruction =
-                reconstruction_manager_.Get(SelectedReconstructionIdx());
+        const Reconstruction& reconstruction = reconstruction_manager_.Get(SelectedReconstructionIdx());
 
         int refresh_rate;
         if (options_.render->adapt_refresh_rate) {
@@ -1082,8 +1031,7 @@ namespace bkmap {
         }
 
         const size_t reconstruction_idx = SelectedReconstructionIdx();
-        opengl_window_->reconstruction =
-                &reconstruction_manager_.Get(reconstruction_idx);
+        opengl_window_->reconstruction = &reconstruction_manager_.Get(reconstruction_idx);
         opengl_window_->Update();
     }
 

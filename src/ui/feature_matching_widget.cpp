@@ -74,7 +74,7 @@ namespace bkmap {
         AddSpacer();
 
         AddOptionInt(&options_->sift_matching->num_threads, "num_threads", 1, 16, true);
-        AddOptionBool(&options_->sift_matching->use_gpu, "use_gpu",true);
+        AddOptionBool(&options_->sift_matching->use_gpu, "use_gpu");
         AddOptionText(&options_->sift_matching->gpu_index, "gpu_index");
         AddOptionDouble(&options_->sift_matching->max_ratio, "max_ratio");
         AddOptionDouble(&options_->sift_matching->max_distance, "max_distance");
@@ -117,9 +117,9 @@ namespace bkmap {
     SequentialMatchingTab::SequentialMatchingTab(QWidget* parent,
                                                  OptionManager* options)
             : FeatureMatchingTab(parent, options) {
-        AddOptionInt(&options_->sequential_matching->overlap, "overlap");
+        AddOptionInt(&options_->sequential_matching->overlap, "overlap", 1, 10, true);
         AddOptionBool(&options_->sequential_matching->quadratic_overlap,
-                      "quadratic_overlap");
+                      "quadratic_overlap", true);
         AddOptionBool(&options_->sequential_matching->loop_detection,
                       "loop_detection");
         AddOptionInt(&options_->sequential_matching->loop_detection_period,
@@ -273,8 +273,8 @@ namespace bkmap {
         tab_widget_ = new QTabWidget(this);
         tab_widget_->addTab(new ExhaustiveMatchingTab(this, options),
                             tr("Exhaustive"));
-//        tab_widget_->addTab(new SequentialMatchingTab(this, options),
-//                            tr("Sequential"));
+        tab_widget_->addTab(new SequentialMatchingTab(this, options),
+                            tr("Sequential"));
 //        tab_widget_->addTab(new VocabTreeMatchingTab(this, options), tr("VocabTree"));
 //        tab_widget_->addTab(new SpatialMatchingTab(this, options), tr("Spatial"));
 //        tab_widget_->addTab(new TransitiveMatchingTab(this, options),
