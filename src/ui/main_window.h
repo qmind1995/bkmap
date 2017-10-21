@@ -11,13 +11,13 @@
 
 #include "base/reconstruction.h"
 #include "controllers/incremental_mapper.h"
-#include "ui/automatic_reconstruction_widget.h"
+//#include "ui/automatic_reconstruction_widget.h"
 #include "ui/bundle_adjustment_widget.h"
-#include "ui/database_management_widget.h"
-#include "ui/dense_reconstruction_widget.h"
+//#include "ui/database_management_widget.h"
+//#include "ui/dense_reconstruction_widget.h"
 #include "ui/feature_extraction_widget.h"
 #include "ui/feature_matching_widget.h"
-#include "ui/license_widget.h"
+//#include "ui/license_widget.h"
 #include "ui/log_widget.h"
 #include "ui/match_matrix_widget.h"
 #include "ui/opengl_window.h"
@@ -43,7 +43,7 @@ namespace bkmap {
         void closeEvent(QCloseEvent* event);
 
     private:
-        friend class AutomaticReconstructionWidget;
+//        friend class AutomaticReconstructionWidget;
         friend class BundleAdjustmentWidget;
         friend class DenseReconstructionWidget;
 
@@ -132,18 +132,18 @@ namespace bkmap {
         ProjectWidget* project_widget_;
         FeatureExtractionWidget* feature_extraction_widget_;
         FeatureMatchingWidget* feature_matching_widget_;
-        DatabaseManagementWidget* database_management_widget_;
-        AutomaticReconstructionWidget* automatic_reconstruction_widget_;
+//        DatabaseManagementWidget* database_management_widget_;
+//        AutomaticReconstructionWidget* automatic_reconstruction_widget_;
         ReconstructionOptionsWidget* reconstruction_options_widget_;
         BundleAdjustmentWidget* bundle_adjustment_widget_;
-        DenseReconstructionWidget* dense_reconstruction_widget_;
+//        DenseReconstructionWidget* dense_reconstruction_widget_;
         RenderOptionsWidget* render_options_widget_;
         LogWidget* log_widget_;
         UndistortionWidget* undistortion_widget_;
         ReconstructionManagerWidget* reconstruction_manager_widget_;
         ReconstructionStatsWidget* reconstruction_stats_widget_;
         MatchMatrixWidget* match_matrix_widget_;
-        LicenseWidget* license_widget_;
+//        LicenseWidget* license_widget_;
         ThreadControlWidget* thread_control_widget_;
 
         QToolBar* file_toolbar_;

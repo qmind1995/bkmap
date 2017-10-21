@@ -88,12 +88,12 @@ namespace bkmap {
 
         feature_extraction_widget_ = new FeatureExtractionWidget(this, &options_);
         feature_matching_widget_ = new FeatureMatchingWidget(this, &options_);
-        database_management_widget_ = new DatabaseManagementWidget(this, &options_);
-        automatic_reconstruction_widget_ = new AutomaticReconstructionWidget(this);
+//        database_management_widget_ = new DatabaseManagementWidget(this, &options_);
+//        automatic_reconstruction_widget_ = new AutomaticReconstructionWidget(this);
         reconstruction_options_widget_ =
                 new ReconstructionOptionsWidget(this, &options_);
         bundle_adjustment_widget_ = new BundleAdjustmentWidget(this, &options_);
-        dense_reconstruction_widget_ = new DenseReconstructionWidget(this, &options_);
+//        dense_reconstruction_widget_ = new DenseReconstructionWidget(this, &options_);
         render_options_widget_ =
                 new RenderOptionsWidget(this, &options_, opengl_window_);
         log_widget_ = new LogWidget(this);
@@ -102,7 +102,7 @@ namespace bkmap {
                 new ReconstructionManagerWidget(this, &reconstruction_manager_);
         reconstruction_stats_widget_ = new ReconstructionStatsWidget(this);
         match_matrix_widget_ = new MatchMatrixWidget(this, &options_);
-        license_widget_ = new LicenseWidget(this);
+//        license_widget_ = new LicenseWidget(this);
 
 //        dock_log_widget_ = new QDockWidget("", this);
 //        dock_log_widget_->setWidget(log_widget_);
@@ -330,9 +330,9 @@ namespace bkmap {
                 &MainWindow::Documentation);
         action_support_ = new QAction(tr("Support"), this);
         connect(action_support_, &QAction::triggered, this, &MainWindow::Support);
-        action_license_ = new QAction(tr("License"), this);
-        connect(action_license_, &QAction::triggered, license_widget_,
-                &QTextEdit::show);
+//        action_license_ = new QAction(tr("License"), this);
+//        connect(action_license_, &QAction::triggered, license_widget_,
+//                &QTextEdit::show);
     }
 
     void MainWindow::CreateMenus() {
@@ -858,17 +858,17 @@ namespace bkmap {
     }
 
     void MainWindow::DatabaseManagement() {
-        if (options_.Check()) {
-            database_management_widget_->show();
-            database_management_widget_->raise();
-        } else {
-            ShowInvalidProjectError();
-        }
+//        if (options_.Check()) {
+//            database_management_widget_->show();
+//            database_management_widget_->raise();
+//        } else {
+//            ShowInvalidProjectError();
+//        }
     }
 
     void MainWindow::AutomaticReconstruction() {
-        automatic_reconstruction_widget_->show();
-        automatic_reconstruction_widget_->raise();
+//        automatic_reconstruction_widget_->show();
+//        automatic_reconstruction_widget_->raise();
     }
 
     void MainWindow::ReconstructionStart() {
@@ -986,12 +986,12 @@ namespace bkmap {
     }
 
     void MainWindow::DenseReconstruction() {
-        if (HasSelectedReconstruction()) {
-            dense_reconstruction_widget_->Show(
-                    &reconstruction_manager_.Get(SelectedReconstructionIdx()));
-        } else {
-            dense_reconstruction_widget_->Show(nullptr);
-        }
+//        if (HasSelectedReconstruction()) {
+//            dense_reconstruction_widget_->Show(
+//                    &reconstruction_manager_.Get(SelectedReconstructionIdx()));
+//        } else {
+//            dense_reconstruction_widget_->Show(nullptr);
+//        }
     }
 
     void MainWindow::Render() {

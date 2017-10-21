@@ -68,10 +68,10 @@ namespace bkmap {
               thread_control_widget_(new ThreadControlWidget(this)) {}
 
     void FeatureMatchingTab::CreateGeneralOptions() {
-        AddSpacer();
-        AddSpacer();
-        AddSection("General Options");
-        AddSpacer();
+//        AddSpacer();
+//        AddSpacer();
+//        AddSection("General Options");
+//        AddSpacer();
 
         AddOptionInt(&options_->sift_matching->num_threads, "num_threads", 1, 16, true);
         AddOptionBool(&options_->sift_matching->use_gpu, "use_gpu");
@@ -119,7 +119,7 @@ namespace bkmap {
             : FeatureMatchingTab(parent, options) {
         AddOptionInt(&options_->sequential_matching->overlap, "overlap", 1, 10, true);
         AddOptionBool(&options_->sequential_matching->quadratic_overlap,
-                      "quadratic_overlap", true);
+                      "quadratic_overlap", false);
         AddOptionBool(&options_->sequential_matching->loop_detection,
                       "loop_detection");
         AddOptionInt(&options_->sequential_matching->loop_detection_period,
