@@ -17,6 +17,7 @@
 #include "retrieval/visual_index.h"
 //#include "util/cuda.h"
 #include "util/misc.h"
+#include "ext/FLANN/flann.hpp"
 
 namespace bkmap {
     namespace {
@@ -1734,6 +1735,86 @@ namespace bkmap {
         GetTimer().PrintMinutes();
     }
 
+    flann::Matrix<int> matchOneWayKdTree(const FeatureDescriptors& descriptors1,
+                                                 const FeatureDescriptors& descriptors2){
+
+        int nn = 100;
+        const Eigen::Matrix<int, Eigen::Dynamic, 128> descriptors1_int =
+                    descriptors1.cast<int>();
+        const Eigen::Matrix<int, Eigen::Dynamic, 128> descriptors2_int =
+                descriptors2.cast<int>();
+
+        flann::Matrix<int> dataset(new int[descriptors1_int.rows() * 128], descriptors1_int.rows(), 128);
+        flann::Matrix<int> query(new int[descriptors2_int.rows() * 128], descriptors2_int.rows(), 128);
+        for(auto i = 0; i < descriptors1_int.rows(); i++){
+            for(auto j=0; j< nn; j++){
+                int test = descriptors1_int(i,j);
+                dataset[i][j] = descriptors1_int(i,j);
+            }
+        }
+
+        for(auto i = 0; i < descriptors2_int.rows(); i++){
+            for(auto j=0; j< nn; j++){
+                query[i][j] = descriptors2_int(i,j);
+            }
+        }
+
+        flann::Matrix<int > indices(new int[query.rows*nn], query.rows, nn);
+        flann::Matrix<float> dists(new float[query.rows*nn], query.rows, nn);
+        flann::Index<flann::L2<int> > index(dataset, flann::KDTreeIndexParams(4));
+        index.buildIndex();
+        index.knnSearch(query, indices, dists, nn, flann::SearchParams(1024));
+//        index.radiusSearch(query, indices, dists, 10000, nn);
+        flann::Matrix<int> bestMatches(new int[query.rows], query.rows, 1);
+
+        for(auto id = 0; id < indices.rows; id++){
+            float bestMatchDistance  = 10000;
+            float secondBestDistance = 10000;
+            int bestMatch = -1;
+
+            for(auto i=0; i<nn; i++){
+                if(dists[id][i] < bestMatchDistance ){
+                    bestMatch = indices[id][i];
+                    bestMatchDistance = dists[id][i];
+                }
+            }
+
+            if(bestMatch != -1){
+                //find second best
+                for(auto i=0; i<nn; i++){
+                    if(dists[id][i] < secondBestDistance &&  indices[id][i] !=  bestMatch){
+                        secondBestDistance = dists[id][i];
+                    }
+                }
+            }
+            if(bestMatchDistance >= 0.8 * secondBestDistance){
+                bestMatches[id][0] = -1;
+            }
+            else{
+                bestMatches[id][0] = bestMatch;
+            }
+        }
+
+        return bestMatches;
+    }
+
+    void findBestMatchesKDTree(const FeatureDescriptors& descriptors1,
+                               const FeatureDescriptors& descriptors2, FeatureMatches* matches){
+        matches->clear();
+        flann::Matrix<int> matches_12 = matchOneWayKdTree(descriptors1, descriptors2);
+        flann::Matrix<int> matches_21 = matchOneWayKdTree(descriptors2, descriptors1);
+        matches->reserve(std::min(matches_12.rows, matches_21.rows));
+
+        for (size_t i1 = 0; i1 < matches_12.rows; ++i1) {
+            if(matches_12[i1][0] > 0 && matches_21[matches_12[i1][0]][0] == static_cast<int>(i1)){
+                FeatureMatch match;
+                match.point2D_idx1 = i1;
+                match.point2D_idx2 = matches_12[i1][0];
+                matches->push_back(match);
+            }
+        }
+    }
+
     void MatchSiftFeaturesCPU(const SiftMatchingOptions& match_options,
                               const FeatureDescriptors& descriptors1,
                               const FeatureDescriptors& descriptors2,
@@ -1741,11 +1822,13 @@ namespace bkmap {
         CHECK(match_options.Check());
         CHECK_NOTNULL(matches);
 
-        const Eigen::MatrixXi dists = ComputeSiftDistanceMatrix(
-                nullptr, nullptr, descriptors1, descriptors2, nullptr);
+        findBestMatchesKDTree(descriptors1, descriptors2, matches);
 
-        FindBestMatches(dists, match_options.max_ratio, match_options.max_distance,
-                        match_options.cross_check, matches);
+//        const Eigen::MatrixXi dists = ComputeSiftDistanceMatrix(
+//                nullptr, nullptr, descriptors1, descriptors2, nullptr);
+//
+//        FindBestMatches(dists, match_options.max_ratio, match_options.max_distance,
+//                        match_options.cross_check, matches);
     }
 
     void MatchGuidedSiftFeaturesCPU(const SiftMatchingOptions& match_options,

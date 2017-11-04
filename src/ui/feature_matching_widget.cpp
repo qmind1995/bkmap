@@ -68,9 +68,9 @@ namespace bkmap {
               thread_control_widget_(new ThreadControlWidget(this)) {}
 
     void FeatureMatchingTab::CreateGeneralOptions() {
-        AddSpacer();
-        AddSpacer();
-        AddSection("General Options");
+//        AddSpacer();
+//        AddSpacer();
+//        AddSection("General Options");
         AddSpacer();
 
         AddOptionInt(&options_->sift_matching->num_threads, "num_threads", 1, 16, true);
