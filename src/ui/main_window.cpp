@@ -444,10 +444,10 @@ namespace bkmap {
 //        render_toolbar_->addWidget(reconstruction_manager_widget_);
 //        render_toolbar_->setIconSize(QSize(16, 16));
 //
-        extras_toolbar_ = addToolBar(tr("Extras"));
+//        extras_toolbar_ = addToolBar(tr("Extras"));
 //        extras_toolbar_->addAction(action_log_show_);
 //        extras_toolbar_->addAction(action_match_matrix_);
-        extras_toolbar_->addAction(action_reconstruction_stats_);
+//        extras_toolbar_->addAction(action_reconstruction_stats_);
 //        extras_toolbar_->addAction(action_grab_image_);
 //        extras_toolbar_->addAction(action_grab_movie_);
 //        extras_toolbar_->setIconSize(QSize(16, 16));
