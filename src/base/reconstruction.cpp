@@ -707,8 +707,9 @@ namespace bkmap {
     double Reconstruction::ComputeMeanReprojectionError() const {
         double error_sum = 0.0;
         size_t num_valid_errors = 0;
+
         for (const auto& point3D : points3D_) {
-            if (point3D.second.HasError()) {
+            if (point3D.second.HasError()) { // point3d is a map<pointID - pointObj>
                 error_sum += point3D.second.Error();
                 num_valid_errors += 1;
             }

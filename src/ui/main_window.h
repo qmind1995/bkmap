@@ -121,6 +121,8 @@ namespace bkmap {
 
         void UpdateWindowTitle();
 
+        void WriteAnalysisFile();
+
         OptionManager options_;
 
         ReconstructionManager reconstruction_manager_;

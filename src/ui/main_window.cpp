@@ -498,6 +498,7 @@ namespace bkmap {
                     if (!mapper_controller_->IsStopped()) {
                         action_render_now_->trigger();
                     }
+                    WriteAnalysisFile();
                 });
         mapper_controller_->AddCallback(
                 IncrementalMapperController::FINISHED_CALLBACK, [this]() {
@@ -1262,6 +1263,29 @@ namespace bkmap {
             }
             setWindowTitle(QString::fromStdString("BKMAP - " + project_title));
         }
+    }
+
+    void MainWindow::WriteAnalysisFile(){
+
+
+        const std::string analys_path =
+                QFileDialog::getSaveFileName(this, tr("Select path to analysis file"), "",
+                                             tr("Analysis (*.log)"))
+                        .toUtf8()
+                        .constData();
+
+        if (analys_path == "") {
+            return;
+        }
+
+        std::ofstream file(analys_path, std::ios::app);
+        CHECK(file.is_open()) << analys_path;
+        auto reconstruction =  reconstruction_manager_.Get(SelectedReconstructionIdx());
+
+        file << StringPrintf("Number of images: %d \n", reconstruction.NumImages());
+        file << StringPrintf("Number of points: %d \n", reconstruction.NumPoints3D());
+        file << StringPrintf("Mean reprojection error: %fpx \n",
+                             reconstruction.ComputeMeanReprojectionError());
     }
 
 }
