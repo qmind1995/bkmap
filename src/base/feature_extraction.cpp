@@ -10,6 +10,8 @@
 
 #include "ext/SiftGPU/SiftGPU.h"
 #include "ext/VLFeat/sift.h"
+#include "ext/VLFeat/generic.h"
+#include "ext/VLFeat/lbp.h"
 //#include "util/cuda.h"
 #include "util/misc.h"
 
@@ -383,6 +385,33 @@ namespace bkmap {
         return true;
     }
 
+    bool ExtractLBPFeatures(const Bitmap& bitmap, FeatureKeypoints* keypoints,
+                            FeatureDescriptors* descriptors){
+        const std::vector<uint8_t> data_uint8 = bitmap.ConvertToRowMajorArray();
+        std::vector<float> data_float(data_uint8.size());
+
+        for (size_t i = 0; i < data_uint8.size(); ++i) {
+            data_float[i] = static_cast<float>(data_uint8[i]) / 255.0f;
+        }
+        VlLbp* _lbp = vl_lbp_new(VlLbpUniform, VL_TRUE);
+
+        vl_size width, height, dimension, cellSize = 16;
+        width = static_cast <vl_size> (std::floor(bitmap.Width() / cellSize));
+        height = static_cast <vl_size> (std::floor(bitmap.Height() / cellSize));
+        dimension = vl_lbp_get_dimension(_lbp);
+        std::vector<float> features(width * height * dimension);
+
+        vl_lbp_process(_lbp,
+                       features.data(),
+                       data_float.data(),
+                       static_cast <vl_size> (bitmap.Width()),
+                       static_cast <vl_size> (bitmap.Height()),
+                       cellSize);
+
+
+        return true;
+    }
+
     bool CreateSiftGPUExtractor(const SiftExtractionOptions& options,
                                 SiftGPU* sift_gpu) {
         CHECK(options.Check());
@@ -655,6 +684,10 @@ namespace bkmap {
                     auto image_data = input_job.Data();
 
                     if (image_data.status == ImageReader::Status::SUCCESS) {
+
+//                        ExtractLBPFeatures(image_data.bitmap, &image_data.keypoints,
+//                                           &image_data.descriptors );
+
                         if (ExtractSiftFeaturesCPU(sift_options_, image_data.bitmap,
                                                    &image_data.keypoints,
                                                    &image_data.descriptors)) {

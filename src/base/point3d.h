@@ -14,7 +14,7 @@
 
 namespace bkmap {
 
-// 3D point class that holds information about triangulated 2D points.
+    // 3D point class that holds information about triangulated 2D points.
     class Point3D {
     public:
         EIGEN_MAKE_ALIGNED_OPERATOR_NEW

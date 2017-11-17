@@ -1739,6 +1739,7 @@ namespace bkmap {
                                                  const FeatureDescriptors& descriptors2){
 
         int nn = 100;
+        float MAX_DISTANCE = 10000;
         const Eigen::Matrix<int, Eigen::Dynamic, 128> descriptors1_int =
                     descriptors1.cast<int>();
         const Eigen::Matrix<int, Eigen::Dynamic, 128> descriptors2_int =
@@ -1768,8 +1769,8 @@ namespace bkmap {
         flann::Matrix<int> bestMatches(new int[query.rows], query.rows, 1);
 
         for(auto id = 0; id < indices.rows; id++){
-            float bestMatchDistance  = 10000;
-            float secondBestDistance = 10000;
+            float bestMatchDistance  = MAX_DISTANCE;
+            float secondBestDistance = MAX_DISTANCE;
             int bestMatch = -1;
 
             for(auto i=0; i<nn; i++){
@@ -1822,13 +1823,13 @@ namespace bkmap {
         CHECK(match_options.Check());
         CHECK_NOTNULL(matches);
 
-        findBestMatchesKDTree(descriptors1, descriptors2, matches);
+//        findBestMatchesKDTree(descriptors1, descriptors2, matches);
 
-//        const Eigen::MatrixXi dists = ComputeSiftDistanceMatrix(
-//                nullptr, nullptr, descriptors1, descriptors2, nullptr);
-//
-//        FindBestMatches(dists, match_options.max_ratio, match_options.max_distance,
-//                        match_options.cross_check, matches);
+        const Eigen::MatrixXi dists = ComputeSiftDistanceMatrix(
+                nullptr, nullptr, descriptors1, descriptors2, nullptr);
+
+        FindBestMatches(dists, match_options.max_ratio, match_options.max_distance,
+                        match_options.cross_check, matches);
     }
 
     void MatchGuidedSiftFeaturesCPU(const SiftMatchingOptions& match_options,
