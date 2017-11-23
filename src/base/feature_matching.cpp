@@ -1736,6 +1736,43 @@ namespace bkmap {
         GetTimer().PrintMinutes();
     }
 
+    void minitest(){
+        std::cout << StringPrintf("into minitest \n");
+        int size = 5;
+        float *data2 = new float[128*size];
+        for (unsigned int i = 0; i < size; i++){
+            for(unsigned j =0; j< 128; j++){
+                data2[128*i + j] = rand() % 10 + 1;
+            }
+        }
+
+        float *data1 = new float[128*size];
+        for (unsigned int i = 0; i < size; i++){
+            for(unsigned j =0; j< 128; j++){
+                data1[128*i + j] = rand() % 10 + 1;
+            }
+        }
+
+        VlKDForest * kd_forest =  vl_kdforest_new(VL_TYPE_FLOAT, 128, 1, VlDistanceL2);
+        vl_kdforest_build(kd_forest, (vl_size) size, data2);
+        VlKDForestSearcher* searcher = vl_kdforest_new_searcher(kd_forest);
+        VlKDForestNeighbor neighbours[2];
+        for(int i=0; i < size; i++){
+            float *query = new float[128];
+            for(unsigned j =0; j< 128; j++){
+                query[j] = rand() % 10 + 1;
+            }
+//            vl_size nvisited = vl_kdforestsearcher_query(searcher, &neighbours[0], 2, query);
+            vl_size nvisited = vl_kdforest_query(kd_forest, &neighbours[0], 2, query);
+
+            std::cout << StringPrintf("nvisit = %d ", nvisited)
+            << StringPrintf(" neighbour 1 = %d ", neighbours[0].distance)
+            << StringPrintf(" neighbour 2 = %d \n", neighbours[1].distance);
+        }
+        vl_kdforest_delete(kd_forest);
+        std::cout << StringPrintf("out minitest \n");
+    }
+
     size_t findBestMatchesKDTree_oneWay(std::vector<std::vector<float> > descs2,
                                       std::vector<std::vector<float> > descs1,
                                       std::vector<int>* matches){
@@ -1753,7 +1790,7 @@ namespace bkmap {
         size_t num_match = 0;
         matches->resize(descs1.size(), -1);
 
-        VlKDForest * kd_forest =  vl_kdforest_new(VL_TYPE_FLOAT, 128, 1, VlDistanceL1);
+        VlKDForest * kd_forest =  vl_kdforest_new(VL_TYPE_FLOAT, 128, 1, VlDistanceL2);
 //        vl_kdforest_set_max_num_comparisons(kd_forest, 2);
 //        vl_kdforest_set_thresholding_method(kd_forest, VL_KDTREE_MEDIAN);
         vl_kdforest_build(kd_forest, descs2.size(), data2);
@@ -1764,9 +1801,9 @@ namespace bkmap {
             std::copy(descs1[i].begin(), descs1[i].end(), query);
 
             vl_size nvisited = vl_kdforestsearcher_query(searcher, &neighbours[0], 2, query);
-            std::cout << StringPrintf("nvisit = %d ", nvisited)
-            << StringPrintf(" neighbour 1 = %d ", neighbours[0].distance)
-            << StringPrintf(" neighbour 2 = %d \n", neighbours[1].distance);
+//            std::cout << StringPrintf("nvisit = %d ", nvisited)
+//            << StringPrintf(" neighbour 1 = %d ", neighbours[0].distance)
+//            << StringPrintf(" neighbour 2 = %d \n", neighbours[1].distance);
             if(neighbours[1].distance >0 && neighbours[1].distance* 0.8 < neighbours[0].distance){
                 continue;
             }
@@ -1780,7 +1817,7 @@ namespace bkmap {
     void findBestMatchesKDTree(const FeatureDescriptors& descriptors1,
                                const FeatureDescriptors& descriptors2, FeatureMatches* matches){
         matches->clear();
-
+        minitest();
         std::vector<std::vector<float> > descriptors1_vector((unsigned long) descriptors1.rows(), std::vector<float>(128, 0.0));
         std::vector<std::vector<float> > descriptors2_vector((unsigned long) descriptors2.rows(), std::vector<float>(128, 0.0));
         for(Eigen::MatrixXi::Index i=0; i < descriptors1.rows(); i++){
