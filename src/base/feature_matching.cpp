@@ -184,7 +184,7 @@ namespace bkmap {
             return dists;
         }
 
-        size_t FindBestMatchesOneWay(const Eigen::Transpose<const Eigen::Matrix<double, -1, -1, 0, -1, -1>> dists,
+        size_t FindBestMatchesOneWay(const Eigen::MatrixXd& dists,
                                      const float max_ratio, const float max_distance,
                                      std::vector<int>* matches) {
             // SIFT descriptor vectors are normalized to length 512.
