@@ -72,6 +72,9 @@ find_package(Ceres REQUIRED)
 
 find_package(OpenGL REQUIRED)
 find_package(Glew REQUIRED)
+
+find_package( OpenCV REQUIRED )
+
 find_package(Git)
 
 set(CUDA_MIN_VERSION "7.0")

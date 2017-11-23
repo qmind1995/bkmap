@@ -148,7 +148,7 @@ namespace bkmap{
         // Read specific EXIF tag.
         bool ReadExifTag(const FREE_IMAGE_MDMODEL model, const std::string& tag_name,
                          std::string* result) const;
-
+        std::string path_;
     private:
         typedef std::unique_ptr<FIBITMAP, decltype(&FreeImage_Unload)> FIBitmapPtr;
 

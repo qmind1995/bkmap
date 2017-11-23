@@ -21,7 +21,7 @@ namespace bkmap {
         CreateToolbar();
         CreateStatusbar();
         CreateControllers();
-//        ShowLog();
+        ShowLog();
         options_.AddAllOptions();
     }
 
@@ -104,9 +104,9 @@ namespace bkmap {
         match_matrix_widget_ = new MatchMatrixWidget(this, &options_);
         license_widget_ = new LicenseWidget(this);
 
-//        dock_log_widget_ = new QDockWidget("", this);
-//        dock_log_widget_->setWidget(log_widget_);
-//        addDockWidget(Qt::RightDockWidgetArea, dock_log_widget_);
+        dock_log_widget_ = new QDockWidget("", this);
+        dock_log_widget_->setWidget(log_widget_);
+        addDockWidget(Qt::RightDockWidgetArea, dock_log_widget_);
     }
 
     void MainWindow::CreateActions() {

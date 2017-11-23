@@ -18,6 +18,7 @@
 //#include "util/cuda.h"
 #include "util/misc.h"
 #include "ext/FLANN/flann.hpp"
+#include "ext/VLFeat/kdtree.h"
 
 namespace bkmap {
     namespace {
@@ -1735,82 +1736,79 @@ namespace bkmap {
         GetTimer().PrintMinutes();
     }
 
-    flann::Matrix<int> matchOneWayKdTree(const FeatureDescriptors& descriptors1,
-                                                 const FeatureDescriptors& descriptors2){
+    size_t findBestMatchesKDTree_oneWay(std::vector<std::vector<float> > descs2,
+                                      std::vector<std::vector<float> > descs1,
+                                      std::vector<int>* matches){
 
-        int nn = 100;
-        float MAX_DISTANCE = 10000;
-        const Eigen::Matrix<int, Eigen::Dynamic, 128> descriptors1_int =
-                    descriptors1.cast<int>();
-        const Eigen::Matrix<int, Eigen::Dynamic, 128> descriptors2_int =
-                descriptors2.cast<int>();
+//        float *data1 = new float[128*descs1.size()];
+//        for (unsigned int i = 0; i < descs1.size(); i++){
+//            std::copy(descs1[i].begin(), descs1[i].end(), data1 + 128*i);
+//        }
 
-        flann::Matrix<int> dataset(new int[descriptors1_int.rows() * 128], descriptors1_int.rows(), 128);
-        flann::Matrix<int> query(new int[descriptors2_int.rows() * 128], descriptors2_int.rows(), 128);
-        for(auto i = 0; i < descriptors1_int.rows(); i++){
-            for(auto j=0; j< nn; j++){
-                int test = descriptors1_int(i,j);
-                dataset[i][j] = descriptors1_int(i,j);
-            }
+        float *data2 = new float[128*descs2.size()];
+        for (unsigned int i = 0; i < descs2.size(); i++){
+            std::copy(descs2[i].begin(), descs2[i].end(), data2 + 128*i);
         }
 
-        for(auto i = 0; i < descriptors2_int.rows(); i++){
-            for(auto j=0; j< nn; j++){
-                query[i][j] = descriptors2_int(i,j);
+        size_t num_match = 0;
+        matches->resize(descs1.size(), -1);
+
+        VlKDForest * kd_forest =  vl_kdforest_new(VL_TYPE_FLOAT, 128, 1, VlDistanceL1);
+//        vl_kdforest_set_max_num_comparisons(kd_forest, 2);
+//        vl_kdforest_set_thresholding_method(kd_forest, VL_KDTREE_MEDIAN);
+        vl_kdforest_build(kd_forest, descs2.size(), data2);
+        VlKDForestSearcher* searcher = vl_kdforest_new_searcher(kd_forest);
+        VlKDForestNeighbor neighbours[2];
+        for(int i=0; i < descs1.size(); i++){
+            float *query = new float[128];
+            std::copy(descs1[i].begin(), descs1[i].end(), query);
+
+            vl_size nvisited = vl_kdforestsearcher_query(searcher, &neighbours[0], 2, query);
+            std::cout << StringPrintf("nvisit = %d ", nvisited)
+            << StringPrintf(" neighbour 1 = %d ", neighbours[0].distance)
+            << StringPrintf(" neighbour 2 = %d \n", neighbours[1].distance);
+            if(neighbours[1].distance >0 && neighbours[1].distance* 0.8 < neighbours[0].distance){
+                continue;
             }
+            (*matches)[i] = (int) neighbours[0].index;
+            num_match++;
         }
-
-        flann::Matrix<int > indices(new int[query.rows*nn], query.rows, nn);
-        flann::Matrix<float> dists(new float[query.rows*nn], query.rows, nn);
-        flann::Index<flann::L2<int> > index(dataset, flann::KDTreeIndexParams(4));
-        index.buildIndex();
-        index.knnSearch(query, indices, dists, nn, flann::SearchParams(1024));
-//        index.radiusSearch(query, indices, dists, 10000, nn);
-        flann::Matrix<int> bestMatches(new int[query.rows], query.rows, 1);
-
-        for(auto id = 0; id < indices.rows; id++){
-            float bestMatchDistance  = MAX_DISTANCE;
-            float secondBestDistance = MAX_DISTANCE;
-            int bestMatch = -1;
-
-            for(auto i=0; i<nn; i++){
-                if(dists[id][i] < bestMatchDistance ){
-                    bestMatch = indices[id][i];
-                    bestMatchDistance = dists[id][i];
-                }
-            }
-
-            if(bestMatch != -1){
-                //find second best
-                for(auto i=0; i<nn; i++){
-                    if(dists[id][i] < secondBestDistance &&  indices[id][i] !=  bestMatch){
-                        secondBestDistance = dists[id][i];
-                    }
-                }
-            }
-            if(bestMatchDistance >= 0.8 * secondBestDistance){
-                bestMatches[id][0] = -1;
-            }
-            else{
-                bestMatches[id][0] = bestMatch;
-            }
-        }
-
-        return bestMatches;
+        vl_kdforest_delete(kd_forest);
+        return num_match;
     }
 
     void findBestMatchesKDTree(const FeatureDescriptors& descriptors1,
                                const FeatureDescriptors& descriptors2, FeatureMatches* matches){
         matches->clear();
-        flann::Matrix<int> matches_12 = matchOneWayKdTree(descriptors1, descriptors2);
-        flann::Matrix<int> matches_21 = matchOneWayKdTree(descriptors2, descriptors1);
-        matches->reserve(std::min(matches_12.rows, matches_21.rows));
 
-        for (size_t i1 = 0; i1 < matches_12.rows; ++i1) {
-            if(matches_12[i1][0] > 0 && matches_21[matches_12[i1][0]][0] == static_cast<int>(i1)){
+        std::vector<std::vector<float> > descriptors1_vector((unsigned long) descriptors1.rows(), std::vector<float>(128, 0.0));
+        std::vector<std::vector<float> > descriptors2_vector((unsigned long) descriptors2.rows(), std::vector<float>(128, 0.0));
+        for(Eigen::MatrixXi::Index i=0; i < descriptors1.rows(); i++){
+            for(Eigen::MatrixXi::Index j =0; j < 128; j++){
+                // chuwa tao size maf da at()
+                auto test_1 = descriptors1(i, j);
+                auto test_2 = static_cast<float>(descriptors1(i, j));
+                descriptors1_vector.at(i).at(j) = static_cast<float>(descriptors1(i, j));
+            }
+        }
+
+        for(Eigen::MatrixXi::Index i=0; i < descriptors2.rows(); i++){
+            for(Eigen::MatrixXi::Index j =0; j < 128; j++){
+                descriptors2_vector.at(i).at(j) = static_cast<float>(descriptors2(i, j));
+            }
+        }
+
+        std::vector<int> matches12;
+        size_t num_match12 = findBestMatchesKDTree_oneWay(descriptors2_vector, descriptors1_vector, &matches12);
+        std::vector<int> matches21;
+        size_t num_match21 = findBestMatchesKDTree_oneWay(descriptors1_vector, descriptors2_vector, &matches21);
+        matches->reserve(std::min(num_match12, num_match21));
+        for (size_t i1 = 0; i1 < matches12.size(); ++i1) {
+            if (matches12[i1] != -1 && matches21[matches12[i1]] != -1 &&
+                matches21[matches12[i1]] == static_cast<int>(i1)) {
                 FeatureMatch match;
                 match.point2D_idx1 = i1;
-                match.point2D_idx2 = matches_12[i1][0];
+                match.point2D_idx2 = matches12[i1];
                 matches->push_back(match);
             }
         }

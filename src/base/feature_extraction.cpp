@@ -14,6 +14,7 @@
 #include "ext/VLFeat/lbp.h"
 //#include "util/cuda.h"
 #include "util/misc.h"
+#include <opencv2/opencv.hpp>
 
 namespace bkmap {
     namespace {
@@ -385,6 +386,19 @@ namespace bkmap {
         return true;
     }
 
+    bool ExtractSUFTFeatures(const Bitmap& bitmap, FeatureKeypoints* keypoints,
+                             FeatureDescriptors* descriptors){
+        cv::Mat img_1 = cv::imread( bitmap.path_, cv::IMREAD_GRAYSCALE );
+        const std::vector<uint8_t> data_uint8 = bitmap.ConvertToRowMajorArray();
+        std::vector<float> data_float(data_uint8.size());
+
+        for (size_t i = 0; i < data_uint8.size(); ++i) {
+            data_float[i] = static_cast<float>(data_uint8[i]) / 255.0f;
+        }
+
+        return true;
+    }
+
     bool ExtractLBPFeatures(const Bitmap& bitmap, FeatureKeypoints* keypoints,
                             FeatureDescriptors* descriptors){
         const std::vector<uint8_t> data_uint8 = bitmap.ConvertToRowMajorArray();
@@ -687,6 +701,8 @@ namespace bkmap {
 
 //                        ExtractLBPFeatures(image_data.bitmap, &image_data.keypoints,
 //                                           &image_data.descriptors );
+                        ExtractSUFTFeatures(image_data.bitmap, &image_data.keypoints,
+                                           &image_data.descriptors);
 
                         if (ExtractSiftFeaturesCPU(sift_options_, image_data.bitmap,
                                                    &image_data.keypoints,

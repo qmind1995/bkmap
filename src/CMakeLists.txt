@@ -7,6 +7,7 @@ include_directories(
     ${CERES_INCLUDE_DIRS}
     ${GLEW_INCLUDE_DIRS}
     ${Qt5_INCLUDE_DIRS}
+    ${OpenCV_INCLUDE_DIRS}
 )
 
 link_directories(
@@ -50,7 +51,8 @@ set(BKMAP_LIBRARIES
     ${FREEIMAGE_LIBRARIES}
     ${CERES_LIBRARIES}
     ${OPENGL_gl_LIBRARY}
-    ${OPENGL_glu_LIBRARY})
+    ${OPENGL_glu_LIBRARY}
+    ${OpenCV_LIBS})
 
 if(CUDA_ENABLED)
     set(BKMAP_LIBRARIES

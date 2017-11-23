@@ -413,7 +413,7 @@ namespace bkmap {
         width_ = FreeImage_GetWidth(data_.get());
         height_ = FreeImage_GetHeight(data_.get());
         channels_ = as_rgb ? 3 : 1;
-
+        path_ = path;
         return true;
     }
 
