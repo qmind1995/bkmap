@@ -144,7 +144,7 @@ namespace bkmap {
             }
         }
 
-        Eigen::MatrixXi ComputeSiftDistanceMatrix(
+        Eigen::MatrixXd ComputeSiftDistanceMatrix(
                 const FeatureKeypoints* keypoints1, const FeatureKeypoints* keypoints2,
                 const FeatureDescriptors& descriptors1,
                 const FeatureDescriptors& descriptors2,
@@ -161,7 +161,7 @@ namespace bkmap {
             const Eigen::Matrix<int, Eigen::Dynamic, 128> descriptors2_int =
                     descriptors2.cast<int>();
 
-            Eigen::Matrix<int, Eigen::Dynamic, Eigen::Dynamic, Eigen::RowMajor> dists(
+            Eigen::Matrix<double, Eigen::Dynamic, Eigen::Dynamic, Eigen::RowMajor> dists(
                     descriptors1.rows(), descriptors2.rows());
 
             for (FeatureDescriptors::Index i1 = 0; i1 < descriptors1.rows(); ++i1) {
@@ -171,7 +171,12 @@ namespace bkmap {
                                       (*keypoints2)[i2].x, (*keypoints2)[i2].y)) {
                         dists(i1, i2) = 0;
                     } else {
-                        dists(i1, i2) = descriptors1_int.row(i1).dot(descriptors2_int.row(i2));
+                        int dist_ = 0;
+                        for(int fi =0; fi< 128; fi++){
+                            dist_ += ( descriptors1_int(i1, fi) - descriptors2_int(i2, fi) ) * ( descriptors1_int(i1, fi) - descriptors2_int(i2, fi) );
+                        }
+                        dists(i1, i2) = std::sqrt(dist_);
+//                        dists(i1, i2) = descriptors1_int.row(i1).dot(descriptors2_int.row(i2));
                     }
                 }
             }
@@ -179,7 +184,7 @@ namespace bkmap {
             return dists;
         }
 
-        size_t FindBestMatchesOneWay(const Eigen::MatrixXi& dists,
+        size_t FindBestMatchesOneWay(const Eigen::Transpose<const Eigen::Matrix<double, -1, -1, 0, -1, -1>> dists,
                                      const float max_ratio, const float max_distance,
                                      std::vector<int>* matches) {
             // SIFT descriptor vectors are normalized to length 512.
@@ -188,17 +193,17 @@ namespace bkmap {
             size_t num_matches = 0;
             matches->resize(dists.rows(), -1);
 
-            for (Eigen::MatrixXi::Index i1 = 0; i1 < dists.rows(); ++i1) {
+            for (Eigen::MatrixXd::Index i1 = 0; i1 < dists.rows(); ++i1) {
                 int best_i2 = -1;
-                int best_dist = 0;
-                int second_best_dist = 0;
-                for (Eigen::MatrixXi::Index i2 = 0; i2 < dists.cols(); ++i2) {
-                    const int dist = dists(i1, i2);
-                    if (dist > best_dist) {
+                double best_dist = 100000000;
+                double second_best_dist = 100000000;
+                for (Eigen::MatrixXd::Index i2 = 0; i2 < dists.cols(); ++i2) {
+                    const double dist = dists(i1, i2);
+                    if (dist < best_dist) {
                         best_i2 = i2;
                         second_best_dist = best_dist;
                         best_dist = dist;
-                    } else if (dist > second_best_dist) {
+                    } else if (dist < second_best_dist) {
                         second_best_dist = dist;
                     }
                 }
@@ -206,25 +211,32 @@ namespace bkmap {
                 // Check if any match found.
                 if (best_i2 == -1) {
                     continue;
+                    std::cout << StringPrintf("skip this keypoint \n");
                 }
 
-                const float best_dist_normed =
-                        std::acos(std::min(kDistNorm * best_dist, 1.0f));
+//                const float best_dist_normed =
+//                        std::acos(std::min(kDistNorm * best_dist, 1.0f));
+
+                const double best_dist_normed = kDistNorm * best_dist;
 
                 // Check if match distance passes threshold.
-                if (best_dist_normed > max_distance) {
-                    continue;
-                }
+//                if (best_dist_normed > max_distance) {
+//                    continue;
+//                }
 
-                const float second_best_dist_normed =
-                        std::acos(std::min(kDistNorm * second_best_dist, 1.0f));
+
+                const double second_best_dist_normed = kDistNorm * second_best_dist;
+//                const float second_best_dist_normed =
+//                        std::acos(std::min(kDistNorm * second_best_dist, 1.0f));
 
                 // Check if match passes ratio test. Keep this comparison >= in order to
                 // ensure that the case of best == second_best is detected.
                 if (best_dist_normed >= max_ratio * second_best_dist_normed) {
+                    std::cout << StringPrintf("skip this keypoint \n");
                     continue;
                 }
 
+                std::cout << StringPrintf("add this keypoint, distance = %d \n ", best_dist_normed);
                 num_matches += 1;
                 (*matches)[i1] = best_i2;
             }
@@ -232,7 +244,7 @@ namespace bkmap {
             return num_matches;
         }
 
-        void FindBestMatches(const Eigen::MatrixXi& dists, const float max_ratio,
+        void FindBestMatches(const Eigen::MatrixXd& dists, const float max_ratio,
                              const float max_distance, const bool cross_check,
                              FeatureMatches* matches) {
             matches->clear();
@@ -1823,8 +1835,8 @@ namespace bkmap {
         for(Eigen::MatrixXi::Index i=0; i < descriptors1.rows(); i++){
             for(Eigen::MatrixXi::Index j =0; j < 128; j++){
                 // chuwa tao size maf da at()
-                auto test_1 = descriptors1(i, j);
-                auto test_2 = static_cast<float>(descriptors1(i, j));
+//                auto test_1 = descriptors1(i, j);
+//                auto test_2 = static_cast<float>(descriptors1(i, j));
                 descriptors1_vector.at(i).at(j) = static_cast<float>(descriptors1(i, j));
             }
         }
@@ -1860,7 +1872,7 @@ namespace bkmap {
 
 //        findBestMatchesKDTree(descriptors1, descriptors2, matches);
 
-        const Eigen::MatrixXi dists = ComputeSiftDistanceMatrix(
+        const Eigen::MatrixXd dists = ComputeSiftDistanceMatrix(
                 nullptr, nullptr, descriptors1, descriptors2, nullptr);
 
         FindBestMatches(dists, match_options.max_ratio, match_options.max_distance,
@@ -1912,7 +1924,7 @@ namespace bkmap {
 
         CHECK(guided_filter);
 
-        const Eigen::MatrixXi dists = ComputeSiftDistanceMatrix(
+        const Eigen::MatrixXd dists = ComputeSiftDistanceMatrix(
                 &keypoints1, &keypoints2, descriptors1, descriptors2, guided_filter);
 
         FindBestMatches(dists, match_options.max_ratio, match_options.max_distance,
