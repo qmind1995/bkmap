@@ -498,7 +498,7 @@ namespace bkmap {
                     if (!mapper_controller_->IsStopped()) {
                         action_render_now_->trigger();
                     }
-                    WriteAnalysisFile();
+//                    WriteAnalysisFile();
                 });
         mapper_controller_->AddCallback(
                 IncrementalMapperController::FINISHED_CALLBACK, [this]() {

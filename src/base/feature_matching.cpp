@@ -144,6 +144,28 @@ namespace bkmap {
             }
         }
 
+        Eigen::MatrixXi ComputeSiftCosinDistanceMatrix(
+                const FeatureKeypoints* keypoints1, const FeatureKeypoints* keypoints2,
+                const FeatureDescriptors& descriptors1,
+                const FeatureDescriptors& descriptors2){
+
+            const Eigen::Matrix<int, Eigen::Dynamic, 128> descriptors1_int =
+                    descriptors1.cast<int>();
+            const Eigen::Matrix<int, Eigen::Dynamic, 128> descriptors2_int =
+                    descriptors2.cast<int>();
+
+            Eigen::Matrix<int, Eigen::Dynamic, Eigen::Dynamic, Eigen::RowMajor> dists(
+                    descriptors1.rows(), descriptors2.rows());
+
+            for (FeatureDescriptors::Index i1 = 0; i1 < descriptors1.rows(); ++i1) {
+                for (FeatureDescriptors::Index i2 = 0; i2 < descriptors2.rows(); ++i2) {
+                    dists(i1, i2) = descriptors1_int.row(i1).dot(descriptors2_int.row(i2));
+                }
+            }
+
+            return dists;
+        }
+
         Eigen::MatrixXd ComputeSiftDistanceMatrix(
                 const FeatureKeypoints* keypoints1, const FeatureKeypoints* keypoints2,
                 const FeatureDescriptors& descriptors1,
@@ -184,7 +206,8 @@ namespace bkmap {
             return dists;
         }
 
-        size_t FindBestMatchesOneWay(const Eigen::MatrixXd& dists,
+        size_t FindBestMatchesOneWay(const Eigen::MatrixXi& cosDists,
+                                     const Eigen::MatrixXd& dists,
                                      const float max_ratio, const float max_distance,
                                      std::vector<int>* matches) {
             // SIFT descriptor vectors are normalized to length 512.
@@ -195,8 +218,12 @@ namespace bkmap {
 
             for (Eigen::MatrixXd::Index i1 = 0; i1 < dists.rows(); ++i1) {
                 int best_i2 = -1;
+                int cos_best_i2 = -1;
                 double best_dist = 100000000;
                 double second_best_dist = 100000000;
+                int cos_best_dist = 0;
+                int cos_second_best_dist = 0;
+
                 for (Eigen::MatrixXd::Index i2 = 0; i2 < dists.cols(); ++i2) {
                     const double dist = dists(i1, i2);
                     if (dist < best_dist) {
@@ -206,16 +233,25 @@ namespace bkmap {
                     } else if (dist < second_best_dist) {
                         second_best_dist = dist;
                     }
+
+                    const int cosDist = cosDists(i1, i2);
+                    if (cosDist > cos_best_dist) {
+                        cos_best_i2 = i2;
+                        cos_second_best_dist = cos_best_dist;
+                        cos_best_dist = cosDist;
+                    } else if(cosDist < cos_second_best_dist){
+                        cos_second_best_dist = cosDist;
+                    }
                 }
 
                 // Check if any match found.
-                if (best_i2 == -1) {
+                if (best_i2 == -1 || cos_best_i2 == -1 || best_i2 != cos_best_i2) {
                     continue;
-                    std::cout << StringPrintf("skip this keypoint \n");
+                    std::cout << StringPrintf("skip this keypoint case 1 \n");
                 }
 
-//                const float best_dist_normed =
-//                        std::acos(std::min(kDistNorm * best_dist, 1.0f));
+                const float cos_best_dist_normed =
+                        std::acos(std::min(kDistNorm * cos_best_dist, 1.0f));
 
                 const double best_dist_normed = kDistNorm * best_dist;
 
@@ -226,13 +262,14 @@ namespace bkmap {
 
 
                 const double second_best_dist_normed = kDistNorm * second_best_dist;
-//                const float second_best_dist_normed =
-//                        std::acos(std::min(kDistNorm * second_best_dist, 1.0f));
+                const float cos_second_best_dist_normed =
+                        std::acos(std::min(kDistNorm * cos_second_best_dist, 1.0f));
 
                 // Check if match passes ratio test. Keep this comparison >= in order to
                 // ensure that the case of best == second_best is detected.
-                if (best_dist_normed >= max_ratio * second_best_dist_normed) {
-                    std::cout << StringPrintf("skip this keypoint \n");
+                if (best_dist_normed >= max_ratio * second_best_dist_normed
+                    || cos_best_dist_normed >=  max_ratio * cos_second_best_dist_normed) {
+                    std::cout << StringPrintf("skip this keypoint case 2 \n");
                     continue;
                 }
 
@@ -244,18 +281,18 @@ namespace bkmap {
             return num_matches;
         }
 
-        void FindBestMatches(const Eigen::MatrixXd& dists, const float max_ratio,
+        void FindBestMatches(const Eigen::MatrixXi cosDists, const Eigen::MatrixXd& dists, const float max_ratio,
                              const float max_distance, const bool cross_check,
                              FeatureMatches* matches) {
             matches->clear();
 
             std::vector<int> matches12;
             const size_t num_matches12 =
-                    FindBestMatchesOneWay(dists, max_ratio, max_distance, &matches12);
+                    FindBestMatchesOneWay(cosDists, dists, max_ratio, max_distance, &matches12);
 
             if (cross_check) {
                 std::vector<int> matches21;
-                const size_t num_matches21 = FindBestMatchesOneWay(
+                const size_t num_matches21 = FindBestMatchesOneWay(cosDists.transpose(),
                         dists.transpose(), max_ratio, max_distance, &matches21);
                 matches->reserve(std::min(num_matches12, num_matches21));
                 for (size_t i1 = 0; i1 < matches12.size(); ++i1) {
@@ -1875,7 +1912,10 @@ namespace bkmap {
         const Eigen::MatrixXd dists = ComputeSiftDistanceMatrix(
                 nullptr, nullptr, descriptors1, descriptors2, nullptr);
 
-        FindBestMatches(dists, match_options.max_ratio, match_options.max_distance,
+        const Eigen::MatrixXi cosDists =  ComputeSiftCosinDistanceMatrix(
+                nullptr, nullptr, descriptors1, descriptors2);
+
+        FindBestMatches(cosDists, dists, match_options.max_ratio, match_options.max_distance,
                         match_options.cross_check, matches);
     }
 
@@ -1927,7 +1967,10 @@ namespace bkmap {
         const Eigen::MatrixXd dists = ComputeSiftDistanceMatrix(
                 &keypoints1, &keypoints2, descriptors1, descriptors2, guided_filter);
 
-        FindBestMatches(dists, match_options.max_ratio, match_options.max_distance,
+        const Eigen::MatrixXi cosDists =  ComputeSiftCosinDistanceMatrix(
+                &keypoints1, &keypoints2, descriptors1, descriptors2);
+
+        FindBestMatches(cosDists, dists, match_options.max_ratio, match_options.max_distance,
                         match_options.cross_check,
                         &two_view_geometry->inlier_matches);
     }
