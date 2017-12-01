@@ -17,7 +17,7 @@ namespace bkmap {
 
     protected:
         void CreateGeneralOptions();
-
+        QComboBox* distance_type_cb_;
         OptionManager* options_;
         ThreadControlWidget* thread_control_widget_;
     };
@@ -90,6 +90,8 @@ namespace bkmap {
         AddOptionBool(&options_->sift_matching->multiple_models, "multiple_models");
         AddOptionBool(&options_->sift_matching->guided_matching, "guided_matching");
 
+        distance_type_cb_ = AddDistanceOption();
+
         AddSpacer();
 
         QPushButton* run_button = new QPushButton(tr("Run"), this);
@@ -111,6 +113,28 @@ namespace bkmap {
         Thread* matcher = new ExhaustiveFeatureMatcher(*options_->exhaustive_matching,
                                                        *options_->sift_matching,
                                                        *options_->database_path);
+
+        int index = distance_type_cb_->currentIndex();
+        switch (index){
+            case 0:{
+                options_->sift_matching->distanceType = SiftMatchingOptions::FeatureDistance::EUCLIDEAN;
+                break;
+            }
+            case 1:{
+                options_->sift_matching->distanceType = SiftMatchingOptions::FeatureDistance::MANHATTAN;
+                break;
+            }
+            case 2:{
+                options_->sift_matching->distanceType = SiftMatchingOptions::FeatureDistance::MINKOWSKI;
+                break;
+            }
+            case 3:{
+                options_->sift_matching->distanceType = SiftMatchingOptions::FeatureDistance::COSINE;
+                break;
+            }
+            default:break;
+        }
+
         thread_control_widget_->StartThread("Matching...", true, matcher);
     }
 
@@ -143,6 +167,27 @@ namespace bkmap {
             !ExistsFile(options_->sequential_matching->vocab_tree_path)) {
             QMessageBox::critical(this, "", tr("Invalid vocabulary tree path."));
             return;
+        }
+
+        int index = distance_type_cb_->currentIndex();
+        switch (index){
+            case 0:{
+                options_->sift_matching->distanceType = SiftMatchingOptions::FeatureDistance::EUCLIDEAN;
+                break;
+            }
+            case 1:{
+                options_->sift_matching->distanceType = SiftMatchingOptions::FeatureDistance::MANHATTAN;
+                break;
+            }
+            case 2:{
+                options_->sift_matching->distanceType = SiftMatchingOptions::FeatureDistance::MINKOWSKI;
+                break;
+            }
+            case 3:{
+                options_->sift_matching->distanceType = SiftMatchingOptions::FeatureDistance::COSINE;
+                break;
+            }
+            default:break;
         }
 
         Thread* matcher = new SequentialFeatureMatcher(*options_->sequential_matching,

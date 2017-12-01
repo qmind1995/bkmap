@@ -139,6 +139,17 @@ namespace bkmap {
         return line_edit;
     }
 
+    QComboBox* OptionsWidget::AddDistanceOption(){
+
+        QComboBox* cb = new QComboBox(this);
+        cb->addItem("EUCLIDEAN");
+        cb->addItem("MANHATTAN");
+        cb->addItem("MINKOWSKI");
+        cb->addItem("COSINE");
+        AddOptionRow("Distance type", cb);
+        return cb;
+    }
+
     QLineEdit* OptionsWidget::AddOptionDirPath(std::string* option,
                                                const std::string& label_text) {
         QLineEdit* line_edit = new QLineEdit(this);

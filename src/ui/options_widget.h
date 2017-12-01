@@ -37,6 +37,8 @@ namespace bkmap {
                                      const std::string& label_text, bool isShow = false);
         QLineEdit* AddOptionDirPath(std::string* option,
                                     const std::string& label_text);
+        QComboBox* AddDistanceOption();
+
         void AddSpacer();
         void AddSection(const std::string& label_text);
 

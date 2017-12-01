@@ -166,7 +166,7 @@ namespace bkmap {
             return dists;
         }
 
-        Eigen::MatrixXd ComputeSiftDistanceMatrix(
+        Eigen::MatrixXd ComputeSiftEuclideanDistanceMatrix(
                 const FeatureKeypoints* keypoints1, const FeatureKeypoints* keypoints2,
                 const FeatureDescriptors& descriptors1,
                 const FeatureDescriptors& descriptors2,
@@ -204,6 +204,218 @@ namespace bkmap {
             }
 
             return dists;
+        }
+
+        Eigen::MatrixXi ComputeSiftManhattanDistanceMatrix(const FeatureKeypoints* keypoints1, const FeatureKeypoints* keypoints2,
+                                                            const FeatureDescriptors& descriptors1,
+                                                            const FeatureDescriptors& descriptors2){
+            const Eigen::Matrix<int, Eigen::Dynamic, 128> descriptors1_int =
+                    descriptors1.cast<int>();
+            const Eigen::Matrix<int, Eigen::Dynamic, 128> descriptors2_int =
+                    descriptors2.cast<int>();
+
+            Eigen::Matrix<int, Eigen::Dynamic, Eigen::Dynamic, Eigen::RowMajor> dists(
+                    descriptors1.rows(), descriptors2.rows());
+
+            for (FeatureDescriptors::Index i1 = 0; i1 < descriptors1.rows(); ++i1) {
+                for (FeatureDescriptors::Index i2 = 0; i2 < descriptors2.rows(); ++i2) {
+                    int dist_ = 0;
+                    for(int fi =0; fi< 128; fi++){
+                        dist_ += std::abs( descriptors1_int(i1, fi) - descriptors2_int(i2, fi) );
+                    }
+                    dists(i1, i2) = dist_;
+                }
+            }
+
+            return dists;
+        }
+
+        Eigen::MatrixXi ComputeSiftChebyshevDistanceMatrix(const FeatureKeypoints* keypoints1, const FeatureKeypoints* keypoints2,
+                                                           const FeatureDescriptors& descriptors1,
+                                                           const FeatureDescriptors& descriptors2){
+            const Eigen::Matrix<int, Eigen::Dynamic, 128> descriptors1_int =
+                    descriptors1.cast<int>();
+            const Eigen::Matrix<int, Eigen::Dynamic, 128> descriptors2_int =
+                    descriptors2.cast<int>();
+
+            Eigen::Matrix<int, Eigen::Dynamic, Eigen::Dynamic, Eigen::RowMajor> dists(
+                    descriptors1.rows(), descriptors2.rows());
+
+            for (FeatureDescriptors::Index i1 = 0; i1 < descriptors1.rows(); ++i1) {
+                for (FeatureDescriptors::Index i2 = 0; i2 < descriptors2.rows(); ++i2) {
+                    int dist_ = 0;
+                    for(int fi =0; fi< 128; fi++){
+                        dist_ += std::max(std::abs( descriptors1_int(i1, fi) - descriptors2_int(i2, fi) ) , 0) ;
+                    }
+                    dists(i1, i2) = dist_;
+                }
+            }
+
+            return dists;
+        }
+
+        size_t FindBestMatchesOneWay_i(SiftMatchingOptions::FeatureDistance dType,
+                                       const Eigen::MatrixXi& dists, const float max_ratio, std::vector<int>* matches){
+            const double kDistNorm = 1.0f / (512.0f * 512.0f);
+            size_t num_matches = 0;
+            matches->resize(dists.rows(), -1);
+
+            int best = 0;
+            bool isSmaller_better = true;
+            switch (dType){
+                case SiftMatchingOptions::FeatureDistance::EUCLIDEAN :
+                case SiftMatchingOptions::FeatureDistance::MANHATTAN:
+                case SiftMatchingOptions::FeatureDistance::MINKOWSKI:{
+                    best = 100000000;
+                    break;
+                }
+                case SiftMatchingOptions::FeatureDistance::COSINE:{
+                    isSmaller_better = false;
+                    break;
+                }
+            }
+
+            for (Eigen::MatrixXd::Index i1 = 0; i1 < dists.rows(); ++i1) {
+                int best_i2 = -1;
+                int best_dist = best;
+                int second_best_dist = best;
+
+                for (Eigen::MatrixXd::Index i2 = 0; i2 < dists.cols(); ++i2) {
+                    const int dist = dists(i1, i2);
+                    if(isSmaller_better){
+                        if (dist < best_dist) {
+                            best_i2 = i2;
+                            second_best_dist = best_dist;
+                            best_dist = dist;
+                        } else if (dist < second_best_dist) {
+                            second_best_dist = dist;
+                        }
+                    }
+                    else{
+                        if (dist > best_dist) {
+                            best_i2 = i2;
+                            second_best_dist = best_dist;
+                            best_dist = dist;
+                        } else if(dist < second_best_dist){
+                            second_best_dist = dist;
+                        }
+                    }
+                }
+
+                // Check if any match found.
+                if (best_i2 == -1 ) {
+                    continue;
+                    std::cout << StringPrintf("skip this keypoint case 1 \n");
+                }
+
+                double best_dist_normed = 0;
+                double second_best_dist_normed = 0;
+
+                if(dType == SiftMatchingOptions::FeatureDistance::COSINE){
+                    best_dist_normed = std::acos(std::min(kDistNorm * best_dist, 1.0));
+                    second_best_dist_normed = std::acos(std::min(kDistNorm * second_best_dist, 1.0));
+                }
+                else{
+                    best_dist_normed = kDistNorm * best_dist;
+                    second_best_dist_normed = kDistNorm * second_best_dist;
+                }
+
+
+                // Check if match passes ratio test. Keep this comparison >= in order to
+                // ensure that the case of best == second_best is detected.
+                if (best_dist_normed >= max_ratio * second_best_dist_normed) {
+                    std::cout << StringPrintf("skip this keypoint case 2 \n");
+                    continue;
+                }
+
+                std::cout << StringPrintf("add this keypoint, distance = %d \n ", best_dist_normed);
+                num_matches += 1;
+                (*matches)[i1] = best_i2;
+            }
+
+            return num_matches;
+        }
+
+        size_t FindBestMatchesOneWay_d(SiftMatchingOptions::FeatureDistance dType,
+                                       const Eigen::MatrixXd& dists, const float max_ratio, std::vector<int>* matches){
+            const double kDistNorm = 1.0f / (512.0f * 512.0f);
+
+            size_t num_matches = 0;
+            matches->resize(dists.rows(), -1);
+            double best = 0;
+            bool isSmaller_better = true;
+            switch (dType){
+                case SiftMatchingOptions::FeatureDistance::EUCLIDEAN :
+                case SiftMatchingOptions::FeatureDistance::MANHATTAN:
+                case SiftMatchingOptions::FeatureDistance::MINKOWSKI:{
+                    best = 100000000;
+                    break;
+                }
+                case SiftMatchingOptions::FeatureDistance::COSINE:{
+                    isSmaller_better = false;
+                    break;
+                }
+            }
+
+            for (Eigen::MatrixXd::Index i1 = 0; i1 < dists.rows(); ++i1) {
+                int best_i2 = -1;
+                double best_dist = best;
+                double second_best_dist = best;
+
+                for (Eigen::MatrixXd::Index i2 = 0; i2 < dists.cols(); ++i2) {
+                    const double dist = dists(i1, i2);
+                    if(isSmaller_better){
+                        if (dist < best_dist) {
+                            best_i2 = i2;
+                            second_best_dist = best_dist;
+                            best_dist = dist;
+                        } else if (dist < second_best_dist) {
+                            second_best_dist = dist;
+                        }
+                    }
+                    else{
+                        if (dist > best_dist) {
+                            best_i2 = i2;
+                            second_best_dist = best_dist;
+                            best_dist = dist;
+                        } else if(dist < second_best_dist){
+                            second_best_dist = dist;
+                        }
+                    }
+                }
+
+                // Check if any match found.
+                if (best_i2 == -1 ) {
+                    continue;
+                    std::cout << StringPrintf("skip this keypoint case 1 \n");
+                }
+
+                double best_dist_normed = 0;
+                double second_best_dist_normed = 0;
+
+                if(dType == SiftMatchingOptions::FeatureDistance::COSINE){
+                    best_dist_normed = std::acos(std::min(kDistNorm * best_dist, 1.0));
+                    second_best_dist_normed = std::acos(std::min(kDistNorm * second_best_dist, 1.0));
+                }
+                else{
+                    best_dist_normed = kDistNorm * best_dist;
+                    second_best_dist_normed = kDistNorm * second_best_dist;
+                }
+
+
+                // Check if match passes ratio test. Keep this comparison >= in order to
+                // ensure that the case of best == second_best is detected.
+                if (best_dist_normed >= max_ratio * second_best_dist_normed) {
+                    std::cout << StringPrintf("skip this keypoint case 2 \n");
+                    continue;
+                }
+
+                std::cout << StringPrintf("add this keypoint, distance = %d \n ", best_dist_normed);
+                num_matches += 1;
+                (*matches)[i1] = best_i2;
+            }
+
+            return num_matches;
         }
 
         size_t FindBestMatchesOneWay(const Eigen::MatrixXi& cosDists,
@@ -279,6 +491,44 @@ namespace bkmap {
             }
 
             return num_matches;
+        }
+
+        void FindBestMatches_d(SiftMatchingOptions::FeatureDistance dType, const Eigen::MatrixXd& dists, const double max_ratio,
+                               FeatureMatches* matches){
+            matches->clear();
+            std::vector<int> matches12;
+            const size_t num_matches12 = FindBestMatchesOneWay_d(dType, dists, max_ratio, &matches12);
+            std::vector<int> matches21;
+            const size_t num_matches21 = FindBestMatchesOneWay_d(dType, dists.transpose(), max_ratio, &matches21);
+
+            for (size_t i1 = 0; i1 < matches12.size(); ++i1) {
+                if (matches12[i1] != -1 && matches21[matches12[i1]] != -1 &&
+                    matches21[matches12[i1]] == static_cast<int>(i1)) {
+                    FeatureMatch match;
+                    match.point2D_idx1 = i1;
+                    match.point2D_idx2 = matches12[i1];
+                    matches->push_back(match);
+                }
+            }
+        }
+
+        void FindBestMatches_i(SiftMatchingOptions::FeatureDistance dType, const Eigen::MatrixXi& dists, const double max_ratio,
+                               FeatureMatches* matches){
+            matches->clear();
+            std::vector<int> matches12;
+            const size_t num_matches12 = FindBestMatchesOneWay_i(dType, dists, max_ratio, &matches12);
+            std::vector<int> matches21;
+            const size_t num_matches21 = FindBestMatchesOneWay_i(dType, dists.transpose(), max_ratio, &matches21);
+
+            for (size_t i1 = 0; i1 < matches12.size(); ++i1) {
+                if (matches12[i1] != -1 && matches21[matches12[i1]] != -1 &&
+                    matches21[matches12[i1]] == static_cast<int>(i1)) {
+                    FeatureMatch match;
+                    match.point2D_idx1 = i1;
+                    match.point2D_idx2 = matches12[i1];
+                    matches->push_back(match);
+                }
+            }
         }
 
         void FindBestMatches(const Eigen::MatrixXi cosDists, const Eigen::MatrixXd& dists, const float max_ratio,
@@ -1908,15 +2158,43 @@ namespace bkmap {
         CHECK_NOTNULL(matches);
 
 //        findBestMatchesKDTree(descriptors1, descriptors2, matches);
+        Eigen::MatrixXd doubleDists;
+        Eigen::MatrixXi intDists;
 
-        const Eigen::MatrixXd dists = ComputeSiftDistanceMatrix(
-                nullptr, nullptr, descriptors1, descriptors2, nullptr);
+        switch(match_options.distanceType){
+            case SiftMatchingOptions::FeatureDistance::EUCLIDEAN: {
+                doubleDists = ComputeSiftEuclideanDistanceMatrix(nullptr, nullptr, descriptors1, descriptors2, nullptr);
+                break;
+            }
+            case SiftMatchingOptions::FeatureDistance::MANHATTAN:{
+                intDists = ComputeSiftManhattanDistanceMatrix(nullptr, nullptr, descriptors1, descriptors2);
+                break;
+            }
+            case SiftMatchingOptions::FeatureDistance::MINKOWSKI:{
+                intDists = ComputeSiftChebyshevDistanceMatrix(nullptr, nullptr, descriptors1, descriptors2);
+                break;
+            }
+            case SiftMatchingOptions::FeatureDistance::COSINE:{
+                intDists = ComputeSiftCosinDistanceMatrix(nullptr, nullptr, descriptors1, descriptors2);
+                break;
+            }
+        }
 
-        const Eigen::MatrixXi cosDists =  ComputeSiftCosinDistanceMatrix(
-                nullptr, nullptr, descriptors1, descriptors2);
+        switch(match_options.distanceType){
+            case SiftMatchingOptions::FeatureDistance::EUCLIDEAN:{
+                FindBestMatches_d(match_options.distanceType, doubleDists, match_options.max_ratio, matches);
+                break;
+            }
+            case SiftMatchingOptions::FeatureDistance::MANHATTAN:
+            case SiftMatchingOptions::FeatureDistance::MINKOWSKI:
+            case SiftMatchingOptions::FeatureDistance::COSINE:{
+                FindBestMatches_i(match_options.distanceType, intDists, match_options.max_ratio, matches);
+                break;
+            }
 
-        FindBestMatches(cosDists, dists, match_options.max_ratio, match_options.max_distance,
-                        match_options.cross_check, matches);
+        }
+
+
     }
 
     void MatchGuidedSiftFeaturesCPU(const SiftMatchingOptions& match_options,
@@ -1964,7 +2242,7 @@ namespace bkmap {
 
         CHECK(guided_filter);
 
-        const Eigen::MatrixXd dists = ComputeSiftDistanceMatrix(
+        const Eigen::MatrixXd dists = ComputeSiftEuclideanDistanceMatrix(
                 &keypoints1, &keypoints2, descriptors1, descriptors2, guided_filter);
 
         const Eigen::MatrixXi cosDists =  ComputeSiftCosinDistanceMatrix(

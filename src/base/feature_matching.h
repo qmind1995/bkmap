@@ -69,6 +69,13 @@ namespace bkmap {
         // Whether to perform guided matching, if geometric verification succeeds.
         bool guided_matching = false;
 
+        enum class FeatureDistance {
+            EUCLIDEAN,
+            MANHATTAN,
+            MINKOWSKI,
+            COSINE
+        };
+        FeatureDistance distanceType = FeatureDistance::COSINE;
         bool Check() const;
     };
 

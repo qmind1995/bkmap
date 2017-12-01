@@ -175,6 +175,8 @@ namespace bkmap {
                                     &sift_matching->multiple_models);
         AddAndRegisterDefaultOption("SiftMatching.guided_matching",
                                     &sift_matching->guided_matching);
+//        AddAndRegisterDefaultOption("SiftMatching.distanceType",
+//                                    &sift_matching->distanceType);
     }
 
     void OptionManager::AddExhaustiveMatchingOptions() {
