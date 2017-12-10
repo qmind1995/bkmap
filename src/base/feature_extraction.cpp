@@ -701,8 +701,8 @@ namespace bkmap {
 
 //                        ExtractLBPFeatures(image_data.bitmap, &image_data.keypoints,
 //                                           &image_data.descriptors );
-                        ExtractSUFTFeatures(image_data.bitmap, &image_data.keypoints,
-                                           &image_data.descriptors);
+//                        ExtractSUFTFeatures(image_data.bitmap, &image_data.keypoints,
+//                                           &image_data.descriptors);
 
                         if (ExtractSiftFeaturesCPU(sift_options_, image_data.bitmap,
                                                    &image_data.keypoints,

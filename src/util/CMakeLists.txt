@@ -15,9 +15,9 @@ BKMAP_ADD_LIBRARY(util
         version.h version.cc
         )
 
-#if(CUDA_ENABLED)
-#    COLMAP_CUDA_ADD_LIBRARY(util_cuda
-#            cuda.h cuda.cc
-#            cudacc.h cudacc.cc
-#            )
-#endif()
+if(CUDA_ENABLED)
+    COLMAP_CUDA_ADD_LIBRARY(util_cuda
+            cuda.h cuda.cc
+            cudacc.h cudacc.cc
+            )
+endif()

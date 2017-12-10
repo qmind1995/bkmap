@@ -74,8 +74,8 @@ namespace bkmap {
         AddSpacer();
 
         AddOptionInt(&options_->sift_matching->num_threads, "num_threads", 1, 16, true);
-        AddOptionBool(&options_->sift_matching->use_gpu, "use_gpu");
-        AddOptionText(&options_->sift_matching->gpu_index, "gpu_index");
+        AddOptionBool(&options_->sift_matching->use_gpu, "use_gpu", true);
+        AddOptionText(&options_->sift_matching->gpu_index, "gpu_index", true);
         AddOptionDouble(&options_->sift_matching->max_ratio, "max_ratio");
         AddOptionDouble(&options_->sift_matching->max_distance, "max_distance");
         AddOptionBool(&options_->sift_matching->cross_check, "cross_check");

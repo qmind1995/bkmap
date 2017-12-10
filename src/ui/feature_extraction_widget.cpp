@@ -77,8 +77,8 @@ namespace bkmap {
         AddOptionBool(&options->sift_extraction->upright, "upright");
 
         AddOptionInt(&options->sift_extraction->num_threads, "num_threads", 1, 16, true);
-        AddOptionBool(&options->sift_extraction->use_gpu, "use_gpu");
-        AddOptionText(&options->sift_extraction->gpu_index, "gpu_index");
+        AddOptionBool(&options->sift_extraction->use_gpu, "use_gpu", true);
+        AddOptionText(&options->sift_extraction->gpu_index, "gpu_index", true);
     }
 
     void SIFTExtractionWidget::Run() {
