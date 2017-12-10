@@ -15,7 +15,7 @@
 #include "ext/SiftGPU/SiftGPU.h"
 #include "optim/ransac.h"
 #include "retrieval/visual_index.h"
-//#include "util/cuda.h"
+#include "util/cuda.h"
 #include "util/misc.h"
 #include "ext/FLANN/flann.hpp"
 #include "ext/VLFeat/kdtree.h"

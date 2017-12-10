@@ -121,9 +121,10 @@
       <sourceFolder url="file://$MODULE_DIR$/src/util/math.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/util/types.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/util/cache.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/util/random.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/util/threading.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/util/cudacc.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/util/cuda.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/util/threading.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/util/option_manager.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/util/CMakeLists.txt" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/util/string.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/util/random.h" isTestSource="false" />
@@ -139,12 +140,13 @@
       <sourceFolder url="file://$MODULE_DIR$/src/util/opengl_utils.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/util/camera_specs.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/util/math.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/util/threading.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/util/version.cc" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/util/option_manager.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/util/endian.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/util/misc.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/util/sqlite3_utils.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/util/option_manager.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/util/random.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/util/string.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/base/reconstruction.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/base/feature_extraction.cpp" isTestSource="false" />
@@ -434,9 +436,9 @@
       <sourceFolder url="file://$MODULE_DIR$/src/ext/VLFeat/ikmeans_elkan.tc" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ext/PoissonRecon/MAT.inl" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ext/PoissonRecon/Geometry.inl" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/ext/PoissonRecon/PPolynomial.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/ext/PoissonRecon/PlyFile.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ext/PoissonRecon/Geometry.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/ext/PoissonRecon/MultiGridOctreeData.Evaluation.inl" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/ext/PoissonRecon/PPolynomial.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ext/PoissonRecon/MultiGridOctreeData.SortedTreeNodes.inl" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ext/PoissonRecon/Array.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ext/PoissonRecon/MultiGridOctreeData.inl" isTestSource="false" />
@@ -465,8 +467,8 @@
       <sourceFolder url="file://$MODULE_DIR$/src/ext/PoissonRecon/MarchingCubes.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ext/PoissonRecon/Ply.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ext/PoissonRecon/Polynomial.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/ext/PoissonRecon/MultiGridOctreeData.Evaluation.inl" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ext/PoissonRecon/PointStream.inl" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/ext/PoissonRecon/PlyFile.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ext/PoissonRecon/MultiGridOctreeData.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ext/PoissonRecon/FunctionData.inl" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ext/PoissonRecon/MyTime.h" isTestSource="false" />

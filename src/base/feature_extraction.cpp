@@ -12,7 +12,7 @@
 #include "ext/VLFeat/sift.h"
 #include "ext/VLFeat/generic.h"
 #include "ext/VLFeat/lbp.h"
-//#include "util/cuda.h"
+#include "util/cuda.h"
 #include "util/misc.h"
 #include <opencv2/opencv.hpp>
 
@@ -96,9 +96,31 @@ namespace bkmap {
                         extractor_queue_.get()));
             }
         }
-        for (int i = 0; i < num_threads; ++i) {
-            extractors_.emplace_back(new internal::SiftCPUFeatureExtractorThread(
-                    sift_options_, extractor_queue_.get(), writer_queue_.get()));
+
+        if (sift_options_.use_gpu) {
+            std::vector<int> gpu_indices = CSVToVector<int>(sift_options_.gpu_index);
+            CHECK_GT(gpu_indices.size(), 0);
+
+            #ifdef CUDA_ENABLED
+                        if (gpu_indices.size() == 1 && gpu_indices[0] == -1) {
+                  const int num_cuda_devices = GetNumCudaDevices();
+                  CHECK_GT(num_cuda_devices, 0);
+                  gpu_indices.resize(num_cuda_devices);
+                  std::iota(gpu_indices.begin(), gpu_indices.end(), 0);
+                }
+            #endif  // CUDA_ENABLED
+
+            auto sift_gpu_options = sift_options_;
+            for (const auto& gpu_index : gpu_indices) {
+                sift_gpu_options.gpu_index = std::to_string(gpu_index);
+                extractors_.emplace_back(new internal::SiftGPUFeatureExtractorThread(
+                        sift_gpu_options, extractor_queue_.get(), writer_queue_.get()));
+            }
+        } else {
+            for (int i = 0; i < num_threads; ++i) {
+                extractors_.emplace_back(new internal::SiftCPUFeatureExtractorThread(
+                        sift_options_, extractor_queue_.get(), writer_queue_.get()));
+            }
         }
 
         writer_.reset(new internal::FeatureWriterThread(
@@ -698,12 +720,6 @@ namespace bkmap {
                     auto image_data = input_job.Data();
 
                     if (image_data.status == ImageReader::Status::SUCCESS) {
-
-//                        ExtractLBPFeatures(image_data.bitmap, &image_data.keypoints,
-//                                           &image_data.descriptors );
-//                        ExtractSUFTFeatures(image_data.bitmap, &image_data.keypoints,
-//                                           &image_data.descriptors);
-
                         if (ExtractSiftFeaturesCPU(sift_options_, image_data.bitmap,
                                                    &image_data.keypoints,
                                                    &image_data.descriptors)) {
@@ -724,6 +740,62 @@ namespace bkmap {
         }
 
 
+        SiftGPUFeatureExtractorThread::SiftGPUFeatureExtractorThread(
+                const SiftExtractionOptions& sift_options, JobQueue<ImageData>* input_queue,
+                JobQueue<ImageData>* output_queue)
+                : sift_options_(sift_options),
+                  input_queue_(input_queue),
+                  output_queue_(output_queue) {
+            CHECK(sift_options_.Check());
+
+            #ifndef CUDA_ENABLED
+                        opengl_context_.reset(new OpenGLContextManager());
+            #endif
+        }
+
+        void SiftGPUFeatureExtractorThread::Run() {
+            #ifndef CUDA_ENABLED
+                        CHECK(opengl_context_);
+                        opengl_context_->MakeCurrent();
+            #endif
+
+            SiftGPU sift_gpu;
+            if (!CreateSiftGPUExtractor(sift_options_, &sift_gpu)) {
+                std::cerr << "ERROR: SiftGPU not fully supported." << std::endl;
+                SignalInvalidSetup();
+                return;
+            }
+
+            SignalValidSetup();
+
+            while (true) {
+                if (IsStopped()) {
+                    break;
+                }
+
+                const auto input_job = input_queue_->Pop();
+                if (input_job.IsValid()) {
+                    auto image_data = input_job.Data();
+
+                    if (image_data.status == ImageReader::Status::SUCCESS) {
+                        if (ExtractSiftFeaturesGPU(sift_options_, image_data.bitmap, &sift_gpu,
+                                                   &image_data.keypoints,
+                                                   &image_data.descriptors)) {
+                            ScaleKeypoints(image_data.bitmap, image_data.camera,
+                                           &image_data.keypoints);
+                        } else {
+                            image_data.status = ImageReader::Status::FAILURE;
+                        }
+                    }
+
+                    image_data.bitmap.Deallocate();
+
+                    output_queue_->Push(image_data);
+                } else {
+                    break;
+                }
+            }
+        }
 
         FeatureWriterThread::FeatureWriterThread(const size_t num_images,
                                                  Database* database,
