@@ -23,13 +23,13 @@ int main(int argc, char* argv[]) {
   InitializeGlog(argv);
 
   std::string workspace_path;
-  std::string workspace_format = "COLMAP";
+  std::string workspace_format = "BKMAP";
   std::string pmvs_option_name = "option-all";
 
   OptionManager options;
   options.AddRequiredOption("workspace_path", &workspace_path);
   options.AddDefaultOption("workspace_format", &workspace_format,
-                           "{COLMAP, PMVS}");
+                           "{BKMAP, PMVS}");
   options.AddDefaultOption("pmvs_option_name", &pmvs_option_name);
   options.AddDenseStereoOptions();
   options.Parse(argc, argv);
@@ -37,7 +37,7 @@ int main(int argc, char* argv[]) {
   StringToLower(&workspace_format);
   if (workspace_format != "bkmap" && workspace_format != "pmvs") {
     std::cout << "ERROR: Invalid `workspace_format` - supported values are "
-                 "'COLMAP' or 'PMVS'."
+                 "'BKMAP' or 'PMVS'."
               << std::endl;
     return EXIT_FAILURE;
   }
