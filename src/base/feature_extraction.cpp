@@ -408,45 +408,45 @@ namespace bkmap {
         return true;
     }
 
-    bool ExtractSUFTFeatures(const Bitmap& bitmap, FeatureKeypoints* keypoints,
-                             FeatureDescriptors* descriptors){
-        cv::Mat img_1 = cv::imread( bitmap.path_, cv::IMREAD_GRAYSCALE );
-        const std::vector<uint8_t> data_uint8 = bitmap.ConvertToRowMajorArray();
-        std::vector<float> data_float(data_uint8.size());
+    // bool ExtractSUFTFeatures(const Bitmap& bitmap, FeatureKeypoints* keypoints,
+    //                          FeatureDescriptors* descriptors){
+    //     cv::Mat img_1 = cv::imread( bitmap.path_, cv::IMREAD_GRAYSCALE );
+    //     const std::vector<uint8_t> data_uint8 = bitmap.ConvertToRowMajorArray();
+    //     std::vector<float> data_float(data_uint8.size());
 
-        for (size_t i = 0; i < data_uint8.size(); ++i) {
-            data_float[i] = static_cast<float>(data_uint8[i]) / 255.0f;
-        }
+    //     for (size_t i = 0; i < data_uint8.size(); ++i) {
+    //         data_float[i] = static_cast<float>(data_uint8[i]) / 255.0f;
+    //     }
 
-        return true;
-    }
+    //     return true;
+    // }
 
-    bool ExtractLBPFeatures(const Bitmap& bitmap, FeatureKeypoints* keypoints,
-                            FeatureDescriptors* descriptors){
-        const std::vector<uint8_t> data_uint8 = bitmap.ConvertToRowMajorArray();
-        std::vector<float> data_float(data_uint8.size());
+    // bool ExtractLBPFeatures(const Bitmap& bitmap, FeatureKeypoints* keypoints,
+    //                         FeatureDescriptors* descriptors){
+    //     const std::vector<uint8_t> data_uint8 = bitmap.ConvertToRowMajorArray();
+    //     std::vector<float> data_float(data_uint8.size());
 
-        for (size_t i = 0; i < data_uint8.size(); ++i) {
-            data_float[i] = static_cast<float>(data_uint8[i]) / 255.0f;
-        }
-        VlLbp* _lbp = vl_lbp_new(VlLbpUniform, VL_TRUE);
+    //     for (size_t i = 0; i < data_uint8.size(); ++i) {
+    //         data_float[i] = static_cast<float>(data_uint8[i]) / 255.0f;
+    //     }
+    //     VlLbp* _lbp = vl_lbp_new(VlLbpUniform, VL_TRUE);
 
-        vl_size width, height, dimension, cellSize = 16;
-        width = static_cast <vl_size> (std::floor(bitmap.Width() / cellSize));
-        height = static_cast <vl_size> (std::floor(bitmap.Height() / cellSize));
-        dimension = vl_lbp_get_dimension(_lbp);
-        std::vector<float> features(width * height * dimension);
+    //     vl_size width, height, dimension, cellSize = 16;
+    //     width = static_cast <vl_size> (std::floor(bitmap.Width() / cellSize));
+    //     height = static_cast <vl_size> (std::floor(bitmap.Height() / cellSize));
+    //     dimension = vl_lbp_get_dimension(_lbp);
+    //     std::vector<float> features(width * height * dimension);
 
-        vl_lbp_process(_lbp,
-                       features.data(),
-                       data_float.data(),
-                       static_cast <vl_size> (bitmap.Width()),
-                       static_cast <vl_size> (bitmap.Height()),
-                       cellSize);
+    //     vl_lbp_process(_lbp,
+    //                    features.data(),
+    //                    data_float.data(),
+    //                    static_cast <vl_size> (bitmap.Width()),
+    //                    static_cast <vl_size> (bitmap.Height()),
+    //                    cellSize);
 
 
-        return true;
-    }
+    //     return true;
+    // }
 
     bool CreateSiftGPUExtractor(const SiftExtractionOptions& options,
                                 SiftGPU* sift_gpu) {
