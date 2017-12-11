@@ -269,15 +269,15 @@ namespace bkmap {
             return;
         }
 
-#ifdef CUDA_ENABLED
-        mvs::PatchMatchController* processor = new mvs::PatchMatchController(
-      *options_->dense_stereo, workspace_path, "COLMAP", "");
-  processor->AddCallback(Thread::FINISHED_CALLBACK,
-                         [this]() { refresh_workspace_action_->trigger(); });
-  thread_control_widget_->StartThread("Stereo...", true, processor);
-#else
-        QMessageBox::critical(this, "", tr("CUDA not supported"));
-#endif
+//#ifdef CUDA_ENABLED
+//        mvs::PatchMatchController* processor = new mvs::PatchMatchController(
+//      *options_->dense_stereo, workspace_path, "COLMAP", "");
+//  processor->AddCallback(Thread::FINISHED_CALLBACK,
+//                         [this]() { refresh_workspace_action_->trigger(); });
+//  thread_control_widget_->StartThread("Stereo...", true, processor);
+//#else
+//        QMessageBox::critical(this, "", tr("CUDA not supported"));
+//#endif
     }
 
     void DenseReconstructionWidget::Fusion() {
