@@ -14,7 +14,6 @@
 #include "ext/VLFeat/lbp.h"
 #include "util/cuda.h"
 #include "util/misc.h"
-#include <opencv2/opencv.hpp>
 
 namespace bkmap {
     namespace {
