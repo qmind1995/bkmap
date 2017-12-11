@@ -148,10 +148,6 @@ namespace bkmap {
         if (IsStopped()) {
             return;
         }
-
-        if (options_.dense) {
-            RunDenseMapper();
-        }
     }
 
     void AutomaticReconstructionController::RunFeatureExtraction() {
@@ -218,92 +214,7 @@ namespace bkmap {
     }
 
     void AutomaticReconstructionController::RunDenseMapper() {
-#ifndef CUDA_ENABLED
-        std::cout
-        << std::endl
-        << "WARNING: Skipping dense reconstruction because CUDA is not available"
-        << std::endl;
-        return;
-#endif
 
-        CreateDirIfNotExists(JoinPaths(options_.workspace_path, "dense"));
-
-        for (size_t i = 0; i < reconstruction_manager_->Size(); ++i) {
-            if (IsStopped()) {
-                return;
-            }
-
-            const std::string dense_path =
-                    JoinPaths(options_.workspace_path, "dense", std::to_string(i));
-            const std::string fused_path = JoinPaths(dense_path, "fused.ply");
-            const std::string meshed_path = JoinPaths(dense_path, "meshed.ply");
-
-            if (ExistsFile(fused_path) && ExistsFile(meshed_path)) {
-                continue;
-            }
-
-            // Image undistortion
-
-            if (!ExistsDir(dense_path)) {
-                CreateDirIfNotExists(dense_path);
-
-                UndistortCameraOptions undistortion_options;
-                undistortion_options.max_image_size =
-                        option_manager_.dense_stereo->max_image_size;
-                COLMAPUndistorter undistorter(undistortion_options,
-                                              reconstruction_manager_->Get(i),
-                                              *option_manager_.image_path, dense_path);
-                active_thread_ = &undistorter;
-                undistorter.Start();
-                undistorter.Wait();
-                active_thread_ = nullptr;
-            }
-
-            if (IsStopped()) {
-                return;
-            }
-
-            // Dense stereo
-
-            {
-                mvs::PatchMatchController patch_match_controller(
-                        *option_manager_.dense_stereo, dense_path, "COLMAP", "");
-                active_thread_ = &patch_match_controller;
-                patch_match_controller.Start();
-                patch_match_controller.Wait();
-                active_thread_ = nullptr;
-            }
-
-            if (IsStopped()) {
-                return;
-            }
-
-            // Dense fusion
-
-            if (!ExistsFile(fused_path)) {
-                mvs::StereoFusion fuser(
-                        *option_manager_.dense_fusion, dense_path, "COLMAP", "",
-                        options_.quality == Quality::HIGH ? "geometric" : "photometric");
-                active_thread_ = &fuser;
-                fuser.Start();
-                fuser.Wait();
-                active_thread_ = nullptr;
-
-                std::cout << "Writing output: " << fused_path << std::endl;
-                WritePlyBinary(fused_path, fuser.GetFusedPoints());
-            }
-
-            if (IsStopped()) {
-                return;
-            }
-
-            // Dense meshing
-
-            if (!ExistsFile(meshed_path)) {
-                mvs::PoissonReconstruction(*option_manager_.dense_meshing, fused_path,
-                                           meshed_path);
-            }
-        }
     }
 
 }
