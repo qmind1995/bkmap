@@ -57,6 +57,6 @@ BKMAP_ADD_EXECUTABLE(vocab_tree_matcher vocab_tree_matcher.cpp)
 BKMAP_ADD_EXECUTABLE(vocab_tree_retriever vocab_tree_retriever.cpp)
 
 if(CUDA_ENABLED)
-    COLMAP_ADD_EXECUTABLE(dense_stereo dense_stereo.cpp)
+    BKMAP_ADD_EXECUTABLE(dense_stereo dense_stereo.cpp)
     target_include_directories(dense_stereo PUBLIC ${CUDA_INCLUDE_DIRS})
 endif()
