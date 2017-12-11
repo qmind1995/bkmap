@@ -57,11 +57,9 @@ set(BKMAP_LIBRARIES
 if(CUDA_ENABLED)
     set(BKMAP_LIBRARIES
         mvs
-        mvs_cuda
         util_cuda
         ${BKMAP_LIBRARIES}
         mvs
-        mvs_cuda
         mvs
         util_cuda)
 endif()
