@@ -203,29 +203,7 @@ macro(BKMAP_ADD_EXECUTABLE TARGET_NAME)
 endmacro(BKMAP_ADD_EXECUTABLE)
 
 # Wrapper for test executables
-macro(BKMAP_ADD_TEST TARGET_NAME)
-    if(TESTS_ENABLED)
-        # ${ARGN} will store the list of source files passed to this function.
-        add_executable(${TARGET_NAME} ${ARGN})
-        target_link_libraries(${TARGET_NAME}
-                              ${BKMAP_LIBRARIES}
-                              ${Boost_UNIT_TEST_FRAMEWORK_LIBRARY})
-        BKMAP_ADD_TARGET_HELPER(${TARGET_NAME})
-        add_test("${FOLDER_NAME}/${TARGET_NAME}" ${TARGET_NAME})
-        install(TARGETS ${TARGET_NAME} DESTINATION test/)
-    endif()
-endmacro(BKMAP_ADD_TEST)
+
 
 # Wrapper for CUDA test executables
-macro(BKMAP_CUDA_ADD_TEST TARGET_NAME)
-    if(TESTS_ENABLED)
-        # ${ARGN} will store the list of source files passed to this function.
-        cuda_add_executable(${TARGET_NAME} ${ARGN})
-        target_link_libraries(${TARGET_NAME}
-                              ${BKMAP_LIBRARIES}
-                              ${Boost_UNIT_TEST_FRAMEWORK_LIBRARY})
-        BKMAP_ADD_TARGET_HELPER(${TARGET_NAME})
-        add_test("${FOLDER_NAME}/${TARGET_NAME}" ${TARGET_NAME})
-        install(TARGETS ${TARGET_NAME} DESTINATION test/)
-    endif()
-endmacro(BKMAP_CUDA_ADD_TEST)
+

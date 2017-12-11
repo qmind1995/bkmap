@@ -42,7 +42,5 @@ if(CUDA_ENABLED)
             )
 
     # MSVC/NVCC cannot compile the Boost unit test suite.
-    if(NOT IS_MSVC)
-        BKMAP_CUDA_ADD_TEST(gpu_mat_test gpu_mat_test.cu)
-    endif()
+
 endif()
