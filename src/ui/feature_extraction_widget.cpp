@@ -144,11 +144,12 @@ namespace bkmap {
         camera_model_cb_ = new QComboBox(this);
 
         #define CAMERA_MODEL_CASE(CameraModel)                                     \
-          camera_model_cb_->addItem(                                               \
+          if(CameraModel::model_id <=4){                                            \
+            camera_model_cb_->addItem(                                              \
               QString::fromStdString(CameraModelIdToName(CameraModel::model_id))); \
-          camera_model_ids_.push_back(static_cast<int>(CameraModel::model_id));
-
-                CAMERA_MODEL_CASES
+            camera_model_ids_.push_back(static_cast<int>(CameraModel::model_id));\
+            }\
+          CAMERA_MODEL_CASES
 
         #undef CAMERA_MODEL_CASE
 
