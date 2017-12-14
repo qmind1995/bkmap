@@ -132,6 +132,14 @@ namespace bkmap {
                 options_->sift_matching->distanceType = SiftMatchingOptions::FeatureDistance::COSINE;
                 break;
             }
+            case 4:{
+                options_->sift_matching->distanceType = SiftMatchingOptions::FeatureDistance::CHI_SQUARE;
+                break;
+            }
+            case 5:{
+                options_->sift_matching->distanceType = SiftMatchingOptions::FeatureDistance::PEARSON_CORRELATION;
+                break;
+            }
             default:break;
         }
 

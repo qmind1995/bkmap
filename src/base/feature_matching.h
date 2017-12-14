@@ -73,7 +73,9 @@ namespace bkmap {
             EUCLIDEAN,
             MANHATTAN,
             MINKOWSKI,
-            COSINE
+            COSINE,
+            CHI_SQUARE,
+            PEARSON_CORRELATION
         };
         FeatureDistance distanceType = FeatureDistance::COSINE;
         bool Check() const;

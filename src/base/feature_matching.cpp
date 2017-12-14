@@ -193,12 +193,78 @@ namespace bkmap {
                                       (*keypoints2)[i2].x, (*keypoints2)[i2].y)) {
                         dists(i1, i2) = 0;
                     } else {
-                        int dist_ = 0;
+                        double dist_ = 0;
                         for(int fi =0; fi< 128; fi++){
                             dist_ += ( descriptors1_int(i1, fi) - descriptors2_int(i2, fi) ) * ( descriptors1_int(i1, fi) - descriptors2_int(i2, fi) );
                         }
                         dists(i1, i2) = std::sqrt(dist_);
-//                        dists(i1, i2) = descriptors1_int.row(i1).dot(descriptors2_int.row(i2));
+                    }
+                }
+            }
+
+            return dists;
+        }
+
+        Eigen::MatrixXd ComputeSiftChiSquareDistanceMatrix(const FeatureKeypoints* keypoints1, const FeatureKeypoints* keypoints2,
+                                                           const FeatureDescriptors& descriptors1,
+                                                           const FeatureDescriptors& descriptors2){
+            const Eigen::Matrix<int, Eigen::Dynamic, 128> descriptors1_int =
+                    descriptors1.cast<int>();
+            const Eigen::Matrix<int, Eigen::Dynamic, 128> descriptors2_int =
+                    descriptors2.cast<int>();
+            Eigen::Matrix<double, Eigen::Dynamic, Eigen::Dynamic, Eigen::RowMajor> dists(
+                    descriptors1.rows(), descriptors2.rows());
+            for (FeatureDescriptors::Index i1 = 0; i1 < descriptors1.rows(); ++i1) {
+                for (FeatureDescriptors::Index i2 = 0; i2 < descriptors2.rows(); ++i2) {
+                    double dist_ = 0;
+                    for(int fi =0; fi< 128; fi++){
+                        if(descriptors1_int(i1, fi) + descriptors2_int(i2, fi) >= 0.01 ){
+                            dist_ +=  ( descriptors1_int(i1, fi) - descriptors2_int(i2, fi) )
+                                     * ( descriptors1_int(i1, fi) - descriptors2_int(i2, fi) )
+                                     / ( descriptors1_int(i1, fi) + descriptors2_int(i2, fi) );
+                        }
+                    }
+                    dists(i1, i2) = dist_;
+
+                }
+            }
+            return dists;
+        }
+
+        Eigen::MatrixXd ComputeSiftPEARSON_CORRELATIONDistanceMatrix(const FeatureKeypoints* keypoints1, const FeatureKeypoints* keypoints2,
+                                                                 const FeatureDescriptors& descriptors1,
+                                                                 const FeatureDescriptors& descriptors2){
+            const Eigen::Matrix<int, Eigen::Dynamic, 128> descriptors1_int =
+                    descriptors1.cast<int>();
+            const Eigen::Matrix<int, Eigen::Dynamic, 128> descriptors2_int =
+                    descriptors2.cast<int>();
+            Eigen::Matrix<double, Eigen::Dynamic, Eigen::Dynamic, Eigen::RowMajor> dists(
+                    descriptors1.rows(), descriptors2.rows());
+
+            for (FeatureDescriptors::Index i1 = 0; i1 < descriptors1.rows(); ++i1) {
+                for (FeatureDescriptors::Index i2 = 0; i2 < descriptors2.rows(); ++i2) {
+                    double dist_upper = 0;
+                    double dist_lower = 0;
+                    double dist_avg_1 = 0;
+                    double dist_avg_2 = 0;
+
+                    for (int fi = 0; fi < 128; fi++) {
+                        dist_avg_1 += descriptors1_int(i1, fi);
+                        dist_avg_2 += descriptors1_int(i2, fi);
+                    }
+                    dist_avg_1 = dist_avg_1/128;
+                    dist_avg_2 = dist_avg_2/128;
+
+                    for (int fi = 0; fi < 128; fi++) {
+                        double tmp = (descriptors1_int(i1, fi) - dist_avg_1) * (descriptors1_int(i2, fi) - dist_avg_2);
+                        dist_upper += tmp;
+                        dist_lower += tmp*tmp;
+                    }
+                    if(dist_lower <= 0.01){
+                        dists(i1, i2) = 0;
+                    }
+                    else{
+                        dists(i1, i2) = dist_upper/ std::sqrt(dist_lower);
                     }
                 }
             }
@@ -265,6 +331,8 @@ namespace bkmap {
             switch (dType){
                 case SiftMatchingOptions::FeatureDistance::EUCLIDEAN :
                 case SiftMatchingOptions::FeatureDistance::MANHATTAN:
+                case SiftMatchingOptions::FeatureDistance::CHI_SQUARE:
+                case SiftMatchingOptions::FeatureDistance::PEARSON_CORRELATION:
                 case SiftMatchingOptions::FeatureDistance::MINKOWSKI:{
                     best = 100000000;
                     break;
@@ -347,6 +415,8 @@ namespace bkmap {
             switch (dType){
                 case SiftMatchingOptions::FeatureDistance::EUCLIDEAN :
                 case SiftMatchingOptions::FeatureDistance::MANHATTAN:
+                case SiftMatchingOptions::FeatureDistance::CHI_SQUARE:
+                case SiftMatchingOptions::FeatureDistance ::PEARSON_CORRELATION:
                 case SiftMatchingOptions::FeatureDistance::MINKOWSKI:{
                     best = 100000000;
                     break;
@@ -2166,6 +2236,14 @@ namespace bkmap {
                 doubleDists = ComputeSiftEuclideanDistanceMatrix(nullptr, nullptr, descriptors1, descriptors2, nullptr);
                 break;
             }
+            case SiftMatchingOptions::FeatureDistance::CHI_SQUARE :{
+                doubleDists = ComputeSiftChiSquareDistanceMatrix(nullptr, nullptr, descriptors1, descriptors2);
+                break;
+            }
+            case SiftMatchingOptions::FeatureDistance::PEARSON_CORRELATION:{
+                doubleDists = ComputeSiftPEARSON_CORRELATIONDistanceMatrix(nullptr, nullptr, descriptors1, descriptors2);
+                break;
+            }
             case SiftMatchingOptions::FeatureDistance::MANHATTAN:{
                 intDists = ComputeSiftManhattanDistanceMatrix(nullptr, nullptr, descriptors1, descriptors2);
                 break;
@@ -2181,7 +2259,9 @@ namespace bkmap {
         }
 
         switch(match_options.distanceType){
-            case SiftMatchingOptions::FeatureDistance::EUCLIDEAN:{
+            case SiftMatchingOptions::FeatureDistance::EUCLIDEAN:
+            case SiftMatchingOptions::FeatureDistance::PEARSON_CORRELATION:
+            case SiftMatchingOptions::FeatureDistance::CHI_SQUARE:{
                 FindBestMatches_d(match_options.distanceType, doubleDists, match_options.max_ratio, matches);
                 break;
             }

@@ -146,6 +146,8 @@ namespace bkmap {
         cb->addItem("MANHATTAN");
         cb->addItem("MINKOWSKI");
         cb->addItem("COSINE");
+        cb->addItem("CHI_SQUARE");
+        cb->addItem("PEARSON_CORRELATION");
         AddOptionRow("Distance type", cb);
         return cb;
     }
