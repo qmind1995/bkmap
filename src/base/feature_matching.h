@@ -354,7 +354,7 @@ namespace bkmap {
             int overlap = 5;
 
             // Whether to match images against their quadratic neighbors.
-            bool quadratic_overlap = true;
+            bool quadratic_overlap = false;
 
             // Whether to enable vocabulary tree based loop detection.
             bool loop_detection = false;

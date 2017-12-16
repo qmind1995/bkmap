@@ -151,7 +151,7 @@ namespace bkmap {
             : FeatureMatchingTab(parent, options) {
         AddOptionInt(&options_->sequential_matching->overlap, "overlap", 1, 10, true);
         AddOptionBool(&options_->sequential_matching->quadratic_overlap,
-                      "quadratic_overlap", true);
+                      "quadratic_overlap");
         AddOptionBool(&options_->sequential_matching->loop_detection,
                       "loop_detection");
         AddOptionInt(&options_->sequential_matching->loop_detection_period,
@@ -193,6 +193,14 @@ namespace bkmap {
             }
             case 3:{
                 options_->sift_matching->distanceType = SiftMatchingOptions::FeatureDistance::COSINE;
+                break;
+            }
+            case 4:{
+                options_->sift_matching->distanceType = SiftMatchingOptions::FeatureDistance::CHI_SQUARE;
+                break;
+            }
+            case 5:{
+                options_->sift_matching->distanceType = SiftMatchingOptions::FeatureDistance::PEARSON_CORRELATION;
                 break;
             }
             default:break;

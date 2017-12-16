@@ -148,6 +148,7 @@ namespace bkmap {
         cb->addItem("COSINE");
         cb->addItem("CHI_SQUARE");
         cb->addItem("PEARSON_CORRELATION");
+        cb->setCurrentIndex(3);
         AddOptionRow("Distance type", cb);
         return cb;
     }
