@@ -2240,7 +2240,7 @@ namespace bkmap {
                 doubleDists = ComputeSiftChiSquareDistanceMatrix(nullptr, nullptr, descriptors1, descriptors2);
                 break;
             }
-            case SiftMatchingOptions::FeatureDistance::PEARSomputeON_CORRELATION:{
+            case SiftMatchingOptions::FeatureDistance::PEARSON_CORRELATION:{
                 doubleDists = ComputeSiftPEARSON_CORRELATIONDistanceMatrix(nullptr, nullptr, descriptors1, descriptors2);
                 break;
             }
