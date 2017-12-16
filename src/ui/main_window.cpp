@@ -195,9 +195,9 @@ namespace bkmap {
         connect(action_reconstruction_start_, &QAction::triggered, this, &MainWindow::ReconstructionStart);
         blocking_actions_.push_back(action_reconstruction_start_);
 
-        action_reconstruction_step_ = new QAction(QIcon(":/media/reconstruction-step.png"), tr("Reconstruct next image"), this);
-        connect(action_reconstruction_step_, &QAction::triggered, this, &MainWindow::ReconstructionStep);
-        blocking_actions_.push_back(action_reconstruction_step_);
+//        action_reconstruction_step_ = new QAction(QIcon(":/media/reconstruction-step.png"), tr("Reconstruct next image"), this);
+//        connect(action_reconstruction_step_, &QAction::triggered, this, &MainWindow::ReconstructionStep);
+//        blocking_actions_.push_back(action_reconstruction_step_);
 
         action_reconstruction_pause_ = new QAction(QIcon(":/media/reconstruction-pause.png"), tr("Pause reconstruction"), this);
         connect(action_reconstruction_pause_, &QAction::triggered, this, &MainWindow::ReconstructionPause);
@@ -365,7 +365,7 @@ namespace bkmap {
         reconstruction_menu->addSeparator();
         reconstruction_menu->addAction(action_reconstruction_start_);
         reconstruction_menu->addAction(action_reconstruction_pause_);
-        reconstruction_menu->addAction(action_reconstruction_step_);
+//        reconstruction_menu->addAction(action_reconstruction_step_);
         reconstruction_menu->addSeparator();
         reconstruction_menu->addAction(action_reconstruction_reset_);
         reconstruction_menu->addAction(action_reconstruction_normalize_);
@@ -430,7 +430,7 @@ namespace bkmap {
         reconstruction_toolbar_ = addToolBar(tr("Reconstruction"));
 //        reconstruction_toolbar_->addAction(action_automatic_reconstruction_);
         reconstruction_toolbar_->addAction(action_reconstruction_start_);
-        reconstruction_toolbar_->addAction(action_reconstruction_step_);
+//        reconstruction_toolbar_->addAction(action_reconstruction_step_);
         reconstruction_toolbar_->addAction(action_reconstruction_pause_);
 //        reconstruction_toolbar_->addAction(action_reconstruction_options_);
 //        reconstruction_toolbar_->addAction(action_bundle_adjustment_);
@@ -907,10 +907,10 @@ namespace bkmap {
             return;
         }
 
-        action_reconstruction_step_->setEnabled(false);
+//        action_reconstruction_step_->setEnabled(false);
         ReconstructionStart();
         ReconstructionPause();
-        action_reconstruction_step_->setEnabled(true);
+//        action_reconstruction_step_->setEnabled(true);
     }
 
     void MainWindow::ReconstructionPause() {
@@ -930,7 +930,7 @@ namespace bkmap {
         mapper_controller_->Stop();
         EnableBlockingActions();
         action_reconstruction_start_->setEnabled(false);
-        action_reconstruction_step_->setEnabled(false);
+//        action_reconstruction_step_->setEnabled(false);
         action_reconstruction_pause_->setEnabled(false);
     }
 
@@ -954,9 +954,9 @@ namespace bkmap {
         if (!IsSelectedReconstructionValid()) {
             return;
         }
-        action_reconstruction_step_->setEnabled(false);
+//        action_reconstruction_step_->setEnabled(false);
         reconstruction_manager_.Get(SelectedReconstructionIdx()).Normalize();
-        action_reconstruction_step_->setEnabled(true);
+//        action_reconstruction_step_->setEnabled(true);
     }
 
     bool MainWindow::ReconstructionOverwrite() {

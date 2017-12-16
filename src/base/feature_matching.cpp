@@ -250,7 +250,7 @@ namespace bkmap {
 
                     for (int fi = 0; fi < 128; fi++) {
                         dist_avg_1 += descriptors1_int(i1, fi);
-                        dist_avg_2 += descriptors1_int(i2, fi);
+                        dist_avg_2 += descriptors2_int(i2, fi);
                     }
                     dist_avg_1 = dist_avg_1/128;
                     dist_avg_2 = dist_avg_2/128;
@@ -2240,7 +2240,7 @@ namespace bkmap {
                 doubleDists = ComputeSiftChiSquareDistanceMatrix(nullptr, nullptr, descriptors1, descriptors2);
                 break;
             }
-            case SiftMatchingOptions::FeatureDistance::PEARSON_CORRELATION:{
+            case SiftMatchingOptions::FeatureDistance::PEARSomputeON_CORRELATION:{
                 doubleDists = ComputeSiftPEARSON_CORRELATIONDistanceMatrix(nullptr, nullptr, descriptors1, descriptors2);
                 break;
             }
