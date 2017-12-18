@@ -396,7 +396,7 @@ namespace bkmap {
                     continue;
                 }
 
-                std::cout << StringPrintf("add this keypoint, distance = %d \n ", best_dist_normed);
+//                std::cout << StringPrintf("distance = %d \n ", best_dist_normed);
                 num_matches += 1;
                 (*matches)[i1] = best_i2;
             }
@@ -418,7 +418,7 @@ namespace bkmap {
                 case SiftMatchingOptions::FeatureDistance::CHI_SQUARE:
                 case SiftMatchingOptions::FeatureDistance ::PEARSON_CORRELATION:
                 case SiftMatchingOptions::FeatureDistance::MINKOWSKI:{
-                    best = 100000000;
+                    best = std::numeric_limits<int>::max() ;
                     break;
                 }
                 case SiftMatchingOptions::FeatureDistance::COSINE:{
@@ -457,7 +457,7 @@ namespace bkmap {
                 // Check if any match found.
                 if (best_i2 == -1 ) {
                     continue;
-                    std::cout << StringPrintf("skip this keypoint case 1 \n");
+//                    std::cout << StringPrintf("skip this keypoint case 1 \n");
                 }
 
                 double best_dist_normed = 0;
@@ -476,7 +476,7 @@ namespace bkmap {
                 // Check if match passes ratio test. Keep this comparison >= in order to
                 // ensure that the case of best == second_best is detected.
                 if (best_dist_normed >= max_ratio * second_best_dist_normed) {
-                    std::cout << StringPrintf("skip this keypoint case 2 \n");
+//                    std::cout << StringPrintf("skip this keypoint case 2 \n");
                     continue;
                 }
 

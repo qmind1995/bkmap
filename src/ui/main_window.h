@@ -123,6 +123,8 @@ namespace bkmap {
 
         void WriteAnalysisFile();
 
+        void RenderCamera();
+
         OptionManager options_;
 
         ReconstructionManager reconstruction_manager_;
@@ -187,6 +189,7 @@ namespace bkmap {
         QAction* action_reconstruction_finish_;
         QAction* action_reconstruction_normalize_;
         QAction* action_reconstruction_options_;
+        QAction* action_render_camera;
 
         QAction* action_bundle_adjustment_;
         QAction* action_dense_reconstruction_;

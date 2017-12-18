@@ -174,6 +174,11 @@ namespace bkmap {
                 &MainWindow::FeatureExtraction);
         blocking_actions_.push_back(action_feature_extraction_);
 
+        action_render_camera = new QAction(QIcon(":/media/grab-image.png"), tr("Render Camera"), this);
+        connect(action_render_camera, &QAction::triggered, this,
+                &MainWindow::RenderCamera);
+        blocking_actions_.push_back(action_render_camera);
+
         action_feature_matching_ = new QAction(QIcon(":/media/feature-matching.png"), tr("Feature matching"), this);
         connect(action_feature_matching_, &QAction::triggered, this,
                 &MainWindow::FeatureMatching);
@@ -414,43 +419,26 @@ namespace bkmap {
     void MainWindow::CreateToolbar() {
         file_toolbar_ = addToolBar(tr("File"));
         file_toolbar_->addAction(action_project_new_);
-//        file_toolbar_->addAction(action_project_open_);
-//        file_toolbar_->addAction(action_project_edit_);
-//        file_toolbar_->addAction(action_project_save_);
-//        file_toolbar_->addAction(action_import_);
-//        file_toolbar_->addAction(action_export_);
         file_toolbar_->setIconSize(QSize(16, 16));
+        file_toolbar_->setFloatable(false);
+        file_toolbar_->setMovable(false);
 
         preprocessing_toolbar_ = addToolBar(tr("Processing"));
         preprocessing_toolbar_->addAction(action_feature_extraction_);
         preprocessing_toolbar_->addAction(action_feature_matching_);
-//        preprocessing_toolbar_->addAction(action_database_management_);
         preprocessing_toolbar_->setIconSize(QSize(16, 16));
+        preprocessing_toolbar_->setFloatable(false);
+        preprocessing_toolbar_->setMovable(false);
 
         reconstruction_toolbar_ = addToolBar(tr("Reconstruction"));
-//        reconstruction_toolbar_->addAction(action_automatic_reconstruction_);
         reconstruction_toolbar_->addAction(action_reconstruction_start_);
-//        reconstruction_toolbar_->addAction(action_reconstruction_step_);
         reconstruction_toolbar_->addAction(action_reconstruction_pause_);
-//        reconstruction_toolbar_->addAction(action_reconstruction_options_);
-//        reconstruction_toolbar_->addAction(action_bundle_adjustment_);
-//        reconstruction_toolbar_->addAction(action_dense_reconstruction_);
+        reconstruction_toolbar_->addAction(action_render_camera);
+
         reconstruction_toolbar_->setIconSize(QSize(16, 16));
-//
-//        render_toolbar_ = addToolBar(tr("Render"));
-//        render_toolbar_->addAction(action_render_toggle_);
-//        render_toolbar_->addAction(action_render_reset_view_);
-//        render_toolbar_->addAction(action_render_options_);
-//        render_toolbar_->addWidget(reconstruction_manager_widget_);
-//        render_toolbar_->setIconSize(QSize(16, 16));
-//
-//        extras_toolbar_ = addToolBar(tr("Extras"));
-//        extras_toolbar_->addAction(action_log_show_);
-//        extras_toolbar_->addAction(action_match_matrix_);
-//        extras_toolbar_->addAction(action_reconstruction_stats_);
-//        extras_toolbar_->addAction(action_grab_image_);
-//        extras_toolbar_->addAction(action_grab_movie_);
-//        extras_toolbar_->setIconSize(QSize(16, 16));
+        reconstruction_toolbar_->setFloatable(false);
+        reconstruction_toolbar_->setMovable(false);
+
     }
 
     void MainWindow::CreateStatusbar() {
@@ -847,6 +835,13 @@ namespace bkmap {
         } else {
             ShowInvalidProjectError();
         }
+    }
+
+    void MainWindow::RenderCamera(){
+        const size_t reconstruction_idx = SelectedReconstructionIdx();
+        opengl_window_->reconstruction = &reconstruction_manager_.Get(reconstruction_idx);
+        opengl_window_->onCamera();
+        opengl_window_->Update();
     }
 
     void MainWindow::FeatureMatching() {

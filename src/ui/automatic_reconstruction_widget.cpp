@@ -29,9 +29,9 @@ namespace bkmap {
         grid_layout_->addWidget(data_type_label, grid_layout_->rowCount(), 0);
 
         data_type_cb_ = new QComboBox(this);
-        data_type_cb_->addItem("Individual images");
-        data_type_cb_->addItem("Video frames");
-        data_type_cb_->addItem("Internet images");
+//        data_type_cb_->addItem("Individual images");
+//        data_type_cb_->addItem("Video frames");
+//        data_type_cb_->addItem("Internet images");
         grid_layout_->addWidget(data_type_cb_, grid_layout_->rowCount() - 1, 1);
 
         QLabel* quality_label = new QLabel(tr("Quality"), this);

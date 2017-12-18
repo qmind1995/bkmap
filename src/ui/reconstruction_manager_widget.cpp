@@ -28,7 +28,7 @@ namespace bkmap {
 
         clear();
 
-        addItem("Newest model");
+//        addItem("Newest model");
 
         int max_width = 0;
         for (size_t i = 0; i < reconstruction_manager_->Size(); ++i) {
@@ -39,6 +39,7 @@ namespace bkmap {
             QFontMetrics font_metrics(view()->font());
             max_width = std::max(max_width, font_metrics.width(item));
             addItem(item);
+            // need to delete
         }
 
         view()->setMinimumWidth(max_width);

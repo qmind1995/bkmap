@@ -43,7 +43,7 @@ namespace bkmap {
         const float kMaxImageSize = 1e3f;
         const float kImageScaleSpeed = 0.1f;
         const int kDoubleClickInterval = 250;
-
+        bool sholdShowCamera = false;
         OpenGLWindow(QWidget* parent, OptionManager* options, QScreen* screen = 0);
 
         void SetupGL();
@@ -84,7 +84,7 @@ namespace bkmap {
 
         QImage GrabImage();
         void GrabMovie();
-
+        void onCamera();
         void ShowPointInfo(const point3D_t point3D_id);
         void ShowImageInfo(const image_t image_id);
 
