@@ -5,6 +5,7 @@
 #include "base/reconstruction.h"
 
 #include <fstream>
+#include <locale.h>
 
 #include "base/pose.h"
 #include "base/projection.h"
@@ -2135,13 +2136,16 @@ namespace bkmap {
             auto color_2 = point3D.second.Color(1);
             auto color_3 = point3D.second.Color(2);
 
-            file << StringPrintf("%f ", x_);
-            file << StringPrintf("%f ", y_);
-            file << StringPrintf("%f ", z_);
+            file <<  x_ <<" ";
+            file <<  y_ <<" ";
+            file <<  z_ <<" ";
+
             file << StringPrintf("%u ", color_1);
             file << StringPrintf("%u ", color_2);
             file << StringPrintf("%u\n", color_3);
         }
+
+        file << StringPrintf("\n");// blank line
     }
 
 
