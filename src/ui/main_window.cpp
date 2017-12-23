@@ -100,6 +100,7 @@ namespace bkmap {
         undistortion_widget_ = new UndistortionWidget(this, &options_);
         reconstruction_manager_widget_ =
                 new ReconstructionManagerWidget(this, &reconstruction_manager_);
+        reconstruction_manager_widget_->hide();
         reconstruction_stats_widget_ = new ReconstructionStatsWidget(this);
         match_matrix_widget_ = new MatchMatrixWidget(this, &options_);
         license_widget_ = new LicenseWidget(this);
