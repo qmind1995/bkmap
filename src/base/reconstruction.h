@@ -246,6 +246,9 @@ namespace bkmap {
         // Create all image sub-directories in the given path.
         void CreateImageDirs(const std::string& path) const;
 
+
+        void writePointCloudFile(const std::string& path);
+
     private:
         size_t FilterPoints3DWithSmallTriangulationAngle(
                 const double min_tri_angle,

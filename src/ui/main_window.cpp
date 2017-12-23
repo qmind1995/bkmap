@@ -185,6 +185,12 @@ namespace bkmap {
                 &MainWindow::ShowAnalyze);
         blocking_actions_.push_back(action_analyze_object);
 
+        action_export_ply = new QAction(QIcon(":/media/export-all.png"), tr("Export .ply"), this);
+        connect(action_export_ply, &QAction::triggered, this,
+                &MainWindow::ExportPlyFile);
+        blocking_actions_.push_back(action_export_ply);
+
+
         action_feature_matching_ = new QAction(QIcon(":/media/feature-matching.png"), tr("Feature matching"), this);
         connect(action_feature_matching_, &QAction::triggered, this,
                 &MainWindow::FeatureMatching);
@@ -441,7 +447,7 @@ namespace bkmap {
         reconstruction_toolbar_->addAction(action_reconstruction_start_);
         reconstruction_toolbar_->addAction(action_reconstruction_pause_);
         reconstruction_toolbar_->addAction(action_render_camera);
-
+        reconstruction_toolbar_->addAction(action_export_ply);
         reconstruction_toolbar_->setIconSize(QSize(16, 16));
 //        reconstruction_toolbar_->setFloatable(false);
 //        reconstruction_toolbar_->setMovable(false);
@@ -846,8 +852,24 @@ namespace bkmap {
 
     void MainWindow::ShowAnalyze(){
         // call show object analyze in opengl window
-//        OptionManager options_;
         opengl_window_->ShowObjectAnalyze(&options_);
+    }
+
+    void MainWindow::ExportPlyFile(){
+        const size_t reconstruction_idx = SelectedReconstructionIdx();
+        Reconstruction* currReconstruction_ = &reconstruction_manager_.Get(reconstruction_idx);
+
+        const std::string pointcloud_path =
+                QFileDialog::getSaveFileName(this, tr("Select path to point cloud file"), "",
+                                             tr("pointCloud (*.ply)"))
+                        .toUtf8()
+                        .constData();
+
+        if (pointcloud_path == "") {
+            return;
+        }
+
+        currReconstruction_->writePointCloudFile(pointcloud_path);
     }
 
     void MainWindow::RenderCamera(){

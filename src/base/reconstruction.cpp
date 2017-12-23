@@ -2109,4 +2109,40 @@ namespace bkmap {
         }
     }
 
+    void Reconstruction::writePointCloudFile(const std::string &pointCloudPath) {
+
+        const std::string path = pointCloudPath + ".ply";
+        std::ofstream file(path, std::ios::app);
+        CHECK(file.is_open()) << path;
+
+        file << StringPrintf("ply\n");
+        file << StringPrintf("format ascii 1.0\n");
+        file << StringPrintf("element vertex %d\n", NumPoints3D());
+        file << StringPrintf("property float x \n");
+        file << StringPrintf("property float y\n");
+        file << StringPrintf("property float z\n");
+        file << StringPrintf("property uchar red\n");
+        file << StringPrintf("property uchar green\n");
+        file << StringPrintf("property uchar blue\n");
+        file << StringPrintf("end_header\n");
+
+
+        for (const auto& point3D : points3D_) {
+            auto x_ = point3D.second.XYZ()(0);
+            auto y_ = point3D.second.XYZ()(1);
+            auto z_ = point3D.second.XYZ()(2);
+            auto color_1 = point3D.second.Color(0);
+            auto color_2 = point3D.second.Color(1);
+            auto color_3 = point3D.second.Color(2);
+
+            file << StringPrintf("%f ", x_);
+            file << StringPrintf("%f ", y_);
+            file << StringPrintf("%f ", z_);
+            file << StringPrintf("%u ", color_1);
+            file << StringPrintf("%u ", color_2);
+            file << StringPrintf("%u\n", color_3);
+        }
+    }
+
+
 }

@@ -300,7 +300,7 @@ namespace bkmap {
     }
 
     void OpenGLWindow::onCamera(){
-        sholdShowCamera = true;
+        sholdShowCamera = !sholdShowCamera;
     }
 
     void OpenGLWindow::Upload() {

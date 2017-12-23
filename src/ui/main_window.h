@@ -65,7 +65,7 @@ namespace bkmap {
         void ExportAll();
         void ExportAs();
         void ExportAsText();
-
+        void ExportPlyFile();
         void FeatureExtraction();
         void FeatureMatching();
         void DatabaseManagement();
@@ -193,6 +193,7 @@ namespace bkmap {
         QAction* action_reconstruction_options_;
         QAction* action_render_camera;
         QAction* action_analyze_object;
+        QAction* action_export_ply;
 
         QAction* action_bundle_adjustment_;
         QAction* action_dense_reconstruction_;
