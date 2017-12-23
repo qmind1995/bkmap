@@ -72,7 +72,7 @@ namespace bkmap {
                                   OptionManager* options);
 
         void ShowImageWithId(const image_t image_id);
-
+        void ShowImageAnalyze(OptionManager* option);
     private:
         void ResizeTable();
         void DeleteImage();
@@ -97,6 +97,8 @@ namespace bkmap {
         QTableWidgetItem* num_points3D_item_;
         QTableWidgetItem* num_obs_item_;
         QTableWidgetItem* name_item_;
+        QTableWidgetItem* total_num_points_2D;
+        QTableWidgetItem* num_images;
     };
 
 }

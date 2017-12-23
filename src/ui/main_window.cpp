@@ -174,10 +174,15 @@ namespace bkmap {
                 &MainWindow::FeatureExtraction);
         blocking_actions_.push_back(action_feature_extraction_);
 
-        action_render_camera = new QAction(QIcon(":/media/grab-image.png"), tr("Render Camera"), this);
+        action_render_camera = new QAction(QIcon(":/media/photo-camera.png"), tr("Render Camera"), this);
         connect(action_render_camera, &QAction::triggered, this,
                 &MainWindow::RenderCamera);
         blocking_actions_.push_back(action_render_camera);
+
+        action_analyze_object = new QAction(QIcon(":/media/grab-image.png"), tr("Render Camera"), this);
+        connect(action_analyze_object, &QAction::triggered, this,
+                &MainWindow::ShowAnalyze);
+        blocking_actions_.push_back(action_analyze_object);
 
         action_feature_matching_ = new QAction(QIcon(":/media/feature-matching.png"), tr("Feature matching"), this);
         connect(action_feature_matching_, &QAction::triggered, this,
@@ -420,15 +425,16 @@ namespace bkmap {
         file_toolbar_ = addToolBar(tr("File"));
         file_toolbar_->addAction(action_project_new_);
         file_toolbar_->setIconSize(QSize(16, 16));
-        file_toolbar_->setFloatable(false);
-        file_toolbar_->setMovable(false);
+//        file_toolbar_->setFloatable(false);
+//        file_toolbar_->setMovable(false);
 
         preprocessing_toolbar_ = addToolBar(tr("Processing"));
         preprocessing_toolbar_->addAction(action_feature_extraction_);
+        preprocessing_toolbar_->addAction(action_analyze_object);
         preprocessing_toolbar_->addAction(action_feature_matching_);
         preprocessing_toolbar_->setIconSize(QSize(16, 16));
-        preprocessing_toolbar_->setFloatable(false);
-        preprocessing_toolbar_->setMovable(false);
+//        preprocessing_toolbar_->setFloatable(false);
+//        preprocessing_toolbar_->setMovable(false);
 
         reconstruction_toolbar_ = addToolBar(tr("Reconstruction"));
         reconstruction_toolbar_->addAction(action_reconstruction_start_);
@@ -436,8 +442,8 @@ namespace bkmap {
         reconstruction_toolbar_->addAction(action_render_camera);
 
         reconstruction_toolbar_->setIconSize(QSize(16, 16));
-        reconstruction_toolbar_->setFloatable(false);
-        reconstruction_toolbar_->setMovable(false);
+//        reconstruction_toolbar_->setFloatable(false);
+//        reconstruction_toolbar_->setMovable(false);
 
     }
 
@@ -835,6 +841,12 @@ namespace bkmap {
         } else {
             ShowInvalidProjectError();
         }
+    }
+
+    void MainWindow::ShowAnalyze(){
+        // call show object analyze in opengl window
+//        OptionManager options_;
+        opengl_window_->ShowObjectAnalyze(&options_);
     }
 
     void MainWindow::RenderCamera(){

@@ -596,7 +596,7 @@ namespace bkmap {
             mouse_is_pressed_ = false;
             mouse_press_timer_.stop();
             selection_buffer_.clear();
-            SelectObject(event->pos().x(), event->pos().y());
+//            SelectObject(event->pos().x(), event->pos().y());
         } else {  // Set timer to remember 1. click
             mouse_press_timer_.setSingleShot(true);
             mouse_press_timer_.start(kDoubleClickInterval);
@@ -604,6 +604,12 @@ namespace bkmap {
             prev_mouse_pos_ = event->pos();
         }
         event->accept();
+    }
+
+
+    void OpenGLWindow::ShowObjectAnalyze(OptionManager *option){
+
+        image_viewer_widget_->ShowImageAnalyze(option);
     }
 
     void OpenGLWindow::mouseReleaseEvent(QMouseEvent* event) {

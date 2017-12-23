@@ -94,7 +94,7 @@ namespace bkmap {
         void SetImageSize(const float image_size);
 
         void SetBackgroundColor(const float r, const float g, const float b);
-
+        void ShowObjectAnalyze(OptionManager* option);
         // Copy of current scene data that is displayed
         Reconstruction* reconstruction;
         EIGEN_STL_UMAP(camera_t, Camera) cameras;

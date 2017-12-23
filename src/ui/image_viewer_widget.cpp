@@ -30,24 +30,6 @@ namespace bkmap {
                                           QSizePolicy::Expanding);
 
         grid_layout_->addWidget(image_scroll_area_, 1, 0);
-
-        button_layout_ = new QHBoxLayout();
-
-        QPushButton* zoom_in_button = new QPushButton("+", this);
-        zoom_in_button->setFont(font);
-        zoom_in_button->setFixedWidth(50);
-        button_layout_->addWidget(zoom_in_button);
-        connect(zoom_in_button, &QPushButton::released, this,
-                &ImageViewerWidget::ZoomIn);
-
-        QPushButton* zoom_out_button = new QPushButton("-", this);
-        zoom_out_button->setFont(font);
-        zoom_out_button->setFixedWidth(50);
-        button_layout_->addWidget(zoom_out_button);
-        connect(zoom_out_button, &QPushButton::released, this,
-                &ImageViewerWidget::ZoomOut);
-
-        grid_layout_->addLayout(button_layout_, 2, 0, Qt::AlignRight);
     }
 
     void ImageViewerWidget::closeEvent(QCloseEvent* event) {
@@ -115,11 +97,6 @@ namespace bkmap {
             : ImageViewerWidget(parent),
               switch_state_(true),
               switch_text_(switch_text) {
-        switch_button_ = new QPushButton(tr(("Hide " + switch_text_).c_str()), this);
-        switch_button_->setFont(font());
-        button_layout_->addWidget(switch_button_);
-        connect(switch_button_, &QPushButton::released, this,
-                &FeatureImageViewerWidget::ShowOrHide);
     }
 
     void FeatureImageViewerWidget::ReadAndShowWithKeypoints(
@@ -186,15 +163,7 @@ namespace bkmap {
     }
 
     void FeatureImageViewerWidget::ShowOrHide() {
-        if (switch_state_) {
-            switch_button_->setText(std::string("Show " + switch_text_).c_str());
-            ShowPixmap(image1_, false);
-            switch_state_ = false;
-        } else {
-            switch_button_->setText(std::string("Hide " + switch_text_).c_str());
-            ShowPixmap(image2_, false);
-            switch_state_ = true;
-        }
+
     }
 
     DatabaseImageViewerWidget::DatabaseImageViewerWidget(
@@ -206,7 +175,7 @@ namespace bkmap {
 
         table_widget_ = new QTableWidget(this);
         table_widget_->setColumnCount(2);
-        table_widget_->setRowCount(11);
+        table_widget_->setRowCount(3); // number rows
 
         QFont font;
         font.setPointSize(10);
@@ -222,73 +191,74 @@ namespace bkmap {
         table_widget_->horizontalHeader()->setVisible(false);
         table_widget_->verticalHeader()->setVisible(false);
         table_widget_->verticalHeader()->setDefaultSectionSize(18);
-
         int row = 0;
 
-        table_widget_->setItem(row, 0, new QTableWidgetItem("image_id"));
-        image_id_item_ = new QTableWidgetItem();
-        table_widget_->setItem(row, 1, image_id_item_);
-        row += 1;
-
-        table_widget_->setItem(row, 0, new QTableWidgetItem("camera_id"));
-        camera_id_item_ = new QTableWidgetItem();
-        table_widget_->setItem(row, 1, camera_id_item_);
-        row += 1;
-
-        table_widget_->setItem(row, 0, new QTableWidgetItem("camera_model"));
-        camera_model_item_ = new QTableWidgetItem();
-        table_widget_->setItem(row, 1, camera_model_item_);
-        row += 1;
-
-        table_widget_->setItem(row, 0, new QTableWidgetItem("camera_params"));
-        camera_params_item_ = new QTableWidgetItem();
-        table_widget_->setItem(row, 1, camera_params_item_);
-        row += 1;
-
-        table_widget_->setItem(row, 0, new QTableWidgetItem("qw, qx, qy, qz"));
-        qvec_item_ = new QTableWidgetItem();
-        table_widget_->setItem(row, 1, qvec_item_);
-        row += 1;
-
-        table_widget_->setItem(row, 0, new QTableWidgetItem("tx, ty, tz"));
-        tvec_item_ = new QTableWidgetItem();
-        table_widget_->setItem(row, 1, tvec_item_);
-        row += 1;
-
-        table_widget_->setItem(row, 0, new QTableWidgetItem("dims"));
-        dimensions_item_ = new QTableWidgetItem();
-        table_widget_->setItem(row, 1, dimensions_item_);
-        row += 1;
-
-        table_widget_->setItem(row, 0, new QTableWidgetItem("num_points2D"));
+        table_widget_->setItem(row, 0, new QTableWidgetItem("num first img's keypoints"));
         num_points2D_item_ = new QTableWidgetItem();
         num_points2D_item_->setForeground(Qt::red);
         table_widget_->setItem(row, 1, num_points2D_item_);
         row += 1;
 
-        table_widget_->setItem(row, 0, new QTableWidgetItem("num_points3D"));
-        num_points3D_item_ = new QTableWidgetItem();
-        num_points3D_item_->setForeground(Qt::magenta);
-        table_widget_->setItem(row, 1, num_points3D_item_);
+        table_widget_->setItem(row, 0, new QTableWidgetItem("num images"));
+        num_images = new QTableWidgetItem();
+        num_images->setForeground(Qt::red);
+        table_widget_->setItem(row, 1, num_images);
         row += 1;
 
-        table_widget_->setItem(row, 0, new QTableWidgetItem("num_observations"));
-        num_obs_item_ = new QTableWidgetItem();
-        table_widget_->setItem(row, 1, num_obs_item_);
-        row += 1;
-
-        table_widget_->setItem(row, 0, new QTableWidgetItem("name"));
-        name_item_ = new QTableWidgetItem();
-        table_widget_->setItem(row, 1, name_item_);
+        table_widget_->setItem(row, 0, new QTableWidgetItem("total keypoints"));
+        total_num_points_2D = new QTableWidgetItem();
+        total_num_points_2D->setForeground(Qt::red);
+        table_widget_->setItem(row, 1, total_num_points_2D);
         row += 1;
 
         grid_layout_->addWidget(table_widget_, 0, 0);
 
-        delete_button_ = new QPushButton(tr("Delete"), this);
-        delete_button_->setFont(font);
-        button_layout_->addWidget(delete_button_);
-        connect(delete_button_, &QPushButton::released, this,
-                &DatabaseImageViewerWidget::DeleteImage);
+    }
+
+    void DatabaseImageViewerWidget::ShowImageAnalyze(OptionManager *option){
+
+        ImageReader::Options reader_options;
+        std::string db_path = *option->database_path;
+        reader_options.database_path = db_path;
+        std::string img_path = *option->image_path;
+        reader_options.image_path = img_path;
+        Database database(reader_options.database_path);
+        ImageReader image_reader(reader_options, &database);
+
+        Camera camera;
+        Image image;
+        Bitmap bitmap;
+
+        if (image_reader.Next(&camera, &image, &bitmap) ==
+            ImageReader::Status::FAILURE) {
+            return;
+        }
+        const auto keypoints = database.ReadKeypoints(image.ImageId());
+        const std::vector<char> tri_mask(keypoints.size(), false);
+
+        num_points2D_item_->setText(QString::number(keypoints.size()));
+
+        auto num_keypoints = keypoints.size();
+        int num_images_ = 1;
+        while (image_reader.NextIndex() < image_reader.NumImages()) {
+            Camera camera_test;
+            Image image_test;
+            Bitmap bitmap_test;
+            if (image_reader.Next(&camera_test, &image_test, &bitmap_test) ==
+                ImageReader::Status::FAILURE) {
+                continue;
+            }
+            num_images_++;
+            const auto keypoints_test = database.ReadKeypoints(image_test.ImageId());
+            num_keypoints += keypoints_test.size();
+        }
+
+        num_images->setText(QString::number(num_images_));
+        total_num_points_2D->setText(QString::number(num_keypoints));
+
+        ReadAndShowWithKeypoints(
+                JoinPaths(img_path, image.Name()), keypoints, tri_mask);
+
     }
 
     void DatabaseImageViewerWidget::ShowImageWithId(const image_t image_id) {
