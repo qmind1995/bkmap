@@ -93,14 +93,7 @@ namespace bkmap{
         CAMERA_MODEL_CASE(SimplePinholeCameraModel)       \
         CAMERA_MODEL_CASE(PinholeCameraModel)             \
         CAMERA_MODEL_CASE(SimpleRadialCameraModel)        \
-        CAMERA_MODEL_CASE(SimpleRadialFisheyeCameraModel) \
-        CAMERA_MODEL_CASE(RadialCameraModel)              \
-        CAMERA_MODEL_CASE(RadialFisheyeCameraModel)       \
-        CAMERA_MODEL_CASE(OpenCVCameraModel)              \
-        CAMERA_MODEL_CASE(OpenCVFisheyeCameraModel)       \
-        CAMERA_MODEL_CASE(FullOpenCVCameraModel)          \
-        CAMERA_MODEL_CASE(FOVCameraModel)                 \
-        CAMERA_MODEL_CASE(ThinPrismFisheyeCameraModel)
+        CAMERA_MODEL_CASE(RadialCameraModel)
     #endif
 
     #ifndef CAMERA_MODEL_SWITCH_CASES
@@ -218,9 +211,9 @@ namespace bkmap{
     //
     // See
     // http://docs.opencv.org/modules/calib3d/doc/camera_calibration_and_3d_reconstruction.html
-    struct OpenCVCameraModel : public BaseCameraModel<OpenCVCameraModel> {
-        CAMERA_MODEL_DEFINITIONS(4, "OPENCV", 8)
-    };
+//    struct OpenCVCameraModel : public BaseCameraModel<OpenCVCameraModel> {
+//        CAMERA_MODEL_DEFINITIONS(4, "OPENCV", 8)
+//    };
 
     // OpenCV fish-eye camera model.
     //
@@ -234,10 +227,10 @@ namespace bkmap{
     //
     // See
     // http://docs.opencv.org/modules/calib3d/doc/camera_calibration_and_3d_reconstruction.html
-    struct OpenCVFisheyeCameraModel
-            : public BaseCameraModel<OpenCVFisheyeCameraModel> {
-        CAMERA_MODEL_DEFINITIONS(5, "OPENCV_FISHEYE", 8)
-    };
+//    struct OpenCVFisheyeCameraModel
+//            : public BaseCameraModel<OpenCVFisheyeCameraModel> {
+//        CAMERA_MODEL_DEFINITIONS(5, "OPENCV_FISHEYE", 8)
+//    };
 
     // Full OpenCV camera model.
     //
@@ -250,9 +243,9 @@ namespace bkmap{
     //
     // See
     // http://docs.opencv.org/modules/calib3d/doc/camera_calibration_and_3d_reconstruction.html
-    struct FullOpenCVCameraModel : public BaseCameraModel<FullOpenCVCameraModel> {
-        CAMERA_MODEL_DEFINITIONS(6, "FULL_OPENCV", 12)
-    };
+//    struct FullOpenCVCameraModel : public BaseCameraModel<FullOpenCVCameraModel> {
+//        CAMERA_MODEL_DEFINITIONS(6, "FULL_OPENCV", 12)
+//    };
 
     // FOV camera model.
     //
@@ -268,13 +261,13 @@ namespace bkmap{
     // Frederic Devernay, Olivier Faugeras. Straight lines have to be straight:
     // Automatic calibration and removal of distortion from scenes of structured
     // environments. Machine vision and applications, 2001.
-    struct FOVCameraModel : public BaseCameraModel<FOVCameraModel> {
-        CAMERA_MODEL_DEFINITIONS(7, "FOV", 5)
-
-        template <typename T>
-        static void Undistortion(const T* extra_params, const T u, const T v, T* du,
-                                 T* dv);
-    };
+//    struct FOVCameraModel : public BaseCameraModel<FOVCameraModel> {
+//        CAMERA_MODEL_DEFINITIONS(7, "FOV", 5)
+//
+//        template <typename T>
+//        static void Undistortion(const T* extra_params, const T u, const T v, T* du,
+//                                 T* dv);
+//    };
 
     // Simple camera model with one focal length and one radial distortion
     // parameter, suitable for fish-eye cameras.
@@ -286,10 +279,10 @@ namespace bkmap{
     //
     //    f, cx, cy, k
     //
-    struct SimpleRadialFisheyeCameraModel
-            : public BaseCameraModel<SimpleRadialFisheyeCameraModel> {
-        CAMERA_MODEL_DEFINITIONS(8, "SIMPLE_RADIAL_FISHEYE", 4)
-    };
+//    struct SimpleRadialFisheyeCameraModel
+//            : public BaseCameraModel<SimpleRadialFisheyeCameraModel> {
+//        CAMERA_MODEL_DEFINITIONS(8, "SIMPLE_RADIAL_FISHEYE", 4)
+//    };
 
     // Simple camera model with one focal length and two radial distortion
     // parameters, suitable for fish-eye cameras.
@@ -301,10 +294,10 @@ namespace bkmap{
     //
     //    f, cx, cy, k1, k2
     //
-    struct RadialFisheyeCameraModel
-            : public BaseCameraModel<RadialFisheyeCameraModel> {
-        CAMERA_MODEL_DEFINITIONS(9, "RADIAL_FISHEYE", 5)
-    };
+//    struct RadialFisheyeCameraModel
+//            : public BaseCameraModel<RadialFisheyeCameraModel> {
+//        CAMERA_MODEL_DEFINITIONS(9, "RADIAL_FISHEYE", 5)
+//    };
 
     // Camera model with radial and tangential distortion coefficients and
     // additional coefficients accounting for thin-prism distortion.
@@ -318,10 +311,10 @@ namespace bkmap{
     //
     //    fx, fy, cx, cy, k1, k2, p1, p2, k3, k4, sx1, sy1
     //
-    struct ThinPrismFisheyeCameraModel
-            : public BaseCameraModel<ThinPrismFisheyeCameraModel> {
-        CAMERA_MODEL_DEFINITIONS(10, "THIN_PRISM_FISHEYE", 12)
-    };
+//    struct ThinPrismFisheyeCameraModel
+//            : public BaseCameraModel<ThinPrismFisheyeCameraModel> {
+//        CAMERA_MODEL_DEFINITIONS(10, "THIN_PRISM_FISHEYE", 12)
+//    };
 
     // Convert camera name to unique camera model identifier.
     //
@@ -795,6 +788,7 @@ namespace bkmap{
         *du = u * radial;
         *dv = v * radial;
     }
+/*
 
 ////////////////////////////////////////////////////////////////////////////////
 // OpenCVCameraModel
@@ -1486,7 +1480,7 @@ namespace bkmap{
         *du = u * radial + T(2) * p1 * uv + p2 * (r2 + T(2) * u2) + sx1 * r2;
         *dv = v * radial + T(2) * p2 * uv + p1 * (r2 + T(2) * v2) + sy1 * r2;
     }
-
+*/
 ////////////////////////////////////////////////////////////////////////////////
 
     void CameraModelWorldToImage(const int model_id,
