@@ -180,7 +180,7 @@ namespace bkmap {
                 &MainWindow::RenderCamera);
         blocking_actions_.push_back(action_render_camera);
 
-        action_analyze_object = new QAction(QIcon(":/media/grab-image.png"), tr("Render Camera"), this);
+        action_analyze_object = new QAction(QIcon(":/media/grab-image.png"), tr("show keypoints"), this);
         connect(action_analyze_object, &QAction::triggered, this,
                 &MainWindow::ShowAnalyze);
         blocking_actions_.push_back(action_analyze_object);
@@ -873,10 +873,12 @@ namespace bkmap {
     }
 
     void MainWindow::RenderCamera(){
-        const size_t reconstruction_idx = SelectedReconstructionIdx();
-        opengl_window_->reconstruction = &reconstruction_manager_.Get(reconstruction_idx);
         opengl_window_->onCamera();
-        opengl_window_->Update();
+        if(HasSelectedReconstruction()){
+            const size_t reconstruction_idx = SelectedReconstructionIdx();
+            opengl_window_->reconstruction = &reconstruction_manager_.Get(reconstruction_idx);
+            opengl_window_->Update();
+        }
     }
 
     void MainWindow::FeatureMatching() {
