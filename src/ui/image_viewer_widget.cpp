@@ -30,6 +30,8 @@ namespace bkmap {
                                           QSizePolicy::Expanding);
 
         grid_layout_->addWidget(image_scroll_area_, 1, 0);
+        button_layout_ = new QHBoxLayout();
+        grid_layout_->addLayout(button_layout_, 2, 0, Qt::AlignRight);
     }
 
     void ImageViewerWidget::closeEvent(QCloseEvent* event) {
@@ -212,6 +214,10 @@ namespace bkmap {
         row += 1;
 
         grid_layout_->addWidget(table_widget_, 0, 0);
+        next_button_ = new QPushButton(tr("Next"), this);
+        next_button_->setFont(font);
+        button_layout_->addWidget(next_button_);
+        connect(next_button_, &QPushButton::released, this, &DatabaseImageViewerWidget::nextImage);
 
     }
 
@@ -220,36 +226,38 @@ namespace bkmap {
         ImageReader::Options reader_options;
         std::string db_path = *option->database_path;
         reader_options.database_path = db_path;
-        std::string img_path = *option->image_path;
-        reader_options.image_path = img_path;
-        Database database(reader_options.database_path);
-        ImageReader image_reader(reader_options, &database);
+        img_path_ = *option->image_path;
+        reader_options.image_path = img_path_;
+        database_ = new Database(reader_options.database_path);
+        image_reader_ = new ImageReader(reader_options, database_);
 
         Camera camera;
         Image image;
         Bitmap bitmap;
 
-        if (image_reader.Next(&camera, &image, &bitmap) ==
-            ImageReader::Status::FAILURE) {
+        if (image_reader_->Next(&camera, &image, &bitmap) == ImageReader::Status::FAILURE ||
+            image_reader_->NextIndex() < image_reader_->NumImages()) {
             return;
         }
-        const auto keypoints = database.ReadKeypoints(image.ImageId());
+        const auto keypoints = database_->ReadKeypoints(image.ImageId());
         const std::vector<char> tri_mask(keypoints.size(), false);
 
         num_points2D_item_->setText(QString::number(keypoints.size()));
 
-        auto num_keypoints = keypoints.size();
-        int num_images_ = 1;
-        while (image_reader.NextIndex() < image_reader.NumImages()) {
+
+        ImageReader imgReader(reader_options, database_);
+        auto num_keypoints = 0;
+        int num_images_ = 0;
+        while (imgReader.NextIndex() < imgReader.NumImages()) {
             Camera camera_test;
             Image image_test;
             Bitmap bitmap_test;
-            if (image_reader.Next(&camera_test, &image_test, &bitmap_test) ==
+            if (imgReader.Next(&camera_test, &image_test, &bitmap_test) ==
                 ImageReader::Status::FAILURE) {
                 continue;
             }
             num_images_++;
-            const auto keypoints_test = database.ReadKeypoints(image_test.ImageId());
+            const auto keypoints_test = database_->ReadKeypoints(image_test.ImageId());
             num_keypoints += keypoints_test.size();
         }
 
@@ -257,7 +265,7 @@ namespace bkmap {
         total_num_points_2D->setText(QString::number(num_keypoints));
 
         ReadAndShowWithKeypoints(
-                JoinPaths(img_path, image.Name()), keypoints, tri_mask);
+                JoinPaths(img_path_, image.Name()), keypoints, tri_mask);
 
     }
 
@@ -329,6 +337,25 @@ namespace bkmap {
             opengl_window_->Update();
         }
         hide();
+    }
+
+    void DatabaseImageViewerWidget::nextImage(){
+        Camera camera;
+        Image image;
+        Bitmap bitmap;
+
+        if (image_reader_->Next(&camera, &image, &bitmap) == ImageReader::Status::FAILURE ||
+            image_reader_->NextIndex() < image_reader_->NumImages()) {
+            return;
+        }
+
+        const auto keypoints = database_->ReadKeypoints(image.ImageId());
+        const std::vector<char> tri_mask(keypoints.size(), false);
+
+        num_points2D_item_->setText(QString::number(keypoints.size()));
+
+        ReadAndShowWithKeypoints(
+                JoinPaths(img_path_, image.Name()), keypoints, tri_mask);
     }
 
 }

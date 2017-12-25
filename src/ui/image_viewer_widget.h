@@ -73,15 +73,22 @@ namespace bkmap {
 
         void ShowImageWithId(const image_t image_id);
         void ShowImageAnalyze(OptionManager* option);
+
     private:
         void ResizeTable();
         void DeleteImage();
+        void nextImage();
 
         OpenGLWindow* opengl_window_;
 
         OptionManager* options_;
 
-        QPushButton* delete_button_;
+        ImageReader * image_reader_;
+        std::string img_path_;
+
+        Database * database_;
+
+        QPushButton* next_button_;
 
         image_t image_id_;
 
