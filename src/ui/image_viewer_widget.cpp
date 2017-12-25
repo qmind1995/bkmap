@@ -236,7 +236,7 @@ namespace bkmap {
         Bitmap bitmap;
 
         if (image_reader_->Next(&camera, &image, &bitmap) == ImageReader::Status::FAILURE ||
-            image_reader_->NextIndex() < image_reader_->NumImages()) {
+            image_reader_->NextIndex() >= image_reader_->NumImages()) {
             return;
         }
         const auto keypoints = database_->ReadKeypoints(image.ImageId());
@@ -345,7 +345,7 @@ namespace bkmap {
         Bitmap bitmap;
 
         if (image_reader_->Next(&camera, &image, &bitmap) == ImageReader::Status::FAILURE ||
-            image_reader_->NextIndex() < image_reader_->NumImages()) {
+            image_reader_->NextIndex() >= image_reader_->NumImages()) {
             return;
         }
 
