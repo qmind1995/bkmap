@@ -59,8 +59,8 @@
   <component name="ChangeListManager">
     <list default="true" id="d4ca20e2-ccc4-4c2b-8626-ee91a1e75213" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/base/image_reader.h" afterPath="$PROJECT_DIR$/src/base/image_reader.h" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ui/feature_extraction_widget.cpp" afterPath="$PROJECT_DIR$/src/ui/feature_extraction_widget.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ui/feature_matching_widget.cpp" afterPath="$PROJECT_DIR$/src/ui/feature_matching_widget.cpp" />
     </list>
     <ignored path="bkmap.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -81,83 +81,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="feature_extraction_widget.cpp" pinned="false" current-in-tab="true">
+      <file leaf-file-name="feature_extraction_widget.cpp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ui/feature_extraction_widget.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-20">
-              <caret line="150" column="63" selection-start-line="150" selection-start-column="63" selection-end-line="150" selection-end-column="63" />
-              <folding>
-                <element signature="e#5704#8028#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="qlineedit.h" pinned="false" current-in-tab="false">
-        <entry file="file:///usr/include/qt5/QtWidgets/qlineedit.h">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="217">
-              <caret line="98" column="12" selection-start-line="98" selection-start-column="12" selection-end-line="98" selection-end-column="12" />
+            <state relative-caret-position="-1368">
+              <caret line="70" column="38" selection-start-line="70" selection-start-column="38" selection-end-line="70" selection-end-column="38" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="camera_models.h" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/base/camera_models.h">
+      <file leaf-file-name="feature_matching_widget.cpp" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/ui/feature_matching_widget.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="329">
-              <caret line="195" column="27" selection-start-line="195" selection-start-column="10" selection-end-line="195" selection-end-column="27" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="image_reader.h" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/base/image_reader.h">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="217">
-              <caret line="33" column="17" selection-start-line="33" selection-start-column="17" selection-end-line="33" selection-end-column="17" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="reconstruction_options_widget.cpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ui/reconstruction_options_widget.cpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="142">
-              <caret line="104" column="42" selection-start-line="104" selection-start-column="42" selection-end-line="104" selection-end-column="42" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="bundle_adjustment.cpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/optim/bundle_adjustment.cpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="142">
-              <caret line="648" column="42" selection-start-line="648" selection-start-column="42" selection-end-line="648" selection-end-column="42" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="option_manager.h" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/util/option_manager.h">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="217">
-              <caret line="68" column="31" selection-start-line="68" selection-start-column="31" selection-end-line="68" selection-end-column="31" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="options_widget.h" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ui/options_widget.h">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="459">
-              <caret line="49" column="60" selection-start-line="49" selection-start-column="48" selection-end-line="49" selection-end-column="60" />
+            <state relative-caret-position="332">
+              <caret line="336" column="0" selection-start-line="336" selection-start-column="0" selection-end-line="336" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -206,7 +144,6 @@
         <option value="$PROJECT_DIR$/src/util/cudacc.cpp" />
         <option value="$PROJECT_DIR$/src/base/camera_models.h" />
         <option value="$PROJECT_DIR$/src/base/feature_matching.h" />
-        <option value="$PROJECT_DIR$/src/ui/feature_matching_widget.cpp" />
         <option value="$PROJECT_DIR$/src/ui/options_widget.cpp" />
         <option value="$PROJECT_DIR$/src/base/feature_matching.cpp" />
         <option value="$PROJECT_DIR$/src/ui/automatic_reconstruction_widget.cpp" />
@@ -222,6 +159,7 @@
         <option value="$PROJECT_DIR$/src/controllers/incremental_mapper.cpp" />
         <option value="$PROJECT_DIR$/src/base/image_reader.h" />
         <option value="$PROJECT_DIR$/src/ui/feature_extraction_widget.cpp" />
+        <option value="$PROJECT_DIR$/src/ui/feature_matching_widget.cpp" />
       </list>
     </option>
   </component>
@@ -322,7 +260,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="SearchEverywhereHistoryKey" value="camera&#9;FILE&#9;file:///home/tri/Desktop/bkmap/src/base/camera_models.h&#10;fea&#9;FILE&#9;file:///home/tri/Desktop/bkmap/src/ui/feature_extraction_widget.cpp&#10;reconstr&#9;FILE&#9;file:///home/tri/Desktop/bkmap/src/base/reconstruction.cpp&#10;recons&#9;FILE&#9;file:///home/tri/Desktop/bkmap/src/base/reconstruction_manager.cpp&#10;poin&#9;FILE&#9;file:///home/tri/Desktop/bkmap/src/base/point2d.h&#10;read&#9;FILE&#9;file:///home/tri/Desktop/bkmap/src/base/image_reader.cpp&#10;main&#9;FILE&#9;file:///home/tri/Desktop/bkmap/src/ui/main_window.cpp&#10;opengl&#9;FILE&#9;file:///home/tri/Desktop/bkmap/src/ui/opengl_window.cpp&#10;feat&#9;FILE&#9;file:///home/tri/Desktop/bkmap/src/base/feature_extraction.cpp&#10;feature&#9;FILE&#9;file:///home/tri/Desktop/bkmap/src/base/feature_extraction.cpp&#10;imageview&#9;FILE&#9;file:///home/tri/Desktop/bkmap/src/ui/image_viewer_widget.h&#10;im&#9;FILE&#9;file:///home/tri/Desktop/bkmap/src/ui/image_viewer_widget.cpp&#10;project_&#9;FILE&#9;file:///home/tri/Desktop/bkmap/src/ui/project_widget.cpp&#10;incremental_&#9;FILE&#9;file:///home/tri/Desktop/bkmap/src/sfm/incremental_mapper.cpp&#10;database&#9;FILE&#9;file:///home/tri/Desktop/bkmap/src/base/database.cpp&#10;feature_match&#9;FILE&#9;file:///home/tri/Desktop/bkmap/src/base/feature_matching.h&#10;imageread&#9;FILE&#9;file:///home/tri/Desktop/bkmap/src/base/image_reader.h&#10;feature_extr&#9;FILE&#9;file:///home/tri/Desktop/bkmap/src/base/feature_extraction.cpp&#10;cam&#9;FILE&#9;file:///home/tri/Desktop/bkmap/src/base/camera_models.h&#10;feature_extractionw&#9;FILE&#9;file:///home/tri/Desktop/bkmap/src/ui/feature_extraction_widget.cpp&#10;feature_extraction&#9;FILE&#9;file:///home/tri/Desktop/bkmap/src/base/feature_extraction.cpp&#10;featureex&#9;FILE&#9;file:///home/tri/Desktop/bkmap/src/base/feature_extraction.cpp&#10;feature_matching&#9;FILE&#9;file:///home/tri/Desktop/bkmap/src/base/feature_matching.cpp&#10;feature_extrac&#9;FILE&#9;file:///home/tri/Desktop/bkmap/src/base/feature_extraction.cpp&#10;feature_extract&#9;FILE&#9;file:///home/tri/Desktop/bkmap/src/base/feature_extraction.h&#10;featurem&#9;FILE&#9;file:///home/tri/Desktop/bkmap/src/ui/feature_matching_widget.cpp&#10;feature_matchin&#9;FILE&#9;file:///home/tri/Desktop/bkmap/src/base/feature_matching.cpp&#10;optionma&#9;null&#9;null&#10;featuremat&#9;FILE&#9;file:///home/tri/Desktop/bkmap/src/base/feature_matching.cpp&#10;bit&#9;FILE&#9;file:///home/tri/Desktop/bkmap/src/util/bitmap.h&#10;bitma&#9;FILE&#9;file:///home/tri/Desktop/bkmap/src/util/bitmap.h&#10;featuree&#9;FILE&#9;file:///home/tri/Desktop/bkmap/src/base/feature_extraction.cpp&#10;incre&#9;FILE&#9;file:///home/tri/Desktop/bkmap/src/controllers/incremental_mapper.cpp&#10;analy&#9;FILE&#9;file:///home/tri/Desktop/bkmap/src/exe/model_analyzer.cpp&#10;mainwin&#9;FILE&#9;file:///home/tri/Desktop/bkmap/src/ui/main_window.cpp&#10;max image&#9;null&#9;null&#10;came&#9;FILE&#9;file:///home/tri/Desktop/bkmap/src/base/camera_models.cpp&#10;database.h&#9;FILE&#9;file:///home/tri/Desktop/bkmap/src/base/database.h&#10;camer&#9;FILE&#9;file:///home/tri/Desktop/bkmap/src/base/camera_models.h&#10;mainw&#9;FILE&#9;file:///home/tri/Desktop/bkmap/src/ui/main_window.cpp&#10;feature_matchingwi&#9;FILE&#9;file:///home/tri/Desktop/bkmap/src/ui/feature_matching_widget.cpp&#10;feature_ma&#9;FILE&#9;file:///home/tri/Desktop/bkmap/src/ui/feature_matching_widget.cpp&#10;option&#9;FILE&#9;file:///home/tri/Desktop/bkmap/src/ui/options_widget.h&#10;optionwid&#9;FILE&#9;file:///home/tri/Desktop/bkmap/src/ui/options_widget.h&#10;option_wi&#9;FILE&#9;file:///home/tri/Desktop/bkmap/src/ui/options_widget.cpp&#10;pro&#9;FILE&#9;file:///home/tri/Desktop/bkmap/src/ui/project_widget.cpp&#10;da&#9;FILE&#9;file:///home/tri/Desktop/bkmap/src/base/database.cpp&#10;sql&#9;FILE&#9;file:///home/tri/Desktop/bkmap/src/ext/SQLite/sqlite3.c&#10;camera_models.h&#9;FILE&#9;file:///home/tri/Desktop/bkmap/src/base/camera_models.h&#10;projectwi&#9;FILE&#9;file:///home/tri/Desktop/bkmap/src/ui/project_widget.cpp" />
+    <property name="SearchEverywhereHistoryKey" value="feature_match&#9;FILE&#9;file:///home/tri/Desktop/bkmap/src/ui/feature_matching_widget.cpp&#10;camera&#9;FILE&#9;file:///home/tri/Desktop/bkmap/src/base/camera_models.h&#10;fea&#9;FILE&#9;file:///home/tri/Desktop/bkmap/src/ui/feature_extraction_widget.cpp&#10;reconstr&#9;FILE&#9;file:///home/tri/Desktop/bkmap/src/base/reconstruction.cpp&#10;recons&#9;FILE&#9;file:///home/tri/Desktop/bkmap/src/base/reconstruction_manager.cpp&#10;poin&#9;FILE&#9;file:///home/tri/Desktop/bkmap/src/base/point2d.h&#10;read&#9;FILE&#9;file:///home/tri/Desktop/bkmap/src/base/image_reader.cpp&#10;main&#9;FILE&#9;file:///home/tri/Desktop/bkmap/src/ui/main_window.cpp&#10;opengl&#9;FILE&#9;file:///home/tri/Desktop/bkmap/src/ui/opengl_window.cpp&#10;feat&#9;FILE&#9;file:///home/tri/Desktop/bkmap/src/base/feature_extraction.cpp&#10;feature&#9;FILE&#9;file:///home/tri/Desktop/bkmap/src/base/feature_extraction.cpp&#10;imageview&#9;FILE&#9;file:///home/tri/Desktop/bkmap/src/ui/image_viewer_widget.h&#10;im&#9;FILE&#9;file:///home/tri/Desktop/bkmap/src/ui/image_viewer_widget.cpp&#10;project_&#9;FILE&#9;file:///home/tri/Desktop/bkmap/src/ui/project_widget.cpp&#10;incremental_&#9;FILE&#9;file:///home/tri/Desktop/bkmap/src/sfm/incremental_mapper.cpp&#10;database&#9;FILE&#9;file:///home/tri/Desktop/bkmap/src/base/database.cpp&#10;imageread&#9;FILE&#9;file:///home/tri/Desktop/bkmap/src/base/image_reader.h&#10;feature_extr&#9;FILE&#9;file:///home/tri/Desktop/bkmap/src/base/feature_extraction.cpp&#10;cam&#9;FILE&#9;file:///home/tri/Desktop/bkmap/src/base/camera_models.h&#10;feature_extractionw&#9;FILE&#9;file:///home/tri/Desktop/bkmap/src/ui/feature_extraction_widget.cpp&#10;feature_extraction&#9;FILE&#9;file:///home/tri/Desktop/bkmap/src/base/feature_extraction.cpp&#10;featureex&#9;FILE&#9;file:///home/tri/Desktop/bkmap/src/base/feature_extraction.cpp&#10;feature_matching&#9;FILE&#9;file:///home/tri/Desktop/bkmap/src/base/feature_matching.cpp&#10;feature_extrac&#9;FILE&#9;file:///home/tri/Desktop/bkmap/src/base/feature_extraction.cpp&#10;feature_extract&#9;FILE&#9;file:///home/tri/Desktop/bkmap/src/base/feature_extraction.h&#10;featurem&#9;FILE&#9;file:///home/tri/Desktop/bkmap/src/ui/feature_matching_widget.cpp&#10;feature_matchin&#9;FILE&#9;file:///home/tri/Desktop/bkmap/src/base/feature_matching.cpp&#10;optionma&#9;null&#9;null&#10;featuremat&#9;FILE&#9;file:///home/tri/Desktop/bkmap/src/base/feature_matching.cpp&#10;bit&#9;FILE&#9;file:///home/tri/Desktop/bkmap/src/util/bitmap.h&#10;bitma&#9;FILE&#9;file:///home/tri/Desktop/bkmap/src/util/bitmap.h&#10;featuree&#9;FILE&#9;file:///home/tri/Desktop/bkmap/src/base/feature_extraction.cpp&#10;incre&#9;FILE&#9;file:///home/tri/Desktop/bkmap/src/controllers/incremental_mapper.cpp&#10;analy&#9;FILE&#9;file:///home/tri/Desktop/bkmap/src/exe/model_analyzer.cpp&#10;mainwin&#9;FILE&#9;file:///home/tri/Desktop/bkmap/src/ui/main_window.cpp&#10;max image&#9;null&#9;null&#10;came&#9;FILE&#9;file:///home/tri/Desktop/bkmap/src/base/camera_models.cpp&#10;database.h&#9;FILE&#9;file:///home/tri/Desktop/bkmap/src/base/database.h&#10;camer&#9;FILE&#9;file:///home/tri/Desktop/bkmap/src/base/camera_models.h&#10;mainw&#9;FILE&#9;file:///home/tri/Desktop/bkmap/src/ui/main_window.cpp&#10;feature_matchingwi&#9;FILE&#9;file:///home/tri/Desktop/bkmap/src/ui/feature_matching_widget.cpp&#10;feature_ma&#9;FILE&#9;file:///home/tri/Desktop/bkmap/src/ui/feature_matching_widget.cpp&#10;option&#9;FILE&#9;file:///home/tri/Desktop/bkmap/src/ui/options_widget.h&#10;optionwid&#9;FILE&#9;file:///home/tri/Desktop/bkmap/src/ui/options_widget.h&#10;option_wi&#9;FILE&#9;file:///home/tri/Desktop/bkmap/src/ui/options_widget.cpp&#10;pro&#9;FILE&#9;file:///home/tri/Desktop/bkmap/src/ui/project_widget.cpp&#10;da&#9;FILE&#9;file:///home/tri/Desktop/bkmap/src/base/database.cpp&#10;sql&#9;FILE&#9;file:///home/tri/Desktop/bkmap/src/ext/SQLite/sqlite3.c&#10;camera_models.h&#9;FILE&#9;file:///home/tri/Desktop/bkmap/src/base/camera_models.h&#10;projectwi&#9;FILE&#9;file:///home/tri/Desktop/bkmap/src/ui/project_widget.cpp" />
     <property name="settings.editor.selected.configurable" value="preferences.sourceCode" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
   </component>
@@ -762,23 +700,43 @@
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25183016" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39469808" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="CMake" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2945508" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="CMake" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2945508" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3298969" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28424153" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3298969" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.38733432" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39469808" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28424153" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3298969" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.38733432" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
+    <layout-to-restore>
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39469808" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="CMake" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2945508" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28424153" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3298969" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25183016" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3298969" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.38733432" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+    </layout-to-restore>
   </component>
   <component name="Vcs.Log.UiProperties">
     <option name="RECENTLY_FILTERED_USER_GROUPS">
@@ -796,7 +754,7 @@
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="110" />
+      <option name="time" value="111" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -833,13 +791,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="142">
           <caret line="1262" column="30" selection-start-line="1262" selection-start-column="30" selection-end-line="1262" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ui/feature_matching_widget.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="112" column="44" selection-start-line="112" selection-start-column="44" selection-end-line="112" selection-end-column="44" />
         </state>
       </provider>
     </entry>
@@ -1085,15 +1036,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="142">
           <caret line="104" column="42" selection-start-line="104" selection-start-column="42" selection-end-line="104" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/optim/bundle_adjustment.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="142">
-          <caret line="648" column="42" selection-start-line="648" selection-start-column="42" selection-end-line="648" selection-end-column="42" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1101,15 +1043,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-544">
           <caret line="17" column="34" selection-start-line="17" selection-start-column="34" selection-end-line="17" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ui/options_widget.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="49" column="60" selection-start-line="49" selection-start-column="48" selection-end-line="49" selection-end-column="60" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1117,7 +1050,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="217">
           <caret line="33" column="17" selection-start-line="33" selection-start-column="17" selection-end-line="33" selection-end-column="17" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1125,7 +1057,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="186">
           <caret line="40" column="38" selection-start-line="40" selection-start-column="19" selection-end-line="40" selection-end-column="38" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1133,7 +1064,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="8" column="69" selection-start-line="8" selection-start-column="69" selection-end-line="8" selection-end-column="69" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1141,7 +1071,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="217">
           <caret line="68" column="31" selection-start-line="68" selection-start-column="31" selection-end-line="68" selection-end-column="31" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1149,7 +1078,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="329">
           <caret line="195" column="27" selection-start-line="195" selection-start-column="10" selection-end-line="195" selection-end-column="27" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1157,17 +1085,36 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="217">
           <caret line="98" column="12" selection-start-line="98" selection-start-column="12" selection-end-line="98" selection-end-column="12" />
-          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/optim/bundle_adjustment.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="142">
+          <caret line="648" column="42" selection-start-line="648" selection-start-column="42" selection-end-line="648" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ui/options_widget.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="49" column="60" selection-start-line="49" selection-start-column="48" selection-end-line="49" selection-end-column="60" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ui/feature_extraction_widget.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-20">
-          <caret line="150" column="63" selection-start-line="150" selection-start-column="63" selection-end-line="150" selection-end-column="63" />
-          <folding>
-            <element signature="e#5704#8028#0" expanded="false" />
-          </folding>
+        <state relative-caret-position="-1368">
+          <caret line="70" column="38" selection-start-line="70" selection-start-column="38" selection-end-line="70" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ui/feature_matching_widget.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="332">
+          <caret line="336" column="0" selection-start-line="336" selection-start-column="0" selection-end-line="336" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>

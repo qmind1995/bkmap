@@ -72,23 +72,10 @@ namespace bkmap {
 //        AddSpacer();
 //        AddSection("General Options");
         AddSpacer();
-
-        AddOptionInt(&options_->sift_matching->num_threads, "num_threads", 1, 16, true);
+        unsigned int n = std::thread::hardware_concurrency();
+        options_->sift_matching->num_threads = n-2;
         AddOptionBool(&options_->sift_matching->use_gpu, "use_gpu", true);
         AddOptionText(&options_->sift_matching->gpu_index, "gpu_index", true);
-        AddOptionDouble(&options_->sift_matching->max_ratio, "max_ratio");
-        AddOptionDouble(&options_->sift_matching->max_distance, "max_distance");
-        AddOptionBool(&options_->sift_matching->cross_check, "cross_check");
-        AddOptionInt(&options_->sift_matching->max_num_matches, "max_num_matches");
-        AddOptionDouble(&options_->sift_matching->max_error, "max_error");
-        AddOptionDouble(&options_->sift_matching->confidence, "confidence", 0, 1,
-                        0.00001, 5);
-        AddOptionInt(&options_->sift_matching->max_num_trials, "max_num_trials");
-        AddOptionDouble(&options_->sift_matching->min_inlier_ratio,
-                        "min_inlier_ratio", 0, 1, 0.001, 3);
-        AddOptionInt(&options_->sift_matching->min_num_inliers, "min_num_inliers");
-        AddOptionBool(&options_->sift_matching->multiple_models, "multiple_models");
-        AddOptionBool(&options_->sift_matching->guided_matching, "guided_matching");
 
         distance_type_cb_ = AddDistanceOption();
 
@@ -336,11 +323,6 @@ namespace bkmap {
                             tr("Exhaustive"));
         tab_widget_->addTab(new SequentialMatchingTab(this, options),
                             tr("Sequential"));
-//        tab_widget_->addTab(new VocabTreeMatchingTab(this, options), tr("VocabTree"));
-//        tab_widget_->addTab(new SpatialMatchingTab(this, options), tr("Spatial"));
-//        tab_widget_->addTab(new TransitiveMatchingTab(this, options),
-//                            tr("Transitive"));
-//        tab_widget_->addTab(new CustomMatchingTab(this, options), tr("Custom"));
 
         grid->addWidget(tab_widget_, 0, 0);
     }
