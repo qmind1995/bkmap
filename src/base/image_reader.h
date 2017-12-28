@@ -28,7 +28,7 @@ namespace bkmap {
             std::vector<std::string> image_list;
 
             // Name of the camera model.
-            std::string camera_model = "SIMPLE_RADIAL";
+            std::string camera_model = "RADIAL";
 
             // Whether to use the same camera for all images.
             bool single_camera = false;

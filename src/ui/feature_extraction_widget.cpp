@@ -62,21 +62,22 @@ namespace bkmap {
         grid_layout_->addWidget(sift_cpu_, grid_layout_->rowCount(), 1);
         sift_cpu_->hide();
         AddSpacer();
+        unsigned int n = std::thread::hardware_concurrency();
+        options->sift_extraction->num_threads = n -2;
+//        AddOptionInt(&options->sift_extraction->max_image_size, "max_image_size");
+//        AddOptionInt(&options->sift_extraction->max_num_features, "max_num_features");
+//        AddOptionInt(&options->sift_extraction->first_octave, "first_octave", -5);
+//        AddOptionInt(&options->sift_extraction->num_octaves, "num_octaves");
+//        AddOptionInt(&options->sift_extraction->octave_resolution,
+//                     "octave_resolution");
+//        AddOptionDouble(&options->sift_extraction->peak_threshold, "peak_threshold",
+//                        0.0, 1e7, 0.0001, 4);
+//        AddOptionDouble(&options->sift_extraction->edge_threshold, "edge_threshold");
+//        AddOptionInt(&options->sift_extraction->max_num_orientations,
+//                     "max_num_orientations");
+//        AddOptionBool(&options->sift_extraction->upright, "upright");
 
-        AddOptionInt(&options->sift_extraction->max_image_size, "max_image_size");
-        AddOptionInt(&options->sift_extraction->max_num_features, "max_num_features");
-        AddOptionInt(&options->sift_extraction->first_octave, "first_octave", -5);
-        AddOptionInt(&options->sift_extraction->num_octaves, "num_octaves");
-        AddOptionInt(&options->sift_extraction->octave_resolution,
-                     "octave_resolution");
-        AddOptionDouble(&options->sift_extraction->peak_threshold, "peak_threshold",
-                        0.0, 1e7, 0.0001, 4);
-        AddOptionDouble(&options->sift_extraction->edge_threshold, "edge_threshold");
-        AddOptionInt(&options->sift_extraction->max_num_orientations,
-                     "max_num_orientations");
-        AddOptionBool(&options->sift_extraction->upright, "upright");
-
-        AddOptionInt(&options->sift_extraction->num_threads, "num_threads", 1, 16, true);
+//        AddOptionInt(&options->sift_extraction->num_threads, "num_threads", 1, 16, true);
         AddOptionBool(&options->sift_extraction->use_gpu, "use_gpu", true);
         AddOptionText(&options->sift_extraction->gpu_index, "gpu_index", true);
     }
@@ -125,13 +126,22 @@ namespace bkmap {
 
         QGridLayout* grid = new QGridLayout(this);
 
-        grid->addWidget(CreateCameraModelBox(), 0, 0);
+        camera_params_text_ = new QLineEdit(this);
+        camera_params_text_->setEnabled(false);
+        camera_params_text_->hide();
+        single_camera_cb_ = new QCheckBox("Shared for all images", this);
+        single_camera_cb_->setChecked(false);
+        grid->addWidget(camera_params_text_);
+        grid->addWidget(single_camera_cb_);
+//        grid->addWidget(CreateCameraModelBox(), 0, 0);
 
         tab_widget_ = new QTabWidget(this);
         tab_widget_->addTab(new SIFTExtractionWidget(this, options), tr("Extract"));
-//        tab_widget_->addTab(new ImportFeaturesWidget(this, options), tr("Import"));
         grid->addWidget(tab_widget_);
 
+//        grid->addWidget(new SIFTExtractionWidget(this, options));
+
+        //extract btn
         QPushButton* extract_button = new QPushButton(tr("Extract"), this);
         connect(extract_button, &QPushButton::released, this,
                 &FeatureExtractionWidget::Extract);
@@ -143,15 +153,6 @@ namespace bkmap {
 
         camera_model_cb_ = new QComboBox(this);
 
-//        #define CAMERA_MODEL_CASE(CameraModel)                                     \
-//          if(CameraModel::model_id <=4){                                            \
-//            camera_model_cb_->addItem(                                              \
-//              QString::fromStdString(CameraModelIdToName(CameraModel::model_id))); \
-//            camera_model_ids_.push_back(static_cast<int>(CameraModel::model_id));\
-//            }\
-//          CAMERA_MODEL_CASES
-//
-//        #undef CAMERA_MODEL_CASE
         #define CAMERA_MODEL_CASE(CameraModel)                                     \
           camera_model_cb_->addItem(                                               \
               QString::fromStdString(CameraModelIdToName(CameraModel::model_id))); \
@@ -214,23 +215,23 @@ namespace bkmap {
     }
 
     void FeatureExtractionWidget::ReadOptions() {
-        const auto camera_code =
-                CameraModelNameToId(options_->image_reader->camera_model);
-        for (size_t i = 0; i < camera_model_ids_.size(); ++i) {
-            if (camera_model_ids_[i] == camera_code) {
-                SelectCameraModel(i);
-                camera_model_cb_->setCurrentIndex(i);
-                break;
-            }
-        }
+//        const auto camera_code =
+//                CameraModelNameToId(options_->image_reader->camera_model);
+//        for (size_t i = 0; i < camera_model_ids_.size(); ++i) {
+//            if (camera_model_ids_[i] == camera_code) {
+//                SelectCameraModel(i);
+//                camera_model_cb_->setCurrentIndex(i);
+//                break;
+//            }
+//        }
         single_camera_cb_->setChecked(options_->image_reader->single_camera);
         camera_params_text_->setText(
                 QString::fromStdString(options_->image_reader->camera_params));
     }
 
     void FeatureExtractionWidget::WriteOptions() {
-        options_->image_reader->camera_model =
-                CameraModelIdToName(camera_model_ids_[camera_model_cb_->currentIndex()]);
+//        options_->image_reader->camera_model =
+//                CameraModelIdToName(camera_model_ids_[camera_model_cb_->currentIndex()]);
         options_->image_reader->single_camera = single_camera_cb_->isChecked();
         options_->image_reader->camera_params =
                 camera_params_text_->text().toUtf8().constData();
@@ -245,10 +246,10 @@ namespace bkmap {
     void FeatureExtractionWidget::Extract() {
         // If the custom parameter radiobuttion is not checked, but the
         // parameters textbox contains parameters.
-        const auto old_camera_params_text = camera_params_text_->text();
-        if (!camera_params_custom_rb_->isChecked()) {
-            camera_params_text_->setText("");
-        }
+//        const auto old_camera_params_text = camera_params_text_->text();
+//        if (!camera_params_custom_rb_->isChecked()) {
+//            camera_params_text_->setText("");
+//        }
 
         WriteOptions();
 
@@ -257,15 +258,15 @@ namespace bkmap {
         const auto camera_code =
                 CameraModelNameToId(options_->image_reader->camera_model);
 
-        if (camera_params_custom_rb_->isChecked() &&
-            !CameraModelVerifyParams(camera_code, camera_params)) {
-            QMessageBox::critical(this, "", tr("Invalid camera parameters"));
-            return;
-        }
+//        if (camera_params_custom_rb_->isChecked() &&
+//            !CameraModelVerifyParams(camera_code, camera_params)) {
+//            QMessageBox::critical(this, "", tr("Invalid camera parameters"));
+//            return;
+//        }
 
         static_cast<ExtractionWidget*>(tab_widget_->currentWidget())->Run();
 
-        camera_params_text_->setText(old_camera_params_text);
+//        camera_params_text_->setText(old_camera_params_text);
     }
 
 }
