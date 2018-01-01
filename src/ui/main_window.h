@@ -11,21 +11,14 @@
 
 #include "base/reconstruction.h"
 #include "controllers/incremental_mapper.h"
-//#include "ui/automatic_reconstruction_widget.h"
 #include "ui/bundle_adjustment_widget.h"
-#include "ui/database_management_widget.h"
+//#include "ui/database_management_widget.h"
 #include "ui/feature_extraction_widget.h"
 #include "ui/feature_matching_widget.h"
-#include "ui/license_widget.h"
 #include "ui/log_widget.h"
-#include "ui/match_matrix_widget.h"
 #include "ui/opengl_window.h"
 #include "ui/project_widget.h"
 #include "ui/reconstruction_manager_widget.h"
-#include "ui/reconstruction_options_widget.h"
-#include "ui/reconstruction_stats_widget.h"
-#include "ui/render_options_widget.h"
-#include "ui/undistortion_widget.h"
 #include "util/bitmap.h"
 
 namespace bkmap {
@@ -64,21 +57,16 @@ namespace bkmap {
         void ReconstructionFinish();
         bool ReconstructionOverwrite();
 
-
         void Render();
         void RenderNow();
-        void RenderToggle();
-        void RenderOptions();
+
         void RenderSelectedReconstruction();
         void RenderClear();
 
         void SelectReconstructionIdx(const size_t);
         size_t SelectedReconstructionIdx();
         bool HasSelectedReconstruction();
-        bool IsSelectedReconstructionValid();
 
-        void ReconstructionStats();
-        void MatchMatrix();
         void ShowLog();
 
         void ShowInvalidProjectError();
@@ -106,12 +94,9 @@ namespace bkmap {
         ProjectWidget* project_widget_;
         FeatureExtractionWidget* feature_extraction_widget_;
         FeatureMatchingWidget* feature_matching_widget_;
-        DatabaseManagementWidget* database_management_widget_;
-        RenderOptionsWidget* render_options_widget_;
+//        DatabaseManagementWidget* database_management_widget_;
         LogWidget* log_widget_;
         ReconstructionManagerWidget* reconstruction_manager_widget_;
-        ReconstructionStatsWidget* reconstruction_stats_widget_;
-        MatchMatrixWidget* match_matrix_widget_;
         ThreadControlWidget* thread_control_widget_;
 
         QToolBar* file_toolbar_;
@@ -142,12 +127,8 @@ namespace bkmap {
 
         QAction* action_render_;
         QAction* action_render_now_;
-        QAction* action_render_toggle_;
         QAction* action_render_reset_view_;
-        QAction* action_render_options_;
 
-        QAction* action_reconstruction_stats_;
-        QAction* action_match_matrix_;
         QAction* action_log_show_;
 
         std::vector<QAction*> blocking_actions_;

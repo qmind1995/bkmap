@@ -75,15 +75,10 @@ namespace bkmap {
 
         feature_extraction_widget_ = new FeatureExtractionWidget(this, &options_);
         feature_matching_widget_ = new FeatureMatchingWidget(this, &options_);
-        database_management_widget_ = new DatabaseManagementWidget(this, &options_);
-        render_options_widget_ =
-                new RenderOptionsWidget(this, &options_, opengl_window_);
         log_widget_ = new LogWidget(this);
         reconstruction_manager_widget_ =
                 new ReconstructionManagerWidget(this, &reconstruction_manager_);
         reconstruction_manager_widget_->hide();
-        reconstruction_stats_widget_ = new ReconstructionStatsWidget(this);
-        match_matrix_widget_ = new MatchMatrixWidget(this, &options_);
 
         dock_log_widget_ = new QDockWidget("", this);
         dock_log_widget_->setWidget(log_widget_);
@@ -136,11 +131,6 @@ namespace bkmap {
                 &MainWindow::FeatureMatching);
         blocking_actions_.push_back(action_feature_matching_);
 
-        action_database_management_ = new QAction(QIcon(":/media/database-management.png"), tr("Database management"), this);
-        connect(action_database_management_, &QAction::triggered, this,
-                &MainWindow::DatabaseManagement);
-        blocking_actions_.push_back(action_database_management_);
-
         //////////////////////////////////////////////////////////////////////////////
         // Reconstruction actions
         //////////////////////////////////////////////////////////////////////////////
@@ -161,20 +151,10 @@ namespace bkmap {
         // Render actions
         //////////////////////////////////////////////////////////////////////////////
 
-        action_render_toggle_ = new QAction(QIcon(":/media/render-enabled.png"),
-                                            tr("Disable rendering"), this);
-        connect(action_render_toggle_, &QAction::triggered, this,
-                &MainWindow::RenderToggle);
-
         action_render_reset_view_ = new QAction(
                 QIcon(":/media/render-reset-view.png"), tr("Reset view"), this);
         connect(action_render_reset_view_, &QAction::triggered, opengl_window_,
                 &OpenGLWindow::ResetView);
-
-        action_render_options_ = new QAction(QIcon(":/media/render-options.png"),
-                                             tr("Render options"), this);
-        connect(action_render_options_, &QAction::triggered, this,
-                &MainWindow::RenderOptions);
 
         connect(
                 reconstruction_manager_widget_,
@@ -184,17 +164,6 @@ namespace bkmap {
         //////////////////////////////////////////////////////////////////////////////
         // Extras actions
         //////////////////////////////////////////////////////////////////////////////
-
-        action_reconstruction_stats_ =
-                new QAction(QIcon(":/media/reconstruction-stats.png"),
-                            tr("Show model statistics"), this);
-        connect(action_reconstruction_stats_, &QAction::triggered, this,
-                &MainWindow::ReconstructionStats);
-
-        action_match_matrix_ = new QAction(QIcon(":/media/match-matrix.png"),
-                                           tr("Show match matrix"), this);
-        connect(action_match_matrix_, &QAction::triggered, this,
-                &MainWindow::MatchMatrix);
 
         action_log_show_ =
                 new QAction(QIcon(":/media/log.png"), tr("Show log"), this);
@@ -209,7 +178,6 @@ namespace bkmap {
                 Qt::BlockingQueuedConnection);
 
         action_render_now_ = new QAction(tr("Render now"), this);
-        render_options_widget_->action_render_now = action_render_now_;
         connect(action_render_now_, &QAction::triggered, this, &MainWindow::RenderNow,
                 Qt::BlockingQueuedConnection);
 
@@ -355,15 +323,6 @@ namespace bkmap {
         }
     }
 
-    void MainWindow::DatabaseManagement() {
-        if (options_.Check()) {
-            database_management_widget_->show();
-            database_management_widget_->raise();
-        } else {
-            ShowInvalidProjectError();
-        }
-    }
-
     void MainWindow::ReconstructionStart() {
         if (!mapper_controller_->IsStarted() && !options_.Check()) {
             ShowInvalidProjectError();
@@ -446,23 +405,6 @@ namespace bkmap {
             return;
         }
 
-        const Reconstruction& reconstruction = reconstruction_manager_.Get(SelectedReconstructionIdx());
-
-        int refresh_rate;
-        if (options_.render->adapt_refresh_rate) {
-            refresh_rate = static_cast<int>(reconstruction.NumRegImages() / 50 + 1);
-        } else {
-            refresh_rate = options_.render->refresh_rate;
-        }
-
-        if (!render_options_widget_->automatic_update ||
-            render_options_widget_->counter % refresh_rate != 0) {
-            render_options_widget_->counter += 1;
-            return;
-        }
-
-        render_options_widget_->counter += 1;
-
         RenderNow();
     }
 
@@ -486,11 +428,6 @@ namespace bkmap {
         reconstruction_manager_widget_->SelectReconstruction(
                 ReconstructionManagerWidget::kNewestReconstructionIdx);
         opengl_window_->Clear();
-    }
-
-    void MainWindow::RenderOptions() {
-        render_options_widget_->show();
-        render_options_widget_->raise();
     }
 
     void MainWindow::SelectReconstructionIdx(const size_t) {
@@ -521,67 +458,11 @@ namespace bkmap {
         return true;
     }
 
-    bool MainWindow::IsSelectedReconstructionValid() {
-        if (!HasSelectedReconstruction()) {
-            QMessageBox::critical(this, "", tr("No reconstruction selected"));
-            return false;
-        }
-        return true;
-    }
-
-//    void MainWindow::GrabImage() {
-//        QString file_name = QFileDialog::getSaveFileName(this, tr("Save image"), "",
-//                                                         tr("Images (*.png *.jpg)"));
-//        if (file_name != "") {
-//            if (!HasFileExtension(file_name.toUtf8().constData(), ".png") &&
-//                !HasFileExtension(file_name.toUtf8().constData(), ".jpg")) {
-//                file_name += ".png";
-//            }
-//            QImage image = opengl_window_->GrabImage();
-//            image.save(file_name);
-//        }
-//    }
-
-//    void MainWindow::UndistortImages() {
-//        if (!IsSelectedReconstructionValid()) {
-//            return;
-//        }
-//        undistortion_widget_->Show(
-//                reconstruction_manager_.Get(SelectedReconstructionIdx()));
-//    }
-
-    void MainWindow::ReconstructionStats() {
-        if (!IsSelectedReconstructionValid()) {
-            return;
-        }
-        reconstruction_stats_widget_->show();
-        reconstruction_stats_widget_->raise();
-        reconstruction_stats_widget_->Show(
-                reconstruction_manager_.Get(SelectedReconstructionIdx()));
-    }
-
-    void MainWindow::MatchMatrix() { match_matrix_widget_->Show(); }
-
     void MainWindow::ShowLog() {
         log_widget_->show();
         log_widget_->raise();
         dock_log_widget_->show();
         dock_log_widget_->raise();
-    }
-
-    void MainWindow::RenderToggle() {
-        if (render_options_widget_->automatic_update) {
-            render_options_widget_->automatic_update = false;
-            render_options_widget_->counter = 0;
-            action_render_toggle_->setIcon(QIcon(":/media/render-disabled.png"));
-            action_render_toggle_->setText(tr("Enable rendering"));
-        } else {
-            render_options_widget_->automatic_update = true;
-            render_options_widget_->counter = 0;
-            Render();
-            action_render_toggle_->setIcon(QIcon(":/media/render-enabled.png"));
-            action_render_toggle_->setText(tr("Disable rendering"));
-        }
     }
 
     void MainWindow::UpdateTimer() {

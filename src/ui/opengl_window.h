@@ -13,7 +13,7 @@
 #include "ui/colormaps.h"
 #include "ui/image_viewer_widget.h"
 #include "ui/line_painter.h"
-#include "ui/movie_grabber_widget.h"
+//#include "ui/movie_grabber_widget.h"
 #include "ui/point_painter.h"
 #include "ui/point_viewer_widget.h"
 #include "ui/render_options.h"
@@ -120,7 +120,7 @@ namespace bkmap {
         void UploadPointConnectionData();
         void UploadImageData(const bool selection_mode = false);
         void UploadImageConnectionData();
-        void UploadMovieGrabberData();
+//        void UploadMovieGrabberData();
 
         void ComposeProjectionMatrix();
 
@@ -153,7 +153,7 @@ namespace bkmap {
 
         PointViewerWidget* point_viewer_widget_;
         DatabaseImageViewerWidget* image_viewer_widget_;
-        MovieGrabberWidget* movie_grabber_widget_;
+//        MovieGrabberWidget* movie_grabber_widget_;
 
         std::unique_ptr<PointColormapBase> point_colormap_;
 

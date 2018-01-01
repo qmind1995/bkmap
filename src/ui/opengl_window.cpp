@@ -147,7 +147,7 @@ namespace bkmap {
               point_viewer_widget_(new PointViewerWidget(parent, this, options)),
               image_viewer_widget_(
                       new DatabaseImageViewerWidget(parent, this, options)),
-              movie_grabber_widget_(new MovieGrabberWidget(parent, this)),
+//              movie_grabber_widget_(new MovieGrabberWidget(parent, this)),
               mouse_is_pressed_(false),
               focus_distance_(kInitFocusDistance),
               selected_image_id_(kInvalidImageId),
@@ -310,7 +310,7 @@ namespace bkmap {
 
         UploadPointData();
         UploadImageData();
-        UploadMovieGrabberData();
+//        UploadMovieGrabberData();
         UploadPointConnectionData();
         UploadImageConnectionData();
 
@@ -335,7 +335,7 @@ namespace bkmap {
     }
 
     void OpenGLWindow::UpdateMovieGrabber() {
-        UploadMovieGrabberData();
+//        UploadMovieGrabberData();
         PaintGL();
     }
 
@@ -459,7 +459,7 @@ namespace bkmap {
         image_size_ *= (1.0f + delta / 100.0f * kImageScaleSpeed);
         image_size_ = std::max(kMinImageSize, std::min(kMaxImageSize, image_size_));
         UploadImageData();
-        UploadMovieGrabberData();
+//        UploadMovieGrabberData();
         PaintGL();
     }
 
@@ -533,7 +533,7 @@ namespace bkmap {
 
     void OpenGLWindow::SelectMoviewGrabberView(const size_t view_idx) {
         selected_movie_grabber_view_ = view_idx;
-        UploadMovieGrabberData();
+//        UploadMovieGrabberData();
         PaintGL();
     }
 
@@ -554,7 +554,7 @@ namespace bkmap {
         return image;
     }
 
-    void OpenGLWindow::GrabMovie() { movie_grabber_widget_->show(); }
+//    void OpenGLWindow::GrabMovie() { movie_grabber_widget_->show(); }
 
     void OpenGLWindow::ShowPointInfo(const point3D_t point3D_id) {
         point_viewer_widget_->Show(point3D_id);
@@ -930,82 +930,82 @@ namespace bkmap {
         image_connection_painter_.Upload(line_data);
     }
 
-    void OpenGLWindow::UploadMovieGrabberData() {
-        std::vector<LinePainter::Data> path_data;
-        path_data.reserve(movie_grabber_widget_->views.size());
-
-        std::vector<LinePainter::Data> line_data;
-        line_data.reserve(4 * movie_grabber_widget_->views.size());
-
-        std::vector<TrianglePainter::Data> triangle_data;
-        triangle_data.reserve(2 * movie_grabber_widget_->views.size());
-
-        if (movie_grabber_widget_->views.size() > 0) {
-            const Image& image0 = movie_grabber_widget_->views[0];
-            Eigen::Vector3f prev_proj_center = image0.ProjectionCenter().cast<float>();
-
-            for (size_t i = 1; i < movie_grabber_widget_->views.size(); ++i) {
-                const Image& image = movie_grabber_widget_->views[i];
-                const Eigen::Vector3f curr_proj_center =
-                        image.ProjectionCenter().cast<float>();
-                LinePainter::Data path;
-                path.point1 = PointPainter::Data(prev_proj_center(0), prev_proj_center(1),
-                                                 prev_proj_center(2), 0, 1, 1, 0.8);
-                path.point2 = PointPainter::Data(curr_proj_center(0), curr_proj_center(1),
-                                                 curr_proj_center(2), 0, 1, 1, 0.8);
-                path_data.push_back(path);
-                prev_proj_center = curr_proj_center;
-            }
-
-            // Setup dummy camera with same settings as current OpenGL viewpoint.
-            const size_t kDefaultImageWdith = 2048;
-            const size_t kDefaultImageHeight = 1536;
-            const double focal_length =
-                    -2 * tan(DegToRad(kFieldOfView) / 2.0) * kDefaultImageWdith;
-            Camera camera;
-            camera.InitializeWithId(SimplePinholeCameraModel::model_id, focal_length,
-                                    kDefaultImageWdith, kDefaultImageHeight);
-
-            // Build all camera models
-            for (size_t i = 0; i < movie_grabber_widget_->views.size(); ++i) {
-                const Image& image = movie_grabber_widget_->views[i];
-                float r, g, b, a;
-                if (i == selected_movie_grabber_view_) {
-                    r = IMAGE_SELECTED_R;
-                    g = IMAGE_SELECTED_G;
-                    b = IMAGE_SELECTED_B;
-                    a = 1;
-                } else {
-                    r = 0;
-                    g = 1;
-                    b = 1;
-                    a = IMAGE_A;
-                }
-
-                LinePainter::Data line1, line2, line3, line4, line5, line6, line7, line8;
-                TrianglePainter::Data triangle1, triangle2;
-                BuildImageModel(image, camera, image_size_, r, g, b, a, line1, line2,
-                                line3, line4, line5, line6, line7, line8, triangle1,
-                                triangle2);
-
-                line_data.push_back(line1);
-                line_data.push_back(line2);
-                line_data.push_back(line3);
-                line_data.push_back(line4);
-                line_data.push_back(line5);
-                line_data.push_back(line6);
-                line_data.push_back(line7);
-                line_data.push_back(line8);
-
-                triangle_data.push_back(triangle1);
-                triangle_data.push_back(triangle2);
-            }
-        }
-
-        movie_grabber_path_painter_.Upload(path_data);
-        movie_grabber_line_painter_.Upload(line_data);
-        movie_grabber_triangle_painter_.Upload(triangle_data);
-    }
+//    void OpenGLWindow::UploadMovieGrabberData() {
+//        std::vector<LinePainter::Data> path_data;
+//        path_data.reserve(movie_grabber_widget_->views.size());
+//
+//        std::vector<LinePainter::Data> line_data;
+//        line_data.reserve(4 * movie_grabber_widget_->views.size());
+//
+//        std::vector<TrianglePainter::Data> triangle_data;
+//        triangle_data.reserve(2 * movie_grabber_widget_->views.size());
+//
+//        if (movie_grabber_widget_->views.size() > 0) {
+//            const Image& image0 = movie_grabber_widget_->views[0];
+//            Eigen::Vector3f prev_proj_center = image0.ProjectionCenter().cast<float>();
+//
+//            for (size_t i = 1; i < movie_grabber_widget_->views.size(); ++i) {
+//                const Image& image = movie_grabber_widget_->views[i];
+//                const Eigen::Vector3f curr_proj_center =
+//                        image.ProjectionCenter().cast<float>();
+//                LinePainter::Data path;
+//                path.point1 = PointPainter::Data(prev_proj_center(0), prev_proj_center(1),
+//                                                 prev_proj_center(2), 0, 1, 1, 0.8);
+//                path.point2 = PointPainter::Data(curr_proj_center(0), curr_proj_center(1),
+//                                                 curr_proj_center(2), 0, 1, 1, 0.8);
+//                path_data.push_back(path);
+//                prev_proj_center = curr_proj_center;
+//            }
+//
+//            // Setup dummy camera with same settings as current OpenGL viewpoint.
+//            const size_t kDefaultImageWdith = 2048;
+//            const size_t kDefaultImageHeight = 1536;
+//            const double focal_length =
+//                    -2 * tan(DegToRad(kFieldOfView) / 2.0) * kDefaultImageWdith;
+//            Camera camera;
+//            camera.InitializeWithId(SimplePinholeCameraModel::model_id, focal_length,
+//                                    kDefaultImageWdith, kDefaultImageHeight);
+//
+//            // Build all camera models
+//            for (size_t i = 0; i < movie_grabber_widget_->views.size(); ++i) {
+//                const Image& image = movie_grabber_widget_->views[i];
+//                float r, g, b, a;
+//                if (i == selected_movie_grabber_view_) {
+//                    r = IMAGE_SELECTED_R;
+//                    g = IMAGE_SELECTED_G;
+//                    b = IMAGE_SELECTED_B;
+//                    a = 1;
+//                } else {
+//                    r = 0;
+//                    g = 1;
+//                    b = 1;
+//                    a = IMAGE_A;
+//                }
+//
+//                LinePainter::Data line1, line2, line3, line4, line5, line6, line7, line8;
+//                TrianglePainter::Data triangle1, triangle2;
+//                BuildImageModel(image, camera, image_size_, r, g, b, a, line1, line2,
+//                                line3, line4, line5, line6, line7, line8, triangle1,
+//                                triangle2);
+//
+//                line_data.push_back(line1);
+//                line_data.push_back(line2);
+//                line_data.push_back(line3);
+//                line_data.push_back(line4);
+//                line_data.push_back(line5);
+//                line_data.push_back(line6);
+//                line_data.push_back(line7);
+//                line_data.push_back(line8);
+//
+//                triangle_data.push_back(triangle1);
+//                triangle_data.push_back(triangle2);
+//            }
+//        }
+//
+//        movie_grabber_path_painter_.Upload(path_data);
+//        movie_grabber_line_painter_.Upload(line_data);
+//        movie_grabber_triangle_painter_.Upload(triangle_data);
+//    }
 
     void OpenGLWindow::ComposeProjectionMatrix() {
         projection_matrix_.setToIdentity();

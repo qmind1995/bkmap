@@ -17,18 +17,18 @@
       <sourceFolder url="file://$MODULE_DIR$/src/mvs/consistency_graph.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/mvs/depth_map.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/mvs/mat.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/mvs/model.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/mvs/depth_map.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/mvs/fusion.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/mvs/patch_match.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/mvs/fusion.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/mvs/normal_map.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/mvs/meshing.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/mvs/workspace.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/mvs/consistency_graph.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/mvs/image.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/mvs/CMakeLists.txt" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/mvs/model.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/mvs/model.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/mvs/workspace.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/mvs/image.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/mvs/workspace.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/mvs/meshing.h" isTestSource="false" />
@@ -44,87 +44,71 @@
       <sourceFolder url="file://$MODULE_DIR$/src/retrieval/geometry.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/retrieval/utils.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/retrieval/inverted_index.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/controllers/CMakeLists.txt" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/controllers/bundle_adjustment.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/controllers/automatic_reconstruction.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/controllers/bundle_adjustment.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/controllers/bundle_adjustment.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/controllers/CMakeLists.txt" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/controllers/incremental_mapper.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/controllers/hierarchical_mapper.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/controllers/automatic_reconstruction.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/controllers/hierarchical_mapper.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/controllers/incremental_mapper.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/ui/database_management_widget.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/ui/qt_utils.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ui/colormaps.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ui/image_viewer_widget.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ui/triangle_painter.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/ui/match_matrix_widget.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/ui/render_options_widget.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/ui/match_matrix_widget.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/ui/reconstruction_options_widget.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/ui/options_widget.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ui/point_viewer_widget.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/ui/colormaps.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/ui/render_options_widget.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/ui/line_painter.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/ui/project_widget.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ui/bundle_adjustment_widget.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ui/resources.qrc" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/ui/undistortion_widget.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ui/feature_matching_widget.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ui/feature_matching_widget.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/ui/reconstruction_stats_widget.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/ui/reconstruction_stats_widget.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ui/point_painter.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ui/CMakeLists.txt" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ui/log_widget.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/ui/reconstruction_manager_widget.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/ui/options_widget.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ui/image_viewer_widget.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ui/opengl_window.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/ui/automatic_reconstruction_widget.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ui/feature_extraction_widget.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ui/render_options.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/ui/colormaps.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ui/qt_utils.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ui/options_widget.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ui/project_widget.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ui/database_management_widget.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ui/line_painter.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/ui/reconstruction_manager_widget.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ui/thread_control_widget.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/ui/line_painter.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/ui/qt_utils.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/ui/project_widget.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/ui/reconstruction_manager_widget.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ui/point_painter.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ui/thread_control_widget.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/ui/undistortion_widget.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ui/main_window.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ui/point_viewer_widget.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/ui/bundle_adjustment_widget.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ui/triangle_painter.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/ui/movie_grabber_widget.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/ui/opengl_window.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ui/feature_extraction_widget.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ui/log_widget.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ui/render_options.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ui/main_window.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/ui/movie_grabber_widget.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/ui/license_widget.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/ui/opengl_window.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/ui/reconstruction_options_widget.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/ui/license_widget.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/ui/bundle_adjustment_widget.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/ui/reconstruction_manager_widget.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/optim/combination_sampler.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/optim/sampler.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/optim/support_measurement.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/optim/least_absolute_deviations.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/optim/random_sampler.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/optim/progressive_sampler.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/optim/combination_sampler.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/optim/progressive_sampler.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/optim/combination_sampler.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/optim/support_measurement.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/optim/sprt.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/optim/sprt.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/optim/bundle_adjustment.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/optim/random_sampler.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/optim/loransac.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/optim/least_absolute_deviations.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/optim/support_measurement.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/optim/random_sampler.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/optim/bundle_adjustment.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/optim/CMakeLists.txt" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/optim/loransac.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/optim/ransac.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/util/misc.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/util/version.h" isTestSource="false" />
@@ -132,10 +116,9 @@
       <sourceFolder url="file://$MODULE_DIR$/src/util/types.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/util/cache.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/util/cudacc.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/util/random.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/util/cuda.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/util/threading.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/util/threading.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/util/option_manager.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/util/CMakeLists.txt" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/util/string.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/util/random.h" isTestSource="false" />
@@ -151,21 +134,23 @@
       <sourceFolder url="file://$MODULE_DIR$/src/util/opengl_utils.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/util/camera_specs.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/util/math.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/util/threading.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/util/version.cc" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/util/option_manager.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/util/endian.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/util/misc.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/util/sqlite3_utils.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/util/random.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/util/option_manager.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/util/string.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/base/reconstruction.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/base/reconstruction_manager.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/base/feature_extraction.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/base/database_cache.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/base/graph_cut.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/base/image_reader.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/base/essential_matrix.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/base/gps.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/base/graph_cut.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/base/reconstruction.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/base/scene_clustering.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/base/camera_models.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/base/camera_rig.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/base/homography_matrix.h" isTestSource="false" />
@@ -173,9 +158,8 @@
       <sourceFolder url="file://$MODULE_DIR$/src/base/visibility_pyramid.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/base/feature.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/base/undistortion.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/base/track.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/base/warp.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/base/camera_rig.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/base/feature.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/base/line.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/base/gps.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/base/database.h" isTestSource="false" />
@@ -183,10 +167,10 @@
       <sourceFolder url="file://$MODULE_DIR$/src/base/point2d.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/base/similarity_transform.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/base/projection.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/base/triangulation.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/base/pose.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/base/undistortion.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/base/feature_matching.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/base/image_reader.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/base/track.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/base/point3d.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/base/CMakeLists.txt" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/base/image.h" isTestSource="false" />
@@ -195,12 +179,10 @@
       <sourceFolder url="file://$MODULE_DIR$/src/base/triangulation.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/base/polynomial.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/base/scene_graph.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/base/feature.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/base/camera_database.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/base/warp.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/base/scene_clustering.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/base/pose.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/base/cost_functions.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/base/database_cache.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/base/scene_graph.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/base/point2d.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/base/image_reader.cpp" isTestSource="false" />
@@ -209,18 +191,20 @@
       <sourceFolder url="file://$MODULE_DIR$/src/base/point3d.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/base/camera_database.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/base/essential_matrix.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/base/camera_rig.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/base/track.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/base/feature_extraction.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/base/warp.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/base/feature_matching.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/base/database_cache.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/base/scene_clustering.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/base/line.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/base/pose.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/base/feature_extraction.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/base/triangulation.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/base/visibility_pyramid.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/base/camera.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/base/reconstruction_manager.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/base/homography_matrix.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/base/reconstruction_manager.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/base/camera_models.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/sfm/incremental_triangulator.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/sfm/CMakeLists.txt" isTestSource="false" />
@@ -236,10 +220,9 @@
       <sourceFolder url="file://$MODULE_DIR$/src/exe/model_converter.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/exe/feature_importer.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/exe/model_aligner.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/exe/model_analyzer.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/exe/image_rectifier.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/exe/mapper.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/exe/model_orientation_aligner.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/exe/image_rectifier.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/exe/image_registrator.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/exe/vocab_tree_retriever.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/exe/matches_importer.cpp" isTestSource="false" />
@@ -249,6 +232,7 @@
       <sourceFolder url="file://$MODULE_DIR$/src/exe/point_triangulator.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/exe/automatic_reconstructor.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/exe/vocab_tree_builder.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/exe/model_analyzer.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/exe/transitive_matcher.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/exe/dense_stereo.cc" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/exe/model_merger.cpp" isTestSource="false" />
@@ -284,43 +268,44 @@
       <sourceFolder url="file://$MODULE_DIR$/src/ext/Graclus/multilevelLib/mlkkm.c" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ext/Graclus/metisLib/fm.c" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ext/Graclus/metisLib/mmd.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/ext/Graclus/metisLib/graph.c" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ext/Graclus/metisLib/mpmetis.c" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ext/Graclus/metisLib/mbalance.c" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/ext/Graclus/metisLib/balance.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/ext/Graclus/metisLib/minitpart2.c" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ext/Graclus/metisLib/mincover.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/ext/Graclus/metisLib/memory.c" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ext/Graclus/metisLib/coarsen.c" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/ext/Graclus/metisLib/graph.c" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/ext/Graclus/metisLib/rename.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/ext/Graclus/metisLib/mrefine.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/ext/Graclus/metisLib/pqueue.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/ext/Graclus/metisLib/mbalance2.c" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ext/Graclus/metisLib/mkwayfmh.c" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/ext/Graclus/metisLib/minitpart.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/ext/Graclus/metisLib/parmetis.c" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ext/Graclus/metisLib/srefine.c" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ext/Graclus/metisLib/subdomains.c" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/ext/Graclus/metisLib/ometis.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/ext/Graclus/metisLib/proto.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ext/Graclus/metisLib/kwayvolrefine.c" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ext/Graclus/metisLib/mfm.c" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/ext/Graclus/metisLib/mrefine.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/ext/Graclus/metisLib/metis.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/ext/Graclus/metisLib/stat.c" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ext/Graclus/metisLib/mmatch.c" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/ext/Graclus/metisLib/minitpart2.c" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ext/Graclus/metisLib/defs.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ext/Graclus/metisLib/macros.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/ext/Graclus/metisLib/mbalance2.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/ext/Graclus/metisLib/mutil.c" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ext/Graclus/metisLib/mrefine2.c" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ext/Graclus/metisLib/ccgraph.c" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ext/Graclus/metisLib/sfm.c" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/ext/Graclus/metisLib/memory.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/ext/Graclus/metisLib/ometis.c" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ext/Graclus/metisLib/kwayrefine.c" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/ext/Graclus/metisLib/metis.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/ext/Graclus/metisLib/pqueue.c" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/ext/Graclus/metisLib/proto.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/ext/Graclus/metisLib/balance.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/ext/Graclus/metisLib/rename.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ext/Graclus/metisLib/kvmetis.c" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/ext/Graclus/metisLib/compress.c" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/ext/Graclus/metisLib/stat.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/ext/Graclus/metisLib/kwayvolfm.c" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ext/Graclus/metisLib/debug.c" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/ext/Graclus/metisLib/meshpart.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/ext/Graclus/metisLib/mcoarsen.c" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ext/Graclus/metisLib/mkmetis.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/ext/Graclus/metisLib/minitpart.c" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ext/Graclus/metisLib/pmetis.c" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/ext/Graclus/metisLib/metis.c" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/ext/Graclus/metisLib/estmem.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/ext/Graclus/metisLib/metis.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ext/Graclus/metisLib/mesh.c" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ext/Graclus/metisLib/timing.c" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ext/Graclus/metisLib/struct.h" isTestSource="false" />
@@ -328,39 +313,37 @@
       <sourceFolder url="file://$MODULE_DIR$/src/ext/Graclus/metisLib/mkwayrefine.c" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ext/Graclus/metisLib/fortran.c" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ext/Graclus/metisLib/separator.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/ext/Graclus/metisLib/meshpart.c" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ext/Graclus/metisLib/util.c" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ext/Graclus/metisLib/bucketsort.c" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ext/Graclus/metisLib/refine.c" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/ext/Graclus/metisLib/parmetis.c" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/ext/Graclus/metisLib/mcoarsen.c" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/ext/Graclus/metisLib/kwayvolfm.c" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/ext/Graclus/metisLib/mfm2.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/ext/Graclus/metisLib/kwayfm.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/ext/Graclus/metisLib/myqsort.c" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ext/Graclus/metisLib/frename.c" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ext/Graclus/metisLib/kmetis.c" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ext/Graclus/metisLib/match.c" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/ext/Graclus/metisLib/kwayfm.c" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/ext/Graclus/metisLib/mutil.c" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/ext/Graclus/metisLib/myqsort.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/ext/Graclus/metisLib/estmem.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/ext/Graclus/metisLib/mfm2.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/ext/Graclus/metisLib/compress.c" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ext/LSD/lsd.c" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ext/LSD/lsd.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ext/LSD/CMakeLists.txt" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ext/PoissonRecon/MAT.inl" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ext/PoissonRecon/Geometry.inl" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/ext/PoissonRecon/PlyFile.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/ext/PoissonRecon/Geometry.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ext/PoissonRecon/PPolynomial.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/ext/PoissonRecon/Geometry.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/ext/PoissonRecon/FunctionData.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ext/PoissonRecon/MultiGridOctreeData.SortedTreeNodes.inl" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ext/PoissonRecon/Array.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ext/PoissonRecon/MultiGridOctreeData.inl" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/ext/PoissonRecon/MultiGridOctreeData.System.inl" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ext/PoissonRecon/Geometry.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ext/PoissonRecon/SurfaceTrimmer.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ext/PoissonRecon/PPolynomial.inl" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ext/PoissonRecon/Octree.inl" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/ext/PoissonRecon/SparseMatrix.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/ext/PoissonRecon/CmdLineParser.inl" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ext/PoissonRecon/PointStream.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ext/PoissonRecon/MultiGridOctreeData.WeightedSamples.inl" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/ext/PoissonRecon/CmdLineParser.inl" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/ext/PoissonRecon/SparseMatrix.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ext/PoissonRecon/BSplineData.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ext/PoissonRecon/Factor.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ext/PoissonRecon/CMakeLists.txt" isTestSource="false" />
@@ -370,29 +353,29 @@
       <sourceFolder url="file://$MODULE_DIR$/src/ext/PoissonRecon/BSplineData.inl" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ext/PoissonRecon/Polynomial.inl" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ext/PoissonRecon/MAT.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/ext/PoissonRecon/FunctionData.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/ext/PoissonRecon/MemoryUsage.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ext/PoissonRecon/SparseMatrix.inl" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ext/PoissonRecon/Hash.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/ext/PoissonRecon/MarchingCubes.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/ext/PoissonRecon/BinaryNode.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ext/PoissonRecon/MarchingCubes.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/ext/PoissonRecon/MyTime.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ext/PoissonRecon/Ply.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/ext/PoissonRecon/Polynomial.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/ext/PoissonRecon/MultiGridOctreeData.System.inl" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ext/PoissonRecon/MultiGridOctreeData.Evaluation.inl" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/ext/PoissonRecon/PointStream.inl" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/ext/PoissonRecon/PoissonRecon.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/ext/PoissonRecon/PlyFile.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ext/PoissonRecon/MultiGridOctreeData.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ext/PoissonRecon/FunctionData.inl" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/ext/PoissonRecon/MyTime.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/ext/PoissonRecon/PointStream.inl" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ext/PoissonRecon/SurfaceTrimmer.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ext/PoissonRecon/Octree.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/ext/PoissonRecon/MemoryUsage.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/ext/PoissonRecon/MarchingCubes.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/ext/PoissonRecon/Polynomial.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ext/PoissonRecon/PoissonRecon.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ext/PoissonRecon/Array.inl" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ext/PoissonRecon/Allocator.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/ext/PoissonRecon/PoissonRecon.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/ext/PoissonRecon/BinaryNode.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ext/PoissonRecon/CmdLineParser.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ext/VLFeat/hikmeans.c" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/ext/VLFeat/CMakeLists.txt" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ext/VLFeat/heap-def.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ext/VLFeat/shuffle-def.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ext/VLFeat/svmdataset.h" isTestSource="false" />
@@ -400,12 +383,13 @@
       <sourceFolder url="file://$MODULE_DIR$/src/ext/VLFeat/quickshift.c" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ext/VLFeat/svmdataset.c" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ext/VLFeat/kmeans.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/ext/VLFeat/pgm.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ext/VLFeat/host.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/ext/VLFeat/homkermap.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/ext/VLFeat/imopv_sse2.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ext/VLFeat/ikmeans_lloyd.tc" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/ext/VLFeat/slic.c" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ext/VLFeat/float.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ext/VLFeat/array.c" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/ext/VLFeat/imopv.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ext/VLFeat/ikmeans_init.tc" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ext/VLFeat/liop.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ext/VLFeat/fisher.h" isTestSource="false" />
@@ -416,20 +400,20 @@
       <sourceFolder url="file://$MODULE_DIR$/src/ext/VLFeat/aib.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ext/VLFeat/scalespace.c" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ext/VLFeat/rodrigues.c" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/ext/VLFeat/covdet.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ext/VLFeat/aib.c" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ext/VLFeat/qsort-def.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/ext/VLFeat/homkermap.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/ext/VLFeat/covdet.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ext/VLFeat/slic.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ext/VLFeat/covdet.c" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ext/VLFeat/kdtree.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ext/VLFeat/pgm.c" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ext/VLFeat/kdtree.c" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ext/VLFeat/mser.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/ext/VLFeat/imopv_sse2.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ext/VLFeat/mser.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/ext/VLFeat/CMakeLists.txt" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/ext/VLFeat/slic.c" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ext/VLFeat/imopv_sse2.c" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/ext/VLFeat/dsift.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/ext/VLFeat/imopv.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ext/VLFeat/getopt_long.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ext/VLFeat/dsift.c" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ext/VLFeat/svm.h" isTestSource="false" />
@@ -446,7 +430,7 @@
       <sourceFolder url="file://$MODULE_DIR$/src/ext/VLFeat/stringop.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ext/VLFeat/random.c" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ext/VLFeat/stringop.c" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/ext/VLFeat/pgm.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/ext/VLFeat/generic.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ext/VLFeat/gmm.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ext/VLFeat/mathop_sse2.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ext/VLFeat/generic.c" isTestSource="false" />
@@ -462,7 +446,7 @@
       <sourceFolder url="file://$MODULE_DIR$/src/ext/VLFeat/sift.c" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ext/VLFeat/imopv.c" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ext/VLFeat/ikmeans.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/ext/VLFeat/generic.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/ext/VLFeat/dsift.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ext/VLFeat/ikmeans.c" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ext/VLFeat/hikmeans.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ext/VLFeat/quickshift.h" isTestSource="false" />
@@ -496,9 +480,9 @@
       <sourceFolder url="file://$MODULE_DIR$/src/ext/SiftGPU/SiftMatchCU.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ext/SiftGPU/CMakeLists.txt" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ext/SiftGPU/SiftMatchCU.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/ext/SiftGPU/GLTexImage.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/ext/SiftGPU/SiftPyramid.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ext/SiftGPU/ProgramCL.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/ext/SiftGPU/SiftPyramid.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/ext/SiftGPU/GLTexImage.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ext/SiftGPU/GLTexImage.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ext/SiftGPU/LiteWindow.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ext/SiftGPU/GlobalUtil.cpp" isTestSource="false" />
