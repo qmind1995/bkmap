@@ -5,11 +5,10 @@ set(BKMAP_QT_MODULES Core OpenGL)
 qt5_add_resources(QT_RESOURCES resources.qrc)
 
 BKMAP_ADD_LIBRARY(ui
-        automatic_reconstruction_widget.h automatic_reconstruction_widget.cpp
+#        automatic_reconstruction_widget.h automatic_reconstruction_widget.cpp
         bundle_adjustment_widget.h bundle_adjustment_widget.cpp
         colormaps.h colormaps.cpp
         database_management_widget.h database_management_widget.cpp
-        dense_reconstruction_widget.h dense_reconstruction_widget.cpp
         feature_extraction_widget.h feature_extraction_widget.cpp
         feature_matching_widget.h feature_matching_widget.cpp
         image_viewer_widget.h image_viewer_widget.cpp

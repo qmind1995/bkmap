@@ -17,7 +17,6 @@ namespace bkmap {
 
         CreateWidgets();
         CreateActions();
-//        CreateMenus();
         CreateToolbar();
         CreateStatusbar();
         CreateControllers();
@@ -40,18 +39,6 @@ namespace bkmap {
         if (window_closed_) {
             event->accept();
             return;
-        }
-
-        if (project_widget_->IsValid() && *options_.project_path == "") {
-            // Project was created, but not yet saved
-            QMessageBox::StandardButton reply;
-            reply = QMessageBox::question(
-                    this, "",
-                    tr("You have not saved your project. Do you want to save it?"),
-                    QMessageBox::Yes | QMessageBox::No);
-            if (reply == QMessageBox::Yes) {
-                ProjectSave();
-            }
         }
 
         QMessageBox::StandardButton reply;
@@ -89,21 +76,14 @@ namespace bkmap {
         feature_extraction_widget_ = new FeatureExtractionWidget(this, &options_);
         feature_matching_widget_ = new FeatureMatchingWidget(this, &options_);
         database_management_widget_ = new DatabaseManagementWidget(this, &options_);
-        automatic_reconstruction_widget_ = new AutomaticReconstructionWidget(this);
-        reconstruction_options_widget_ =
-                new ReconstructionOptionsWidget(this, &options_);
-        bundle_adjustment_widget_ = new BundleAdjustmentWidget(this, &options_);
-        dense_reconstruction_widget_ = new DenseReconstructionWidget(this, &options_);
         render_options_widget_ =
                 new RenderOptionsWidget(this, &options_, opengl_window_);
         log_widget_ = new LogWidget(this);
-        undistortion_widget_ = new UndistortionWidget(this, &options_);
         reconstruction_manager_widget_ =
                 new ReconstructionManagerWidget(this, &reconstruction_manager_);
         reconstruction_manager_widget_->hide();
         reconstruction_stats_widget_ = new ReconstructionStatsWidget(this);
         match_matrix_widget_ = new MatchMatrixWidget(this, &options_);
-        license_widget_ = new LicenseWidget(this);
 
         dock_log_widget_ = new QDockWidget("", this);
         dock_log_widget_->setWidget(log_widget_);
@@ -121,46 +101,6 @@ namespace bkmap {
         action_project_new_ = new QAction(QIcon(":/media/project-new.png"), tr("New project"), this);
         action_project_new_->setShortcuts(QKeySequence::New);
         connect(action_project_new_, &QAction::triggered, this, &MainWindow::ProjectNew);
-
-        action_project_open_ = new QAction(QIcon(":/media/project-open.png"), tr("Open project"), this);
-        action_project_open_->setShortcuts(QKeySequence::Open);
-        connect(action_project_open_, &QAction::triggered, this, &MainWindow::ProjectOpen);
-
-        action_project_edit_ = new QAction(QIcon(":/media/project-edit.png"), tr("Edit project"), this);
-        connect(action_project_edit_, &QAction::triggered, this, &MainWindow::ProjectEdit);
-
-        action_project_save_ = new QAction(QIcon(":/media/project-save.png"), tr("Save project"), this);
-        action_project_save_->setShortcuts(QKeySequence::Save);
-        connect(action_project_save_, &QAction::triggered, this, &MainWindow::ProjectSave);
-
-        action_project_save_as_ = new QAction(QIcon(":/media/project-save-as.png"), tr("Save project as..."), this);
-        action_project_save_as_->setShortcuts(QKeySequence::SaveAs);
-        connect(action_project_save_as_, &QAction::triggered, this, &MainWindow::ProjectSaveAs);
-
-        action_import_ = new QAction(QIcon(":/media/import.png"), tr("Import model"), this);
-        connect(action_import_, &QAction::triggered, this, &MainWindow::Import);
-        blocking_actions_.push_back(action_import_);
-
-        action_import_from_ = new QAction(QIcon(":/media/import-from.png"), tr("Import model from..."), this);
-        connect(action_import_from_, &QAction::triggered, this, &MainWindow::ImportFrom);
-        blocking_actions_.push_back(action_import_from_);
-
-        action_export_ = new QAction(QIcon(":/media/export.png"), tr("Export model"), this);
-        connect(action_export_, &QAction::triggered, this, &MainWindow::Export);
-        blocking_actions_.push_back(action_export_);
-
-        action_export_all_ = new QAction(QIcon(":/media/export-all.png"), tr("Export all models"), this);
-        connect(action_export_all_, &QAction::triggered, this, &MainWindow::ExportAll);
-        blocking_actions_.push_back(action_export_all_);
-
-        action_export_as_ = new QAction(QIcon(":/media/export-as.png"), tr("Export model as..."), this);
-        connect(action_export_as_, &QAction::triggered, this, &MainWindow::ExportAs);
-        blocking_actions_.push_back(action_export_as_);
-
-        action_export_as_text_ = new QAction(QIcon(":/media/export-as-text.png"), tr("Export model as text"), this);
-        connect(action_export_as_text_, &QAction::triggered, this,
-                &MainWindow::ExportAsText);
-        blocking_actions_.push_back(action_export_as_text_);
 
         action_quit_ = new QAction(tr("Quit"), this);
         connect(action_quit_, &QAction::triggered, this, &MainWindow::close);
@@ -205,16 +145,9 @@ namespace bkmap {
         // Reconstruction actions
         //////////////////////////////////////////////////////////////////////////////
 
-        action_automatic_reconstruction_ = new QAction(QIcon(":/media/automatic-reconstruction.png"), tr("Automatic reconstruction"), this);
-        connect(action_automatic_reconstruction_, &QAction::triggered, this, &MainWindow::AutomaticReconstruction);
-
         action_reconstruction_start_ = new QAction(QIcon(":/media/reconstruction-start.png"), tr("Start reconstruction"), this);
         connect(action_reconstruction_start_, &QAction::triggered, this, &MainWindow::ReconstructionStart);
         blocking_actions_.push_back(action_reconstruction_start_);
-
-//        action_reconstruction_step_ = new QAction(QIcon(":/media/reconstruction-step.png"), tr("Reconstruct next image"), this);
-//        connect(action_reconstruction_step_, &QAction::triggered, this, &MainWindow::ReconstructionStep);
-//        blocking_actions_.push_back(action_reconstruction_step_);
 
         action_reconstruction_pause_ = new QAction(QIcon(":/media/reconstruction-pause.png"), tr("Pause reconstruction"), this);
         connect(action_reconstruction_pause_, &QAction::triggered, this, &MainWindow::ReconstructionPause);
@@ -223,22 +156,6 @@ namespace bkmap {
 
         action_reconstruction_reset_ = new QAction(QIcon(":/media/reconstruction-reset.png"), tr("Reset reconstruction"), this);
         connect(action_reconstruction_reset_, &QAction::triggered, this, &MainWindow::ReconstructionOverwrite);
-
-        action_reconstruction_normalize_ = new QAction(QIcon(":/media/reconstruction-normalize.png"), tr("Normalize reconstruction"), this);
-        connect(action_reconstruction_normalize_, &QAction::triggered, this, &MainWindow::ReconstructionNormalize);
-        blocking_actions_.push_back(action_reconstruction_normalize_);
-
-        action_reconstruction_options_ = new QAction(QIcon(":/media/reconstruction-options.png"), tr("Reconstruction options"), this);
-        connect(action_reconstruction_options_, &QAction::triggered, this, &MainWindow::ReconstructionOptions);
-        blocking_actions_.push_back(action_reconstruction_options_);
-
-        action_bundle_adjustment_ = new QAction(QIcon(":/media/bundle-adjustment.png"), tr("Bundle adjustment"), this);
-        connect(action_bundle_adjustment_, &QAction::triggered, this, &MainWindow::BundleAdjustment);
-        action_bundle_adjustment_->setEnabled(false);
-        blocking_actions_.push_back(action_bundle_adjustment_);
-
-        action_dense_reconstruction_ = new QAction(QIcon(":/media/dense-reconstruction.png"), tr("Dense reconstruction"), this);
-        connect(action_dense_reconstruction_, &QAction::triggered, this, &MainWindow::DenseReconstruction);
 
         //////////////////////////////////////////////////////////////////////////////
         // Render actions
@@ -283,45 +200,6 @@ namespace bkmap {
                 new QAction(QIcon(":/media/log.png"), tr("Show log"), this);
         connect(action_log_show_, &QAction::triggered, this, &MainWindow::ShowLog);
 
-        action_grab_image_ =
-                new QAction(QIcon(":/media/grab-image.png"), tr("Grab image"), this);
-        connect(action_grab_image_, &QAction::triggered, this,
-                &MainWindow::GrabImage);
-
-        action_grab_movie_ =
-                new QAction(QIcon(":/media/grab-movie.png"), tr("Grab movie"), this);
-        connect(action_grab_movie_, &QAction::triggered, opengl_window_,
-                &OpenGLWindow::GrabMovie);
-
-        action_undistort_ =
-                new QAction(QIcon(":/media/undistort.png"), tr("Undistortion"), this);
-        connect(action_undistort_, &QAction::triggered, this,
-                &MainWindow::UndistortImages);
-        blocking_actions_.push_back(action_undistort_);
-
-        action_extract_colors_ = new QAction(tr("Extract colors"), this);
-        connect(action_extract_colors_, &QAction::triggered, this,
-                &MainWindow::ExtractColors);
-
-        action_reset_options_ = new QAction(tr("Set default options"), this);
-        connect(action_reset_options_, &QAction::triggered, this,
-                &MainWindow::ResetOptions);
-
-        action_set_options_for_individual_ =
-                new QAction(tr("Set options for individual images"), this);
-        connect(action_set_options_for_individual_, &QAction::triggered, this,
-                &MainWindow::SetOptionsForIndividual);
-
-        action_set_options_for_video_ =
-                new QAction(tr("Set options for video frames"), this);
-        connect(action_set_options_for_video_, &QAction::triggered, this,
-                &MainWindow::SetOptionsForVideo);
-
-        action_set_options_for_internet_ =
-                new QAction(tr("Set options for Internet images"), this);
-        connect(action_set_options_for_internet_, &QAction::triggered, this,
-                &MainWindow::SetOptionsForInternet);
-
         //////////////////////////////////////////////////////////////////////////////
         // Misc actions
         //////////////////////////////////////////////////////////////////////////////
@@ -340,108 +218,18 @@ namespace bkmap {
         connect(action_reconstruction_finish_, &QAction::triggered, this,
                 &MainWindow::ReconstructionFinish, Qt::BlockingQueuedConnection);
 
-        action_about_ = new QAction(tr("About"), this);
-        connect(action_about_, &QAction::triggered, this, &MainWindow::About);
-        action_documentation_ = new QAction(tr("Documentation"), this);
-        connect(action_documentation_, &QAction::triggered, this,
-                &MainWindow::Documentation);
-        action_support_ = new QAction(tr("Support"), this);
-        connect(action_support_, &QAction::triggered, this, &MainWindow::Support);
-        action_license_ = new QAction(tr("License"), this);
-        connect(action_license_, &QAction::triggered, license_widget_,
-                &QTextEdit::show);
-    }
-
-    void MainWindow::CreateMenus() {
-        QMenu* file_menu = new QMenu(tr("File"), this);
-        file_menu->addAction(action_project_new_);
-        file_menu->addAction(action_project_open_);
-        file_menu->addAction(action_project_edit_);
-        file_menu->addAction(action_project_save_);
-        file_menu->addAction(action_project_save_as_);
-        file_menu->addSeparator();
-        file_menu->addAction(action_import_);
-        file_menu->addAction(action_import_from_);
-        file_menu->addSeparator();
-        file_menu->addAction(action_export_);
-        file_menu->addAction(action_export_all_);
-        file_menu->addAction(action_export_as_);
-        file_menu->addAction(action_export_as_text_);
-        file_menu->addSeparator();
-        file_menu->addAction(action_quit_);
-        menuBar()->addAction(file_menu->menuAction());
-
-        QMenu* preprocessing_menu = new QMenu(tr("Processing"), this);
-        preprocessing_menu->addAction(action_feature_extraction_);
-        preprocessing_menu->addAction(action_feature_matching_);
-        preprocessing_menu->addAction(action_database_management_);
-        menuBar()->addAction(preprocessing_menu->menuAction());
-
-        QMenu* reconstruction_menu = new QMenu(tr("Reconstruction"), this);
-        reconstruction_menu->addAction(action_automatic_reconstruction_);
-        reconstruction_menu->addSeparator();
-        reconstruction_menu->addAction(action_reconstruction_start_);
-        reconstruction_menu->addAction(action_reconstruction_pause_);
-//        reconstruction_menu->addAction(action_reconstruction_step_);
-        reconstruction_menu->addSeparator();
-        reconstruction_menu->addAction(action_reconstruction_reset_);
-        reconstruction_menu->addAction(action_reconstruction_normalize_);
-        reconstruction_menu->addAction(action_reconstruction_options_);
-        reconstruction_menu->addSeparator();
-        reconstruction_menu->addAction(action_bundle_adjustment_);
-        reconstruction_menu->addAction(action_dense_reconstruction_);
-        menuBar()->addAction(reconstruction_menu->menuAction());
-
-        QMenu* render_menu = new QMenu(tr("Render"), this);
-        render_menu->addAction(action_render_toggle_);
-        render_menu->addAction(action_render_reset_view_);
-        render_menu->addAction(action_render_options_);
-        menuBar()->addAction(render_menu->menuAction());
-
-        QMenu* extras_menu = new QMenu(tr("Extras"), this);
-        extras_menu->addAction(action_log_show_);
-        extras_menu->addAction(action_match_matrix_);
-        extras_menu->addAction(action_reconstruction_stats_);
-        extras_menu->addSeparator();
-        extras_menu->addAction(action_grab_image_);
-        extras_menu->addAction(action_grab_movie_);
-        extras_menu->addSeparator();
-        extras_menu->addAction(action_undistort_);
-        extras_menu->addAction(action_extract_colors_);
-        extras_menu->addSeparator();
-        extras_menu->addAction(action_reset_options_);
-        extras_menu->addAction(action_set_options_for_individual_);
-        extras_menu->addAction(action_set_options_for_video_);
-        extras_menu->addAction(action_set_options_for_internet_);
-        menuBar()->addAction(extras_menu->menuAction());
-
-        QMenu* help_menu = new QMenu(tr("Help"), this);
-        help_menu->addAction(action_about_);
-        help_menu->addAction(action_documentation_);
-        help_menu->addAction(action_support_);
-        help_menu->addAction(action_license_);
-        menuBar()->addAction(help_menu->menuAction());
-
-        // TODO: Make the native menu bar work on OSX. Simply setting this to true
-        // will result in a menubar which is not clickable until the main window is
-        // defocused and refocused.
-        menuBar()->setNativeMenuBar(false);
     }
 
     void MainWindow::CreateToolbar() {
         file_toolbar_ = addToolBar(tr("File"));
         file_toolbar_->addAction(action_project_new_);
         file_toolbar_->setIconSize(QSize(16, 16));
-//        file_toolbar_->setFloatable(false);
-//        file_toolbar_->setMovable(false);
 
         preprocessing_toolbar_ = addToolBar(tr("Processing"));
         preprocessing_toolbar_->addAction(action_feature_extraction_);
         preprocessing_toolbar_->addAction(action_analyze_object);
         preprocessing_toolbar_->addAction(action_feature_matching_);
         preprocessing_toolbar_->setIconSize(QSize(16, 16));
-//        preprocessing_toolbar_->setFloatable(false);
-//        preprocessing_toolbar_->setMovable(false);
 
         reconstruction_toolbar_ = addToolBar(tr("Reconstruction"));
         reconstruction_toolbar_->addAction(action_reconstruction_start_);
@@ -449,9 +237,6 @@ namespace bkmap {
         reconstruction_toolbar_->addAction(action_render_camera);
         reconstruction_toolbar_->addAction(action_export_ply);
         reconstruction_toolbar_->setIconSize(QSize(16, 16));
-//        reconstruction_toolbar_->setFloatable(false);
-//        reconstruction_toolbar_->setMovable(false);
-
     }
 
     void MainWindow::CreateStatusbar() {
@@ -521,326 +306,6 @@ namespace bkmap {
         }
     }
 
-    bool MainWindow::ProjectOpen() {
-        if (!ReconstructionOverwrite()) {
-            return false;
-        }
-
-        const std::string project_path =
-                QFileDialog::getOpenFileName(this, tr("Select project file"), "",
-                                             tr("Project file (*.ini)"))
-                        .toUtf8()
-                        .constData();
-        // If selection not canceled
-        if (project_path != "") {
-            if (options_.ReRead(project_path)) {
-                *options_.project_path = project_path;
-                project_widget_->SetDatabasePath(*options_.database_path);
-                project_widget_->SetImagePath(*options_.image_path);
-                UpdateWindowTitle();
-                return true;
-            } else {
-                ShowInvalidProjectError();
-            }
-        }
-
-        return false;
-    }
-
-    void MainWindow::ProjectEdit() {
-        project_widget_->show();
-        project_widget_->raise();
-    }
-
-    void MainWindow::ProjectSave() {
-        if (!ExistsFile(*options_.project_path)) {
-            std::string project_path =
-                    QFileDialog::getSaveFileName(this, tr("Select project file"), "",
-                                                 tr("Project file (*.ini)"))
-                            .toUtf8()
-                            .constData();
-            // If selection not canceled
-            if (project_path != "") {
-                if (!HasFileExtension(project_path, ".ini")) {
-                    project_path += ".ini";
-                }
-                *options_.project_path = project_path;
-                options_.Write(*options_.project_path);
-            }
-        } else {
-            // Project path was chosen previously, either here or via command-line.
-            options_.Write(*options_.project_path);
-        }
-
-        UpdateWindowTitle();
-    }
-
-    void MainWindow::ProjectSaveAs() {
-        const std::string new_project_path =
-                QFileDialog::getSaveFileName(this, tr("Select project file"), "",
-                                             tr("Project file (*.ini)"))
-                        .toUtf8()
-                        .constData();
-        if (new_project_path != "") {
-            *options_.project_path = new_project_path;
-            options_.Write(*options_.project_path);
-        }
-
-        UpdateWindowTitle();
-    }
-
-    void MainWindow::Import() {
-        const std::string import_path =
-                QFileDialog::getExistingDirectory(this, tr("Select source..."), "",
-                                                  QFileDialog::ShowDirsOnly)
-                        .toUtf8()
-                        .constData();
-
-        // Selection canceled?
-        if (import_path == "") {
-            return;
-        }
-
-        const std::string project_path = JoinPaths(import_path, "project.ini");
-        const std::string cameras_bin_path = JoinPaths(import_path, "cameras.bin");
-        const std::string images_bin_path = JoinPaths(import_path, "images.bin");
-        const std::string points3D_bin_path = JoinPaths(import_path, "points3D.bin");
-        const std::string cameras_txt_path = JoinPaths(import_path, "cameras.txt");
-        const std::string images_txt_path = JoinPaths(import_path, "images.txt");
-        const std::string points3D_txt_path = JoinPaths(import_path, "points3D.txt");
-
-        if ((!ExistsFile(cameras_bin_path) || !ExistsFile(images_bin_path) ||
-             !ExistsFile(points3D_bin_path)) &&
-            (!ExistsFile(cameras_txt_path) || !ExistsFile(images_txt_path) ||
-             !ExistsFile(points3D_txt_path))) {
-            QMessageBox::critical(this, "",
-                                  tr("cameras, images, and points3D files do not exist "
-                                             "in chosen directory."));
-            return;
-        }
-
-        if (!ReconstructionOverwrite()) {
-            return;
-        }
-
-        bool edit_project = false;
-        if (ExistsFile(project_path)) {
-            options_.ReRead(project_path);
-        } else {
-            QMessageBox::StandardButton reply = QMessageBox::question(
-                    this, "",
-                    tr("Directory does not contain a <i>project.ini</i>. To "
-                               "resume the reconstruction, you need to specify a valid "
-                               "database and image path. Do you want to select the paths "
-                               "now (or press 'No' to only visualize the reconstruction)?"),
-                    QMessageBox::Yes | QMessageBox::No);
-            if (reply == QMessageBox::Yes) {
-                edit_project = true;
-            }
-        }
-
-        thread_control_widget_->StartFunction(
-                "Importing...", [this, import_path, edit_project]() {
-                    const size_t idx = reconstruction_manager_.Read(import_path);
-                    reconstruction_manager_widget_->Update();
-                    reconstruction_manager_widget_->SelectReconstruction(idx);
-                    action_bundle_adjustment_->setEnabled(true);
-                    action_render_now_->trigger();
-                    if (edit_project) {
-                        action_project_edit_->trigger();
-                    }
-                });
-    }
-
-    void MainWindow::ImportFrom() {
-        const std::string import_path =
-                QFileDialog::getOpenFileName(this, tr("Select source..."), "")
-                        .toUtf8()
-                        .constData();
-
-        // Selection canceled?
-        if (import_path == "") {
-            return;
-        }
-
-        if (!ExistsFile(import_path)) {
-            QMessageBox::critical(this, "", tr("Invalid file"));
-            return;
-        }
-
-        if (!HasFileExtension(import_path, ".ply")) {
-            QMessageBox::critical(this, "",
-                                  tr("Invalid file format (supported formats: PLY)"));
-            return;
-        }
-
-        thread_control_widget_->StartFunction("Importing...", [this, import_path]() {
-            const size_t reconstruction_idx = reconstruction_manager_.Add();
-            reconstruction_manager_.Get(reconstruction_idx).ImportPLY(import_path);
-            options_.render->min_track_len = 0;
-            reconstruction_manager_widget_->Update();
-            reconstruction_manager_widget_->SelectReconstruction(reconstruction_idx);
-            action_render_now_->trigger();
-        });
-    }
-
-    void MainWindow::Export() {
-        if (!IsSelectedReconstructionValid()) {
-            return;
-        }
-
-        const std::string export_path =
-                QFileDialog::getExistingDirectory(this, tr("Select destination..."), "",
-                                                  QFileDialog::ShowDirsOnly)
-                        .toUtf8()
-                        .constData();
-
-        // Selection canceled?
-        if (export_path == "") {
-            return;
-        }
-
-        const std::string cameras_name = "cameras.bin";
-        const std::string images_name = "images.bin";
-        const std::string points3D_name = "points3D.bin";
-
-        const std::string project_path = JoinPaths(export_path, "project.ini");
-        const std::string cameras_path = JoinPaths(export_path, cameras_name);
-        const std::string images_path = JoinPaths(export_path, images_name);
-        const std::string points3D_path = JoinPaths(export_path, points3D_name);
-
-        if (ExistsFile(cameras_path) || ExistsFile(images_path) ||
-            ExistsFile(points3D_path)) {
-            QMessageBox::StandardButton reply = QMessageBox::question(
-                    this, "",
-                    StringPrintf(
-                            "The files <i>%s</i>, <i>%s</i>, or <i>%s</i> already "
-                                    "exist in the selected destination. Do you want to overwrite them?",
-                            cameras_name.c_str(), images_name.c_str(), points3D_name.c_str())
-                            .c_str(),
-                    QMessageBox::Yes | QMessageBox::No);
-            if (reply == QMessageBox::No) {
-                return;
-            }
-        }
-
-        thread_control_widget_->StartFunction(
-                "Exporting...", [this, export_path, project_path]() {
-                    const auto& reconstruction =
-                            reconstruction_manager_.Get(SelectedReconstructionIdx());
-                    reconstruction.WriteBinary(export_path);
-                    options_.Write(project_path);
-                });
-    }
-
-    void MainWindow::ExportAll() {
-        if (!IsSelectedReconstructionValid()) {
-            return;
-        }
-
-        const std::string export_path =
-                QFileDialog::getExistingDirectory(this, tr("Select destination..."), "",
-                                                  QFileDialog::ShowDirsOnly)
-                        .toUtf8()
-                        .constData();
-
-        // Selection canceled?
-        if (export_path == "") {
-            return;
-        }
-
-        thread_control_widget_->StartFunction("Exporting...", [this, export_path]() {
-            reconstruction_manager_.Write(export_path, &options_);
-        });
-    }
-
-    void MainWindow::ExportAs() {
-        if (!IsSelectedReconstructionValid()) {
-            return;
-        }
-
-        QString filter("NVM (*.nvm)");
-        const std::string export_path =
-                QFileDialog::getSaveFileName(
-                        this, tr("Select destination..."), "",
-                        "NVM (*.nvm);;Bundler (*.out);;PLY (*.ply);;VRML (*.wrl)", &filter)
-                        .toUtf8()
-                        .constData();
-
-        // Selection canceled?
-        if (export_path == "") {
-            return;
-        }
-
-        thread_control_widget_->StartFunction(
-                "Exporting...", [this, export_path, filter]() {
-                    const Reconstruction& reconstruction =
-                            reconstruction_manager_.Get(SelectedReconstructionIdx());
-                    if (filter == "NVM (*.nvm)") {
-                        reconstruction.ExportNVM(export_path);
-                    } else if (filter == "Bundler (*.out)") {
-                        reconstruction.ExportBundler(export_path, export_path + ".list.txt");
-                    } else if (filter == "PLY (*.ply)") {
-                        reconstruction.ExportPLY(export_path);
-                    } else if (filter == "VRML (*.wrl)") {
-                        const auto base_path =
-                                export_path.substr(0, export_path.find_last_of("."));
-                        reconstruction.ExportVRML(base_path + ".images.wrl",
-                                                  base_path + ".points3D.wrl", 1,
-                                                  Eigen::Vector3d(1, 0, 0));
-                    }
-                });
-    }
-
-    void MainWindow::ExportAsText() {
-        if (!IsSelectedReconstructionValid()) {
-            return;
-        }
-
-        const std::string export_path =
-                QFileDialog::getExistingDirectory(this, tr("Select destination..."), "",
-                                                  QFileDialog::ShowDirsOnly)
-                        .toUtf8()
-                        .constData();
-
-        // Selection canceled?
-        if (export_path == "") {
-            return;
-        }
-
-        const std::string cameras_name = "cameras.txt";
-        const std::string images_name = "images.txt";
-        const std::string points3D_name = "points3D.txt";
-
-        const std::string project_path = JoinPaths(export_path, "project.ini");
-        const std::string cameras_path = JoinPaths(export_path, cameras_name);
-        const std::string images_path = JoinPaths(export_path, images_name);
-        const std::string points3D_path = JoinPaths(export_path, points3D_name);
-
-        if (ExistsFile(cameras_path) || ExistsFile(images_path) ||
-            ExistsFile(points3D_path)) {
-            QMessageBox::StandardButton reply = QMessageBox::question(
-                    this, "",
-                    StringPrintf(
-                            "The files <i>%s</i>, <i>%s</i>, or <i>%s</i> already "
-                                    "exist in the selected destination. Do you want to overwrite them?",
-                            cameras_name.c_str(), images_name.c_str(), points3D_name.c_str())
-                            .c_str(),
-                    QMessageBox::Yes | QMessageBox::No);
-            if (reply == QMessageBox::No) {
-                return;
-            }
-        }
-
-        thread_control_widget_->StartFunction(
-                "Exporting...", [this, export_path, project_path]() {
-                    const auto& reconstruction =
-                            reconstruction_manager_.Get(SelectedReconstructionIdx());
-                    reconstruction.WriteText(export_path);
-                    options_.Write(project_path);
-                });
-    }
-
     void MainWindow::FeatureExtraction() {
         if (options_.Check()) {
             feature_extraction_widget_->show();
@@ -899,11 +364,6 @@ namespace bkmap {
         }
     }
 
-    void MainWindow::AutomaticReconstruction() {
-        automatic_reconstruction_widget_->show();
-        automatic_reconstruction_widget_->raise();
-    }
-
     void MainWindow::ReconstructionStart() {
         if (!mapper_controller_->IsStarted() && !options_.Check()) {
             ShowInvalidProjectError();
@@ -932,19 +392,6 @@ namespace bkmap {
         action_reconstruction_pause_->setEnabled(true);
     }
 
-    void MainWindow::ReconstructionStep() {
-        if (mapper_controller_->IsFinished() && HasSelectedReconstruction()) {
-            QMessageBox::critical(this, "",
-                                  tr("Reset reconstruction before starting."));
-            return;
-        }
-
-//        action_reconstruction_step_->setEnabled(false);
-        ReconstructionStart();
-        ReconstructionPause();
-//        action_reconstruction_step_->setEnabled(true);
-    }
-
     void MainWindow::ReconstructionPause() {
         timer_.Pause();
         mapper_controller_->Pause();
@@ -952,17 +399,11 @@ namespace bkmap {
         action_reconstruction_pause_->setEnabled(false);
     }
 
-    void MainWindow::ReconstructionOptions() {
-        reconstruction_options_widget_->show();
-        reconstruction_options_widget_->raise();
-    }
-
     void MainWindow::ReconstructionFinish() {
         timer_.Pause();
         mapper_controller_->Stop();
         EnableBlockingActions();
         action_reconstruction_start_->setEnabled(false);
-//        action_reconstruction_step_->setEnabled(false);
         action_reconstruction_pause_->setEnabled(false);
     }
 
@@ -982,15 +423,6 @@ namespace bkmap {
         RenderClear();
     }
 
-    void MainWindow::ReconstructionNormalize() {
-        if (!IsSelectedReconstructionValid()) {
-            return;
-        }
-//        action_reconstruction_step_->setEnabled(false);
-        reconstruction_manager_.Get(SelectedReconstructionIdx()).Normalize();
-//        action_reconstruction_step_->setEnabled(true);
-    }
-
     bool MainWindow::ReconstructionOverwrite() {
         if (reconstruction_manager_.Size() == 0) {
             ReconstructionReset();
@@ -1006,24 +438,6 @@ namespace bkmap {
         } else {
             ReconstructionReset();
             return true;
-        }
-    }
-
-    void MainWindow::BundleAdjustment() {
-        if (!IsSelectedReconstructionValid()) {
-            return;
-        }
-
-        bundle_adjustment_widget_->Show(
-                &reconstruction_manager_.Get(SelectedReconstructionIdx()));
-    }
-
-    void MainWindow::DenseReconstruction() {
-        if (HasSelectedReconstruction()) {
-            dense_reconstruction_widget_->Show(
-                    &reconstruction_manager_.Get(SelectedReconstructionIdx()));
-        } else {
-            dense_reconstruction_widget_->Show(nullptr);
         }
     }
 
@@ -1115,26 +529,26 @@ namespace bkmap {
         return true;
     }
 
-    void MainWindow::GrabImage() {
-        QString file_name = QFileDialog::getSaveFileName(this, tr("Save image"), "",
-                                                         tr("Images (*.png *.jpg)"));
-        if (file_name != "") {
-            if (!HasFileExtension(file_name.toUtf8().constData(), ".png") &&
-                !HasFileExtension(file_name.toUtf8().constData(), ".jpg")) {
-                file_name += ".png";
-            }
-            QImage image = opengl_window_->GrabImage();
-            image.save(file_name);
-        }
-    }
+//    void MainWindow::GrabImage() {
+//        QString file_name = QFileDialog::getSaveFileName(this, tr("Save image"), "",
+//                                                         tr("Images (*.png *.jpg)"));
+//        if (file_name != "") {
+//            if (!HasFileExtension(file_name.toUtf8().constData(), ".png") &&
+//                !HasFileExtension(file_name.toUtf8().constData(), ".jpg")) {
+//                file_name += ".png";
+//            }
+//            QImage image = opengl_window_->GrabImage();
+//            image.save(file_name);
+//        }
+//    }
 
-    void MainWindow::UndistortImages() {
-        if (!IsSelectedReconstructionValid()) {
-            return;
-        }
-        undistortion_widget_->Show(
-                reconstruction_manager_.Get(SelectedReconstructionIdx()));
-    }
+//    void MainWindow::UndistortImages() {
+//        if (!IsSelectedReconstructionValid()) {
+//            return;
+//        }
+//        undistortion_widget_->Show(
+//                reconstruction_manager_.Get(SelectedReconstructionIdx()));
+//    }
 
     void MainWindow::ReconstructionStats() {
         if (!IsSelectedReconstructionValid()) {
@@ -1153,92 +567,6 @@ namespace bkmap {
         log_widget_->raise();
         dock_log_widget_->show();
         dock_log_widget_->raise();
-    }
-
-    void MainWindow::ExtractColors() {
-        if (!IsSelectedReconstructionValid()) {
-            return;
-        }
-
-        thread_control_widget_->StartFunction("Extracting colors...", [this]() {
-            auto& reconstruction =
-                    reconstruction_manager_.Get(SelectedReconstructionIdx());
-            reconstruction.ExtractColorsForAllImages(*options_.image_path);
-        });
-    }
-
-    void MainWindow::ResetOptions() {
-        const std::string project_path = *options_.project_path;
-        const std::string image_path = *options_.image_path;
-        const std::string database_path = *options_.database_path;
-
-        options_.Reset();
-        options_.AddAllOptions();
-
-        *options_.project_path = project_path;
-        *options_.image_path = image_path;
-        *options_.database_path = database_path;
-    }
-
-    void MainWindow::SetOptionsForIndividual() {
-        const std::string project_path = *options_.project_path;
-        const std::string image_path = *options_.image_path;
-        const std::string database_path = *options_.database_path;
-
-        options_.Reset();
-        options_.AddAllOptions();
-        options_.InitForIndividualData();
-
-        *options_.project_path = project_path;
-        *options_.image_path = image_path;
-        *options_.database_path = database_path;
-    }
-
-    void MainWindow::SetOptionsForVideo() {
-        const std::string project_path = *options_.project_path;
-        const std::string image_path = *options_.image_path;
-        const std::string database_path = *options_.database_path;
-
-        options_.Reset();
-        options_.AddAllOptions();
-        options_.InitForVideoData();
-
-        *options_.project_path = project_path;
-        *options_.image_path = image_path;
-        *options_.database_path = database_path;
-    }
-
-    void MainWindow::SetOptionsForInternet() {
-        const std::string project_path = *options_.project_path;
-        const std::string image_path = *options_.image_path;
-        const std::string database_path = *options_.database_path;
-
-        options_.Reset();
-        options_.AddAllOptions();
-        options_.InitForInternetData();
-
-        *options_.project_path = project_path;
-        *options_.image_path = image_path;
-        *options_.database_path = database_path;
-    }
-
-    void MainWindow::About() {
-        QMessageBox::about(
-                this, tr("About"),
-                QString().sprintf("<span style='font-weight:normal'><b>%s</b><br />"
-                                          "<small>(%s)</small><br /><br />"
-                                          "<b>Author:</b> Johannes L. Schönberger<br /><br />"
-                                          "<b>Email:</b> jsch at inf.ethz.ch</span>",
-                                  GetVersionInfo().c_str(), GetBuildInfo().c_str()));
-    }
-
-    void MainWindow::Documentation() {
-        QDesktopServices::openUrl(QUrl("https://colmap.github.io/"));
-    }
-
-    void MainWindow::Support() {
-        QDesktopServices::openUrl(
-                QUrl("https://groups.google.com/forum/#!forum/colmap"));
     }
 
     void MainWindow::RenderToggle() {
