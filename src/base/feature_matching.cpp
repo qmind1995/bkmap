@@ -392,7 +392,7 @@ namespace bkmap {
                 // Check if match passes ratio test. Keep this comparison >= in order to
                 // ensure that the case of best == second_best is detected.
                 if (best_dist_normed >= max_ratio * second_best_dist_normed) {
-                    std::cout << StringPrintf("skip this keypoint case 2 \n");
+//                    std::cout << StringPrintf("skip this keypoint case 2 \n");
                     continue;
                 }
 
@@ -480,7 +480,7 @@ namespace bkmap {
                     continue;
                 }
 
-                std::cout << StringPrintf("add this keypoint, distance = %d \n ", best_dist_normed);
+//                std::cout << StringPrintf("add this keypoint, distance = %d \n ", best_dist_normed);
                 num_matches += 1;
                 (*matches)[i1] = best_i2;
             }
@@ -551,11 +551,11 @@ namespace bkmap {
                 // ensure that the case of best == second_best is detected.
                 if (best_dist_normed >= max_ratio * second_best_dist_normed
                     || cos_best_dist_normed >=  max_ratio * cos_second_best_dist_normed) {
-                    std::cout << StringPrintf("skip this keypoint case 2 \n");
+//                    std::cout << StringPrintf("skip this keypoint case 2 \n");
                     continue;
                 }
 
-                std::cout << StringPrintf("add this keypoint, distance = %d \n ", best_dist_normed);
+//                std::cout << StringPrintf("add this keypoint, distance = %d \n ", best_dist_normed);
                 num_matches += 1;
                 (*matches)[i1] = best_i2;
             }

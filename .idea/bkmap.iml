@@ -76,11 +76,10 @@
       <sourceFolder url="file://$MODULE_DIR$/src/ui/qt_utils.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ui/options_widget.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ui/project_widget.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/ui/database_management_widget.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/ui/point_painter.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ui/line_painter.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ui/thread_control_widget.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ui/reconstruction_manager_widget.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/ui/point_painter.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ui/thread_control_widget.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ui/main_window.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ui/point_viewer_widget.cpp" isTestSource="false" />
@@ -354,11 +353,10 @@
       <sourceFolder url="file://$MODULE_DIR$/src/ext/PoissonRecon/Polynomial.inl" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ext/PoissonRecon/MAT.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ext/PoissonRecon/MemoryUsage.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/ext/PoissonRecon/SparseMatrix.inl" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/ext/PoissonRecon/Octree.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ext/PoissonRecon/Hash.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ext/PoissonRecon/BinaryNode.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ext/PoissonRecon/MarchingCubes.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/ext/PoissonRecon/MyTime.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ext/PoissonRecon/Ply.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ext/PoissonRecon/MultiGridOctreeData.System.inl" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ext/PoissonRecon/MultiGridOctreeData.Evaluation.inl" isTestSource="false" />
@@ -366,10 +364,11 @@
       <sourceFolder url="file://$MODULE_DIR$/src/ext/PoissonRecon/PlyFile.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ext/PoissonRecon/MultiGridOctreeData.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ext/PoissonRecon/FunctionData.inl" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/ext/PoissonRecon/PointStream.inl" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/ext/PoissonRecon/MyTime.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ext/PoissonRecon/SurfaceTrimmer.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/ext/PoissonRecon/Octree.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/ext/PoissonRecon/PointStream.inl" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ext/PoissonRecon/MarchingCubes.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/ext/PoissonRecon/SparseMatrix.inl" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ext/PoissonRecon/Polynomial.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ext/PoissonRecon/PoissonRecon.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ext/PoissonRecon/Array.inl" isTestSource="false" />
